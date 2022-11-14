@@ -1,0 +1,237 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(221, 239, 255);
+    display: grid;
+    place-items: center;
+    font-family: cursive;
+    font-weight: bold;
+}
+
+h1 {
+    position: relative;
+    text-align: center;
+    top: 40px;
+    padding: 40px;
+}
+
+h3 {
+    position: relative;
+    text-align: center;
+    top: 20px;
+    padding: 20px;
+}
+
+.flag {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.france {
+    background: linear-gradient(to right,
+            #002495 33%,
+            #fff 33%,
+            #fff 67%,
+            #ED2938 33%);
+}
+
+.germany {
+    background: linear-gradient(to bottom,
+            #000 33%,
+            #DE0002 33%,
+            #DE0002 67%,
+            #FFCE00 67%);
+}
+
+.madagascar {
+    background: linear-gradient(#FC3E32 50%,
+            #007E39 0);
+}
+
+.madagascar::before {
+    content: "";
+    position: absolute;
+    width: calc(100% / 3);
+    height: 100%;
+    background-color: white;
+}
+
+.switzerland {
+    background: #FF0002;
+    display: grid;
+    place-items: center;
+}
+
+.switzerland::before {
+    position: absolute;
+    content: "";
+
+    width: 125px;
+    aspect-ratio: 1;
+    background-color: white;
+
+    clip-path: polygon(0 35%,
+            35% 35%,
+            35% 0%,
+            65% 0%,
+            65% 35%,
+            100% 35%,
+            100% 65%,
+            65% 65%,
+            65% 100%,
+            35% 100%,
+            35% 65%,
+            0 65%);
+}
+
+.sweden {
+    background: #0269A6;
+    display: grid;
+    place-items: center;
+}
+
+.sweden::before {
+    position: absolute;
+    content: "";
+    width: 300px;
+    aspect-ratio: 1;
+    background-color: #FFCE00;
+
+    clip-path: polygon(0 43%,
+            25% 43%,
+            25% 0,
+            40% 0,
+            40% 43%,
+            100% 43%,
+            100% 57%,
+            40% 57%,
+            40% 100%,
+            25% 100%,
+            25% 57%,
+            0 57%);
+}
+
+.gambia {
+    background: linear-gradient(
+    #ce2029 33%,
+    #fff 33%,
+    #fff 40%,
+    #2b3281 40%,
+    #2b3281 60%,
+    #fff 60%,
+    #fff 67%,
+    #3d783a 67%
+    );
+}
+
+.japan {
+    background: radial-gradient( circle at 50%, #bc002d 35%, #fff 0);
+}
+
+.niger {
+    background: linear-gradient(
+        #e15307 33%,
+        #fff 33%,
+        #fff 66%,
+        #10af2a 66%
+    );
+    display: grid;
+    place-items: center;
+
+}
+
+.niger::before {
+  position: absolute;
+  content: "";
+  width: 55px;
+  aspect-ratio: 1;
+  background-color: #e05206;
+  border-radius: 1in;
+}
+
+.tonga {
+    background-color: #C20002;
+}
+
+.tonga-white-box {
+    width: 146px;
+    height: 90px;
+    background-color: #fff;
+    display: grid;
+    place-items: center;
+}
+
+.tonga-plus {
+    height: 50px;
+    aspect-ratio: 1;
+    background-color: #C20002;
+    clip-path: polygon(
+     0 35%,
+    35% 35%,
+    35% 0%,
+    65% 0%,
+    65% 35%,
+    100% 35%,
+    100% 65%,
+    65% 65%,
+    65% 100%,
+    35% 100%,
+    35% 65%,
+    0 65%
+    );
+}
+
+.greece {
+    background: repeating-linear-gradient(
+      #055eb2,
+      #055eb2 11.11%,
+      #fff 11.11%,
+      #fff 22.22%
+    );
+  }
+  
+  .greece-top-left {
+    width: 138px;
+    height: 111.33px;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+  
+  .greece-top-left > * {
+    background-color: #055eb2;
+  }
+
+  .maldives {
+    background: #d21034;
+  }
+  .maldives::before {
+    position: absolute;
+    content: "";
+    inset: 50px;
+    background-color: #007e3a;
+  }
+  
+  .maldives::after {
+    position: absolute;
+    content: "";
+    inset: 0;
+    margin: auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 1in;
+    left: 19px;
+    box-shadow: -13px 0 white;
+  }
+
+
+
