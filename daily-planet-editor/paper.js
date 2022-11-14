@@ -35,7 +35,7 @@ function HowAttractedIsLoisLaneToMe() {
 }
 
 console.log(HowAttractedIsLoisLaneToMe());
-// gg
+
 var clarkKent = true;
 var superman = false;
 
