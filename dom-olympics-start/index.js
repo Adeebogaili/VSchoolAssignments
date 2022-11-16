@@ -58,6 +58,7 @@ function userInput(event) {
 var form = document.message
 form.addEventListener("submit", userInput)
 
+debugger
 // theme
 
 var dropdown = document.getElementById("theme-drop-down")
@@ -65,7 +66,7 @@ dropdown.addEventListener("change", themeFunction)
 
 function themeFunction (){
     var messageText = messages.querySelectorAll("div.message");
-    if (dropdown.value == "theme-two") {
+    if (dropdown.value === "theme-two") {
         for (i = 0; i < messageText.length; i++) {
             if (i % 2 === 0) {
                 messageText[i].style.backgroundColor = "black"
@@ -74,17 +75,15 @@ function themeFunction (){
                 messageText[i].style.backgroundColor = "red"
             }
         }
-    } else if (dropdown.value == "theme-one"){
+    } else if (dropdown.value === "theme-one"){
         for (i = 0; i < messageText.length; i++) {   
         if (i % 2 === 0) {
             messageText[i].style.color = "black";
             messageText[i].style.backgroundColor = "burlywood";
-        }
-        else {
+        } else {
         messageText[i].style.backgroundColor = "lightblue";
-        
         }
         }
-
     }
 } 
+
