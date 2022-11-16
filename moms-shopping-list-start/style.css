@@ -21,6 +21,7 @@ h1 {
 .styling {
     font-weight: 800;
     color: lime;
+    margin-right: 10px;
 }
 
 .input-div {
