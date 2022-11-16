@@ -36,12 +36,40 @@ function addNewItem() {
 
         removeButton.addEventListener('click', function () {
             container.removeChild(itemList)
+        });
+
+        itemName.disabled = true
+        editButton.addEventListener('click', function () {
+            itemName.disabled = false
+
+            //this gives your item a background color when the edit button is clicked
+            itemName.style.backgroundColor = "#dddbdb";
+            itemName.style.padding = "0.5rem 1rem";
+            itemName.style.height = "35px";
+            itemName.style.outline = "none";
+            itemName.style.backgroundColor = "#fff"
+            itemName.style.color = "black";
+            itemName.style.borderRadius = "25px";
+
+            if (inputText.contentEditable == "true") {
+                itemName.disabled = true
+                //this give the background color a value of null which gets rid of the background color when the button is clicked again
+                itemName.style.backgroundColor = null;
+                itemName.style.padding = null;
+                itemName.style.height = null;
+                itemName.style.outline = null;
+                itemName.style.backgroundColor = null;
+                itemName.style.color = null;
+                itemName.style.borderRadius = null;
+                inputText.contentEditable = "false";
+                editButton.innerHTML = 'EDIT';
+            } else {
+                itemName.disabled = false
+                inputText.contentEditable = "true";
+                editButton.innerHTML = 'SAVE';
+            }
         })
 
-        editButton.addEventListener('click', function () {
-            itemName.contentEditable = true;
-            itemName.style.backgroundColor = "#dddbdb";
-        });
     }
 }
 
@@ -54,4 +82,3 @@ inputText.addEventListener('keyup', (event) => {
         addNewItem();
     }
 })
-
