@@ -28,12 +28,22 @@
 
 .right {
     align-self: flex-end;
-    background-color: lightblue;
+    background-color: blue;
 }
 
 .left {
     align-self: flex-start;
-    background-color: burlywood;
+    background-color: red;
+}
+
+.rightRed {
+    align-self: flex-end;
+    background-color: black;
+}
+
+.leftBlack {
+    align-self: flex-start;
+    background-color: black;
 }
 
 

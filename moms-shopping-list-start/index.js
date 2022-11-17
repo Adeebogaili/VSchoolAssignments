@@ -42,7 +42,7 @@ function addNewItem() {
         editButton.addEventListener('click', function () {
             itemName.disabled = false
 
-            //this gives your item a background color when the edit button is clicked
+
             itemName.style.backgroundColor = "#dddbdb";
             itemName.style.padding = "0.5rem 1rem";
             itemName.style.height = "35px";
@@ -53,7 +53,7 @@ function addNewItem() {
 
             if (inputText.contentEditable == "true") {
                 itemName.disabled = true
-                //this give the background color a value of null which gets rid of the background color when the button is clicked again
+
                 itemName.style.backgroundColor = null;
                 itemName.style.padding = null;
                 itemName.style.height = null;
