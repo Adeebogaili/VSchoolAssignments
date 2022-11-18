@@ -2,8 +2,6 @@ const addButton = document.querySelector(".add-button");
 var inputText = document.querySelector(".input");
 const container = document.querySelector(".container");
 
-
-
 function addNewItem() {
     if (inputText.value === '') {
         return null
@@ -16,6 +14,8 @@ function addNewItem() {
         let editButton = document.createElement('button');
         let removeButton = document.createElement('button');
 
+        container.appendChild(itemList);
+        itemList.classList.add('item');
 
         itemList.appendChild(itemName);
         itemName.setAttribute('value', newItem);
@@ -28,11 +28,6 @@ function addNewItem() {
         itemList.appendChild(removeButton);
         removeButton.textContent = 'REMOVE';
         removeButton.classList.add('remove-button')
-
-
-        container.appendChild(itemList);
-        itemList.classList.add('item');
-
 
         removeButton.addEventListener('click', function () {
             container.removeChild(itemList)
