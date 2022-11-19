@@ -78,7 +78,8 @@ h3 {
     aspect-ratio: 1;
     background-color: white;
 
-    clip-path: polygon(0 35%,
+    clip-path: polygon(
+             0 35%,
             35% 35%,
             35% 0%,
             65% 0%,

@@ -18,7 +18,7 @@ function addNewItem() {
         itemList.classList.add('item');
 
         itemList.appendChild(itemName);
-        itemName.setAttribute('value', newItem);
+        itemName.setAttribute('value', newItem); 
         itemName.classList.add('item-input');
 
         itemList.appendChild(editButton);
