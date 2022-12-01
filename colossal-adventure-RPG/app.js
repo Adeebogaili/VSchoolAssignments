@@ -1,98 +1,99 @@
-const readlineSync = require("readline-sync");
+const readlineSync = require('readline-sync');
 
-// Console must ask for the hero's name and store it.
 const name = readlineSync.question('What is your name? ');
 
-// Console must greet player with a fun message
-readlineSync.question(`Hello ${name}, welcome to Colossal RPG... Press Enter to begin.`);
+readlineSync.question('Hello ' + name + ', welcome to Dragon\'s Lair... Press Enter to start hunting.');
 
-// hero's health
-let heroHealth = 30;
+function Hunter (classType, health, ) {
+    this.classtype = classType;
+    this.health = health;
+}
 
-// monster health
-let monsterHealth = 30;
+let player = new Hunter ("Warior", 30 );
 
-// Array of monster to fight. 
-const monsters = ['Morncat', 'Doomfoot', 'Coffingolem'];
+function Dragons (name, nickName, health) {
+    this.name = name;
+    this.nickName = nickName;
+    this.health = health;
+}
 
-// Array of loot 
-const loot = ['Sowrd', 'Shield'];
+let dragons = [];
 
-// Inventory 
-let inventory = [];
+let dragon1 = new Dragons("Vhagar", "The second largest dragon of the Targaryens", 30)
+let dragon2 = new Dragons("Vermithor", "The Bronze Fury", 30)
+let dragon3 = new Dragons("Tessarion", "The Blue Queen", 30)
 
-// game options
+dragons.push(dragon1, dragon2, dragon3);
+
+const treasure = ['tooth', 'skull', 'dragon heart'];
+let pickUp = treasure[Math.floor(Math.random()*treasure.length)];
 const options = ['Walk', 'Exit', 'Print'];
 
-// second options 
-const options2 = ['Run', 'Attack']
+let prize = [];
 
-// summon random monster from monsters array 
-let monster = monsters[Math.floor(Math.random() * monsters.length)];
+function game(){
+    
+    const dragon = dragons[Math.floor(Math.random() * dragons.length)];
+    
+    const index = readlineSync.keyInSelect(options, 'What would you like to do next?');
 
-// pick up loot
-let pickUp = loot[Math.floor(Math.random()*loot.length)];
+    if (options[index] == 'Exit') {
+        return player.health = 0;
+    } else if (options[index] == 'Print'){
+        console.log(name + "\'s " + 'Health: ' + player.health + '\nTreasure: ' + prize);
+    } else if (options[index] === 'Walk'){
+        let key = Math.random();
+        if (key <= .3) {
+            console.log('Walking... no sign of danger here.');
+        } else if (key >= .3) {
+            console.log(dragon.name + " " + dragon.nickName + ' has arrived.');
 
+            while(dragon.health > 0 && player.health > 0) {
 
-function game() {
+                const heroAttackPower = Math.floor(Math.random() * (8 - 1) + 2);
+                const dragonAttackPower = Math.floor(Math.random() * (8 - 3) + 2);
+                
+                const user = readlineSync.question('What would you like to do? Enter "r" to run or enter "a" to attack. ' );
 
-    // ask hero to choose an option
-    const index1 = readlineSync.keyInSelect(options, `What would you like to do next?`);
+                switch (user) {
+                    case 'r':
+                        const run = Math.random();
+                        if(run < .5) {
+                            console.log('Before you can run away ' + dragon.name + ' attacks you with: ' + dragonAttackPower);
+                        } else {
+                            console.log('You ran away successfully!');
+                            break;
+                        }
+                    case 'a':
+                        dragon.health -= heroAttackPower;
+                        console.log('You attacked ' + dragon.name + ' with ' + heroAttackPower + ' attack power.');
 
-    if (options[index1] == 'Exit') { // Exit game 
-        return heroHealth = 0;
-    } else if (options[index1] == 'Print') { // check inventory
-        console.log(`${name}, Your current health is at: ${heroHealth}. Your loot: ${inventory}`);
-    } else if (options[index1] == 'Walk') { // walk 
-        let walking = Math.random();
-        if (walking <= 0.3) {
-            console.log('Walking and exploring the map, no sign of danger here.')
-        } else if (walking >= 0.3) {
-            console.log(monster + 'has appeared.');
-        }
+                        player.health -= dragonAttackPower;
+                        console.log(dragon.name + ' just attacked you with ' + dragonAttackPower + ' attack power.');
+                        
+                        if (dragon.health <= 0) {
 
-        // When fighting a monster
-        while (monsterHealth > 0 && heroHealth > 0) {
-            const index2 = readlineSync.keyInSelect(options2, 'What would you like to do?');
+                            console.log('You killed ' + dragon.name + " " + dragon.nickName + '.\n' + dragon.name + ' left: ' + pickUp);
+                            
+                            let loot = Math.random();
+                            if (loot <= .3) {
 
-            // generate random hero attack power
-            let heroAttackPower = Math.floor(Math.random() * 10) + 1;
-
-            // generate random monster attack power
-            let monsterAttackPower = Math.floor(Math.random() * 8) + 1;
-            if (options2[index2] == 'Run') {
-                const run = Math.random();
-                if (run < 0.5) {
-                    console.log(`Before you can run away ${monster} attacks you with ${monsterAttackPower} attack power`);
-                } else {
-                    console.log('You have ran away successfully!');
-                }
-            } else if (options2[index2] == 'Attack') {
-                monsterHealth -= heroAttackPower
-                console.log(`You attacked ${monster} with ${heroAttackPower} attack power`);
-                heroHealth -= monsterAttackPower
-                console.log(`Monster just attacked you with ${monsterAttackPower} attack power`);
-
-                if (monsterHealth <= 0) {
-                    console.log(`You killed ${monster}. ${monster} dropped ${pickUp}`);
-                    let drop = Math.random();
-                    if (drop <= .3) {
-                        inventory.push(pickUp);
-                    } 
-                } else if (heroHealth <= 0) {
-                    console.log(`${monster} defeated you. You are dead.`)
-                }
+                                prize.push(pickUp);
+                            }
+                        } else if (player.health <= 0) {
+                            console.log(dragon.name + " " + dragon.nickName + ' has defeated you. You are dead. GAME OVER');
+                        }
+                }   
             }
-
         }
     }
 }
 
-while (heroHealth > 0) {
-    heroRestore = function () {
-        heroActive = true;
-        heroHealth = 30; 
-        game();
+while(player.health > 0) {
+    userRestore = function(){
+        userActive = true;
+        player.health = 30;
     };
-    heroRestore();  
+    userRestore();
+    game();
 }
