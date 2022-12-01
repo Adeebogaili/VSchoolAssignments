@@ -30,10 +30,7 @@ let dragon3 = new Dragons("Tessarion", "The Blue Queen", 30)
 dragons.push(dragon1, dragon2, dragon3);
 
 // Loot
-const treasure = ['Sword', 'Shield'];
-
-// random loot
-let pickUp = treasure[Math.floor(Math.random() * treasure.length)];
+const treasure = ['Sword ', 'Shield ', 'Dragon Heart '];
 
 // Hunter inventory
 let inventory = [];
@@ -63,6 +60,7 @@ function game() {
 
                 const hunterAttackPower = Math.floor(Math.random() * (8 - 1) + 2);
                 const dragonAttackPower = Math.floor(Math.random() * (8 - 3) + 2);
+                let pickUp = treasure[Math.floor(Math.random() * treasure.length)];
 
                 const user = readlineSync.question('What would you like to do? Enter "r" to run or enter "a" to attack. ');
 
@@ -84,7 +82,7 @@ function game() {
 
                             if (dragon.health <= 0) {
 
-                                console.log('You killed ' + dragon.name + " " + dragon.nickName + '.\n' + dragon.name + ' left: ' + pickUp);
+                                console.log('You killed ' + dragon.name + " " + dragon.nickName + '.\n' + dragon.name + ' dropped: ' + pickUp);
 
                                 let loot = Math.random();
                                 if (loot <= .9) {
@@ -95,6 +93,7 @@ function game() {
 
                                 if (dragons.length <= 0) {
                                     console.log('Congratulations, you captured all dragons!')
+                                    console.log('You were able to collect the following: ' + inventory);
                                     return player.health = 0;
                                 } else {
                                     console.log('Continue hunting')
