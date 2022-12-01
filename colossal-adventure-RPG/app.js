@@ -1,9 +1,12 @@
 const readlineSync = require('readline-sync');
 
+// Ask player to enter their name. 
 const name = readlineSync.question('What is your name? ');
 
+// Greet player with a message plus thier name. 
 readlineSync.question('Hello ' + name + ', welcome to Dragon\'s Lair... Press Enter to start hunting.');
 
+// Player constructer
 function Hunter (classType, health, ) {
     this.classtype = classType;
     this.health = health;
@@ -11,6 +14,7 @@ function Hunter (classType, health, ) {
 
 let player = new Hunter ("Warior", 30 );
 
+// Dragons constructor
 function Dragons (name, nickName, health) {
     this.name = name;
     this.nickName = nickName;
@@ -25,11 +29,15 @@ let dragon3 = new Dragons("Tessarion", "The Blue Queen", 30)
 
 dragons.push(dragon1, dragon2, dragon3);
 
-const treasure = ['tooth', 'skull', 'dragon heart'];
+// Loot
+const treasure = ['Sword', 'Shield'];
+
+// random loot
 let pickUp = treasure[Math.floor(Math.random()*treasure.length)];
 const options = ['Walk', 'Exit', 'Print'];
 
-let prize = [];
+
+let inventory = [];
 
 function game(){
     
@@ -40,7 +48,7 @@ function game(){
     if (options[index] == 'Exit') {
         return player.health = 0;
     } else if (options[index] == 'Print'){
-        console.log(name + "\'s " + 'Health: ' + player.health + '\nTreasure: ' + prize);
+        console.log(name + "\'s " + 'Health: ' + player.health + '\nInventory: ' + inventory);
     } else if (options[index] === 'Walk'){
         let key = Math.random();
         if (key <= .3) {
@@ -74,18 +82,28 @@ function game(){
                         if (dragon.health <= 0) {
 
                             console.log('You killed ' + dragon.name + " " + dragon.nickName + '.\n' + dragon.name + ' left: ' + pickUp);
-                            
-                            let loot = Math.random();
-                            if (loot <= .3) {
 
-                                prize.push(pickUp);
+                            let loot = Math.random();
+                            if (loot <= .9) {
+                                inventory.push(pickUp)
                             }
+
+                            dragons.splice(dragons.indexOf(dragon), 1);
+
                         } else if (player.health <= 0) {
                             console.log(dragon.name + " " + dragon.nickName + ' has defeated you. You are dead. GAME OVER');
                         }
-                }   
+                }
+                
             }
         }
+
+//         // let isAlive = true;
+// let hasWon = false;
+// while (isAlive && !hasWon)
+// function youWon() {
+//     if (enemies == undefined || enemies.length == 0)
+        // if dragons.length = 0 then you have 
     }
 }
 
