@@ -45,12 +45,13 @@ function game() {
 
     const index = readlineSync.keyInSelect(options, 'What would you like to do next?');
 
-    if (options[index] == 'Exit') {
-        return player.health = 0;
-    } else if (options[index] == 'Print') {
-        console.log(name + "\'s " + 'Health: ' + player.health + '\nInventory: ' + inventory);
-    } else if (options[index] === 'Walk') {
-        let key = Math.random();
+    switch (options[index]) {
+        case 'Exit':
+            return player.health = 0;
+        case 'Print':
+            console.log(name + "\'s " + 'Health: ' + player.health + '\nInventory: ' + inventory);
+            break;
+        case 'Walk': let key = Math.random();
         if (key <= .3) {
             console.log('Walking... no sign of danger here.');
         } else if (key >= .3) {
@@ -73,31 +74,31 @@ function game() {
                             console.log('You ran away successfully!');
                             break;
                         }
-                        case 'a':
-                            dragon.health -= hunterAttackPower;
-                            console.log('You attacked ' + dragon.name + ' with ' + hunterAttackPower + ' attack power.');
+                    case 'a':
+                        dragon.health -= hunterAttackPower;
+                        console.log('You attacked ' + dragon.name + ' with ' + hunterAttackPower + ' attack power.');
 
-                            player.health -= dragonAttackPower;
-                            console.log(dragon.name + ' just attacked you with ' + dragonAttackPower + ' attack power.');
+                        player.health -= dragonAttackPower;
+                        console.log(dragon.name + ' just attacked you with ' + dragonAttackPower + ' attack power.');
 
-                            if (dragon.health <= 0) {
+                        if (dragon.health <= 0) {
 
-                                console.log('You killed ' + dragon.name + " " + dragon.nickName + '.\n' + dragon.name + ' dropped: ' + pickUp);
+                            console.log('You killed ' + dragon.name + " " + dragon.nickName + '.\n' + dragon.name + ' dropped: ' + pickUp);
 
-                                let loot = Math.random();
-                                if (loot <= .9) {
-                                    inventory.push(pickUp)
-                                }
+                            let loot = Math.random();
+                            if (loot <= .9) {
+                                inventory.push(pickUp)
+                            }
 
-                                dragons.splice(dragons.indexOf(dragon), 1);
+                            dragons.splice(dragons.indexOf(dragon), 1);
 
-                                if (dragons.length <= 0) {
-                                    console.log('Congratulations, you captured all dragons!')
-                                    console.log('You were able to collect the following: ' + inventory);
-                                    return player.health = 0;
-                                } else {
-                                    console.log('Continue hunting')
-                                }
+                            if (dragons.length <= 0) {
+                                console.log('Congratulations, you captured all dragons!')
+                                console.log('You were able to collect the following: ' + inventory);
+                                return player.health = 0;
+                            } else {
+                                console.log('Continue hunting')
+                            }
 
 
                             } else if (player.health <= 0) {
@@ -107,8 +108,11 @@ function game() {
 
             }
         }
+        break;
+
     }
 }
+
 
 while (player.health > 0) {
     userRestore = function () {
