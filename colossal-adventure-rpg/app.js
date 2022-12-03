@@ -4,7 +4,7 @@ const readlineSync = require('readline-sync');
 const name = readlineSync.question('What is your name? ');
 
 // Greet player with a message plus thier name. 
-readlineSync.question('Hello ' + name + ', welcome to Dragon\'s Lair... Press Enter to start hunting.');
+readlineSync.question('Hello ' + name + ', Welcome to the The Dragonpit... Press Enter to start hunting.');
 
 // Player constructer
 function Hunter(classType, health, ) {
@@ -32,22 +32,26 @@ dragons.push(dragon1, dragon2, dragon3);
 // Loot
 const treasure = ['Sword ', 'Shield ', 'Dragon Heart '];
 
+
 // Hunter inventory
 let inventory = [];
 
 // Hunter commands
 const options = ['Walk', 'Exit', 'Print'];
+const options2 = ['Run', 'Attack'];
 
 
 function game() {
 
     const dragon = dragons[Math.floor(Math.random() * dragons.length)];
 
-    const index = readlineSync.keyInSelect(options, 'What would you like to do next?');
+    const index = readlineSync.keyInSelect(options, 'This pit is infested with Dragons. What should I do?');
 
     switch (options[index]) {
         case 'Exit':
+            console.log('You have left the hunt, see you next season.');
             return player.health = 0;
+
         case 'Print':
             console.log(name + "\'s " + 'Health: ' + player.health + '\nInventory: ' + inventory);
             break;
@@ -63,18 +67,18 @@ function game() {
                 const dragonAttackPower = Math.floor(Math.random() * (8 - 3) + 2);
                 let pickUp = treasure[Math.floor(Math.random() * treasure.length)];
 
-                const user = readlineSync.question('What would you like to do? Enter "r" to run or enter "a" to attack. ');
+                const user = readlineSync.keyInSelect(options2, 'OMG! it\'s ' + dragon.name + ' it\'s ' + dragon.nickName + ' what should I do?');
 
-                switch (user) {
-                    case 'r':
+                switch (options2[user]) {
+                    case 'Run':
                         const run = Math.random();
                         if (run < .5) {
                             console.log('Before you can run away ' + dragon.name + ' attacks you with: ' + dragonAttackPower);
                         } else {
-                            console.log('You ran away successfully!');
-                            break;
+                            console.log('You ran away successfully! See you next season!');
+                            return player.health = 0;
                         }
-                    case 'a':
+                    case 'Attack':
                         dragon.health -= hunterAttackPower;
                         console.log('You attacked ' + dragon.name + ' with ' + hunterAttackPower + ' attack power.');
 
@@ -83,7 +87,7 @@ function game() {
 
                         if (dragon.health <= 0) {
 
-                            console.log('You killed ' + dragon.name + " " + dragon.nickName + '.\n' + dragon.name + ' dropped: ' + pickUp);
+                            console.log('You killed ' + dragon.name + " " + dragon.nickName + ' you put up a good fight.' + '.\n' + dragon.name + ' dropped a ' + pickUp);
 
                             let loot = Math.random();
                             if (loot <= .9) {
