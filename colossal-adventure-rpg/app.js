@@ -43,8 +43,10 @@ const options2 = ['Run', 'Attack'];
 
 function game() {
 
+    // to call a random dragon 
     const dragon = dragons[Math.floor(Math.random() * dragons.length)];
 
+    // give hunter the option to wixit, print, and walk 
     const index = readlineSync.keyInSelect(options, 'This pit is infested with Dragons. What should I do?');
 
     switch (options[index]) {
@@ -61,12 +63,15 @@ function game() {
         } else if (key >= .3) {
             console.log(dragon.name + " " + dragon.nickName + ' has arrived.');
 
+            // when hunter encounters a dragon, fight breaks. 
             while (dragon.health > 0 && player.health > 0) {
 
-                const hunterAttackPower = Math.floor(Math.random() * (8 - 1) + 2);
-                const dragonAttackPower = Math.floor(Math.random() * (8 - 3) + 2);
-                let pickUp = treasure[Math.floor(Math.random() * treasure.length)];
+                const hunterAttackPower = Math.floor(Math.random() * (8 - 1) + 2); // random hunter attack power generator
+                const dragonAttackPower = Math.floor(Math.random() * (8 - 3) + 2); // random dragon attack power generator
 
+                let pickUp = treasure[Math.floor(Math.random() * treasure.length)]; // random treasure to pick up 
+
+                // give hunter options to run or attack after encountering a dragon . 
                 const user = readlineSync.keyInSelect(options2, 'OMG! it\'s ' + dragon.name + ' it\'s ' + dragon.nickName + ' what should I do?');
 
                 switch (options2[user]) {
@@ -84,7 +89,8 @@ function game() {
 
                         player.health -= dragonAttackPower;
                         console.log(dragon.name + ' just attacked you with ' + dragonAttackPower + ' attack power.');
-
+                        
+                        //display a message after when a dragon is defeated
                         if (dragon.health <= 0) {
 
                             console.log('You killed ' + dragon.name + " " + dragon.nickName + ' you put up a good fight.' + '.\n' + dragon.name + ' dropped a ' + pickUp);
@@ -94,8 +100,10 @@ function game() {
                                 inventory.push(pickUp)
                             }
 
+                            // removes defeated dragon 
                             dragons.splice(dragons.indexOf(dragon), 1);
 
+                            // checks how many dragons left and end game once all dragons are defeated or when hunter dies. 
                             if (dragons.length <= 0) {
                                 console.log('Congratulations, you captured all dragons!')
                                 console.log('You were able to collect the following: ' + inventory);
@@ -117,7 +125,7 @@ function game() {
     }
 }
 
-
+// resets the game 
 while (player.health > 0) {
     userRestore = function () {
         userActive = true;
