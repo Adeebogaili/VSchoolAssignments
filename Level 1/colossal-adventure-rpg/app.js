@@ -12,7 +12,7 @@ function Hunter(classType, health, ) {
     this.health = health;
 }
 
-let player = new Hunter("Warior", 60);
+let player = new Hunter("Warior", 30);
 
 // Dragons constructor
 function Dragons(name, nickName, health) {
@@ -57,7 +57,8 @@ function game() {
         case 'Print':
             console.log(name + "\'s " + 'Health: ' + player.health + '\nInventory: ' + inventory);
             break;
-        case 'Walk': let key = Math.random();
+        case 'Walk': 
+        let key = Math.random();
         if (key <= .3) {
             console.log('Walking... no sign of danger here.');
         } else if (key >= .3) {
