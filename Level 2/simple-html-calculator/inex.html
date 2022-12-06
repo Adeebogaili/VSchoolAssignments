@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple HTML Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Simple HTML <br> Calculator</h1>
+        <hr>
+        <div>
+            <h2>Addition</h2><hr>  
+            <input type="number" placeholder="Number 1" id="addNum1">
+            <br>
+            <input type="number" placeholder="Number 2" id="addNum2">
+            <br>
+            <button id="add">+</button>
+            <input type="number" readonly id="addResult">
+        </div>
+        <div>
+            <h2>Subtraction</h2><hr>  
+            <input type="number" placeholder="Number 1" id="subNum1">
+            <br>
+            <input type="number" placeholder="Number 2" id="subNum2">
+            <br>
+            <button id="sub">-</button>
+            <input type="number" readonly id="subResult">
+        </div>
+        <div>
+            <h2>Multiplication</h2><hr>  
+            <input type="number" placeholder="Number 1" id="mulNum1">
+            <br>
+            <input type="number" placeholder="Number 2" id="mulNum2">
+            <br>
+            <button id="mul">x</button>
+            <input type="number" readonly id="mulResult">
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
