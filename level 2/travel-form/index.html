@@ -5,9 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Form</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <form name="myForm">
+
+        <!-- First name -->
+        <label for="first name">First Name:</label>
+        <input type="text" name="first-name" placeholder="First Name">
+        <br>
+
+        <!-- Last name -->
+        <label for="last name">Last Name:</label>
+        <input type="text" name="last-name" placeholder="Last Name">
+        <br>
+
+        <!-- Age -->
+        <label for="age">Age:</label>
+        <input type="text" name="age">
+        <br>
+
+        <!-- Gender  -->
+        <label for="male">Male</label>
+        <input type="radio" name="gender" value="Male">
+
+        <label for="female">Female</label>
+        <input type="radio" name="gender" value="Female">
+        <br>
+
+        <!-- Destination -->
+
+        <label for="destination">Where are you going?</label>
+        <select name="travel-location">
+            <option value="Chicago">Chicago</option>
+            <option value="New York">New York</option>
+            <option value="California">California</option>
+        </select>
+        <br>
+
+        <!-- Diet -->
+        <label for="diet">Dietry Restriction:</label>
+        <label for="vegetarian">Vegetarian:</label>
+        <input type="checkbox" name="diet" value="Vegetarian" id="vegetarian">
+
+        <label for="vegetarian">Kosher:</label>
+        <input type="checkbox" name="diet" value="Kosher" id="kosher">
+        <br>
+
+        <!-- Submit -->
+        <button id="submit">Submit</button>
+    </form>
     <script src="app.js"></script>
 </body>
 </html>
