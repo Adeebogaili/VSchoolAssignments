@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Pest Control</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Mario Pest Control</h1>
+        <form name="myForm">
+        <ul>
+            <li>
+                <h3>Goombas</h3>
+                <img src="images/goomba.png"> 
+                <p>Price: 5 Coins</p>
+                <label for="total ">Total caught:</label>
+                <br>
+                <input type="number" id="goombas-number">
+                <br>
+                <label for="price">Price:</label>
+                <br>
+                <input type="text" readonly id="goombas-price">
+                <hr>
+            </li>
+            <li>
+                <h3>Bob-omb</h3>
+                <img src="images/Bob-omb.png">
+                <p>Price: 7 Coins</p>
+                <label for="total caught">Total caught:</label>
+                <br>
+                <input type="number" id="bobs-number">
+                <br>
+                <label for="price">Price:</label>
+                <br>
+                <input type="text" readonly id="bobs-price"> 
+                <hr>
+            </li>
+            <li>
+                <h3>Cheep-cheeps</h3>
+                <img src="images/cheep.png">
+                <p>Price: 11 Coins</p>
+                <label for="total caught">Total caught:</label>
+                <br>
+                <input type="number" id="cheep-number">
+                <br>
+                <label for="price">Price:</label>
+                <br>
+                <input type="text" readonly id="cheeps-price">
+
+                <hr>
+            </li>
+            <label for="total">Total Price:</label>
+            <input type="text" readonly id="total-price">
+            <button id="calculate">Calculate</button>
+        </ul>
+    </form>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
