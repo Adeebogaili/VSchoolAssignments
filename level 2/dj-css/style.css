@@ -1,0 +1,187 @@
+
+*
+{ 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+.container 
+{
+    margin: 20px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container div 
+{
+    position: relative;
+    margin: 50px;
+    border: 1px solid black;
+    width: 150px;
+    height: 150px;
+}
+.dj1 
+{
+    background-color: #8a2be2;
+    grid-area: dj1;
+    transition:  all .5s linear;
+    animation: dj1 4s linear infinite; 
+}
+.dj1:hover 
+{
+    background: #ffae42;
+    border-radius: 50%;
+    transform: rotate(180deg);
+    width: 200px;
+    height: 200px;
+}
+@keyframes dj1 
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    100% 
+    {
+        transform: rotate(360deg);
+    }
+}
+.dj2 
+{
+    background-color: #ee82ee;
+    grid-area: dj2;
+    transition:  all .5s ease-in;
+    border-radius: 50%;
+}
+.dj2:hover 
+{
+    background-color: #ffff00;
+    border-radius: 50%;
+    transform: rotate(180deg);
+    width: 200px;
+    height: 200px;
+}
+.dj3 
+{
+    position: absolute;
+    background: url(images/golden-dot.jpg);
+    background-size: 250px;
+    grid-area: dj3;
+    border-radius: 50%;
+    transition:  all .5s linear;
+    animation: dj3 2s linear infinite; 
+
+}
+@keyframes dj3
+{
+    0%   
+    {
+        top: 0px;
+    }
+  25% 
+    {
+        top: 200px;
+    }
+  75%  
+    {
+        top: 50px
+    }
+  100% 
+    {
+        top: 100px;
+    }
+    0%
+    {
+        background-position: 0;
+    }
+    100% 
+    {
+        background-position:150;
+    }
+}
+.dj3:hover 
+{
+    background-color: #9acd32;
+    border-radius: 50%;
+    transform: rotate(360deg);
+    width: 200px;
+    height: 200px;
+}
+.dj4 
+{
+    position: relative;
+    background-color: #ff0000;
+    grid-area: dj4;
+    transition:  all .5s linear;
+    animation: dj4 5s infinite;
+}
+@keyframes dj4 
+{
+    0%   
+    {
+        top: 0px; left: 0px; background: red;
+    }
+    25%  
+    {
+        top: 0px; left: 100px; background: blue;
+    }
+    50%  
+    {
+        top: 100px; left: 100px; background: yellow;
+    }
+    75%  
+    {
+        top: 100px; left: 0px; background: green;
+    }
+    100% 
+    {
+        top: 0px; left: 0px; background: red;
+    }
+}
+.dj4:hover 
+{
+    background-color: #00ff00;
+    border-radius: 50%;
+    transform: rotate(180deg);
+    width: 200px;
+    height: 200px;
+}
+.dj5 
+{
+    background-color: #ff5349;
+    grid-area: dj5;
+    transition:  all .5s linear;
+}
+.dj5:hover 
+{
+    background-color: #0d98ba;
+    border-radius: 50%;
+    transform: rotate(180deg);
+    width: 200px;
+    height: 200px;
+}
+.dj6 
+{
+    background-color: #ffa500;
+    grid-area: dj6;
+    transition:  all .5s linear;
+    border-radius: 50%;
+}
+.dj6:hover 
+{
+    background-color: #0000ff;
+    border-radius: 50%;
+    transform: rotate(180deg);
+    width: 200px;
+    height: 200px;
+}
