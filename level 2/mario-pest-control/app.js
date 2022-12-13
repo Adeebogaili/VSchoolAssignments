@@ -1,3 +1,4 @@
+// gloabal variables
 let goombasNumber = document.getElementById('goombas-number');
 let bobsNumber = document.getElementById('bobs-number');
 let cheepNumber = document.getElementById('cheep-number');
@@ -7,7 +8,7 @@ let cheepsPrice = document.getElementById('cheeps-price');
 let totalPrice = document.getElementById('total-price');
 let calculate = document.getElementById('calculate');
 
-
+// calculation
 function total(event){
     
     event.preventDefault();
