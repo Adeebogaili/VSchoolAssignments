@@ -73,8 +73,8 @@ console.log(returnFavorites(favoriteActivities))
  You will need to change how the arrays are passed in. You may write it assuming you will always recieve
  three arrays if you would like to. */
 
- function combineAnimals(realAnimals, magicalAnimals, mysteriousAnimals) {
-    return [...realAnimals, ...magicalAnimals, ...mysteriousAnimals]
+ function combineAnimals(...animals) {
+    return animals
  }
  
  const realAnimals = ["dog", "cat", "mouse"];
