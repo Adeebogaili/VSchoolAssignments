@@ -1,0 +1,33 @@
+{
+    "appetizers": {
+        "Minestrone Soup": {
+            "Small": "$4.75", 
+            "Large": "$6.25"
+        }, 
+        "Garlic Bread": "(¼ Loaf) $2.25", 
+        "Garlic Bread with Cheese": "$6.00",
+        "Calamari Fritti": "$13.00"
+    }, 
+    "Pizza": {
+        "Our Pizza": ["Small 10", "Medium 12", "Large 15"],
+        "Specialty Pizza": {
+            "Margherita": "Olive oil, tomato, fresh basil, and garlic. $14.50 • $18.75 • $22.95",
+            "BBQ Chicken": "BBQ sauce, chicken, onion, and cilantro. $15.50 • $20.25 • $24.50",
+            "Fratellinos Vegetarian": ["Mushrooms", "olives", "bell peppers", "fresh tomato", "onions", "$15.50 • $20.25 • $24.50"]
+        }
+    },
+    "Salads": {
+        "Small Garden Salad": "Crisp iceberg lettuce, provolone cheese, pepperoni, black olives,tomato, carrots, pepperoncini, and croutons. $4.50",
+        "Large Garden Salad": "Add Chicken or Bacon Bits (allow extra time, available only on large) $2.95",
+        "Caesar Salad": ["Chopped romaine lettuce tossed with Parmesan cheese", "croutons", "and creamy Caesar dressing  $8.25"]
+    },
+    "drinks": {
+        "Soft Drinks": "(1 free refill) $3.35",
+        "Milk": ["Regular $3.35", "Chocolate $3.35"],
+        "Coffee": ["Regular (free refills) $3.35", "Decaf (free refills) $3.35"]
+    },
+    "desserts": {
+        "Pie": "Regular size $7.00",
+        "Chocolate Cake": ["Small $4.00", "Medium $7.00", "Large $9.00"]
+    } 
+}
