@@ -15,9 +15,7 @@ xhr.onreadystatechange = () => {
 function showData(arr){
     arr.map((pokemonName) => {
         const h1 = document.createElement('h1')
-        const par = document.createElement('p')
         h1.textContent = pokemonName.name
-        par.textContent = pokemonName
         document.body.appendChild(h1)
     })
 }
