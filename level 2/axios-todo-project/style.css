@@ -50,7 +50,24 @@ h1 {
     border: none;
 }
 
+.itemPrice {
+    padding: 0.5rem 1rem;
+    height: 50px;
+    width: 125px;
+    outline: none;
+    background-color: #fff;
+    font-size: 1.15rem;
+    margin: 0.25rem;
+    border-radius: 25px;
+    border: none;
+}
+
+.itemPrice::before {
+    content: "$";
+}
+
 .submitBtn {
+    font-size: 1.5625rem;
     height: 50px;
     width: 50px;
     margin: .025rem;
@@ -63,13 +80,13 @@ h1 {
 }
 
 .submitBtn:hover {
+    cursor: pointer;
     opacity: 0.7;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: top;
     align-items: center;
     text-align: center;
     margin-top: 2rem;
@@ -78,22 +95,39 @@ h1 {
     overflow: overlay;
 }
 
+
 .item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
     padding: .5rem;
     margin-bottom: 1.5rem;
     border-bottom: 4px solid #fff;
 }
 
-.title, .description {
+.title {
     background: none;
     outline: none;
     color: #fff;
     border: none;
-    width: 350px;
+    width: 150px;
     font-size: 1.4rem;
+    word-wrap: break-word
+}
+
+.description {
+    background: none;
+    outline: none;
+    color: #fff;
+    border: none;
+    width: 300px;
+    font-size: 1.4rem;
+    word-wrap: break-word
 }
 
 .editBtn {
+    cursor: pointer;
     font-family: 'Hind', sans-serif;
     font-size: 1.4rem;
     background: none;
@@ -114,7 +148,118 @@ h1 {
     cursor: pointer;
 }
 
-.checkbox{
-    height: 15px;
-    width: 15px;
+
+.imageUrl{
+    border-radius: 50%;
+    border: none;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
 }
+
+.checkbox
+{
+    cursor: pointer;
+  transform: scale(2);
+  padding: 10px;
+  margin-right: 20px;
+}
+
+/* POPUP MODAL */
+
+.modal {
+    background: white;
+    color: black;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    border: 1px solid black;
+    border-radius: 10px;
+    transition: 200ms ease-in-out;
+    z-index: 10;
+    width: 31.25rem;
+    max-width: 80%;
+
+}
+
+.modal.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+    padding: .625rem .9375rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.modal-header .popupTitle {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.modal-header .closeBtn {
+    color: black;
+    cursor: pointer; 
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.modal-body {
+    padding: .625rem .9375rem;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 200ms ease-in-out;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* POPUP FORM */
+
+.popUp-form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.popUp-form input {
+    padding: 0.5rem 1rem;
+    height: 50px;
+    min-width: 5%;
+    outline: none;
+    background-color: #fff;
+    font-size: 1.15rem;
+    margin: 0.25rem;
+    border-radius: 25px;
+    border: none;
+}
+
+.saveBtn {
+    cursor: pointer;
+    font-family: 'Hind', sans-serif;
+    font-size: 1.4rem;
+    background: none;
+    outline: none;
+    border: none;
+    color: lime;
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+

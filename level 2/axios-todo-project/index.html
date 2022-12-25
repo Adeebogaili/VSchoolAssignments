@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,20 +8,40 @@
     <title>Todo List</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <h1><span class="styling">Todo</span>List</h1>
+    <h1><span class="styling">Grocery</span>List</h1>
 
     <form name="todoform" class="form">
-        <input class="titleInput" name="title" placeholder="Title"/>
-        <input class="desInput" name="description" placeholder="Description"/>
-        <input class="imgUrl" name="imgUrl" placeholder="Image Url"/>
-        <button class="submitBtn">Submit</button>
-    </form> 
-    <div class="container">
+        <input class="titleInput" name="title" placeholder="Title" required />
+        <input class="desInput" name="description" placeholder="Description" required />
+        <input class="imgUrl" name="imgUrl" placeholder="Image Url / Optional" />
+        <input class="itemPrice" name="itemPrice" type="number" min="0.01" step="0.01" placeholder="Price" required>
+        <button class="submitBtn">+</button>
+    </form>
+
+    <div class="modal" id="modal">
+        <div class="modal-header">
+            <div class="popupTitle">Edit List</div>
+            <button class="closeBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form name="popUpForm" class="popUp-form">
+                <input name="title" placeholder="Title" required />
+                <input name="description" placeholder="Description" required />
+                <input name="imgUrl" placeholder="Image Url / Optional" />
+                <input name="itemPrice" type="number" min="0.01" step="0.01" placeholder="Price" required>
+            </form>
+        </div>
     </div>
-    
+    <div id="overlay"></div>
+    <div class="container">
+
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
-    <script src="app.js"></script>    
+    <script src="app.js"></script>
 </body>
+
 </html>
