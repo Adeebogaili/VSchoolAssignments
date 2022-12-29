@@ -1,3 +1,4 @@
+/* BASE CSS */
 * {
     padding: 0;
     margin: 0;
@@ -22,11 +23,7 @@ h1 {
     color: #fff;
 }
 
-.styling {
-    font-weight: 800;
-    color: lime;
-    margin-right: 10px;
-}
+/* FORM */
 
 .form {
     display: flex;
@@ -34,7 +31,13 @@ h1 {
     align-items: center;
     text-align: center;
 }
+.styling {
+    font-weight: 800;
+    color: lime;
+    margin-right: 10px;
+}
 
+/* INPUT FIELDS STYLING */
 .titleInput,
 .desInput,
 .imgUrl
@@ -50,6 +53,7 @@ h1 {
     border: none;
 }
 
+/* ITEM PRICE  */
 .itemPrice {
     padding: 0.5rem 1rem;
     height: 50px;
@@ -66,6 +70,7 @@ h1 {
     content: "$";
 }
 
+/* SUBMIT BUTTON */
 .submitBtn {
     font-size: 1.5625rem;
     height: 50px;
@@ -84,6 +89,7 @@ h1 {
     opacity: 0.7;
 }
 
+/* CONTAINER FOR CREATED ITEMS BY DOM */
 .container {
     display: flex;
     flex-direction: column;
@@ -95,7 +101,7 @@ h1 {
     overflow: overlay;
 }
 
-
+/* ITEM  */
 .item {
     display: flex;
     flex-direction: row;
@@ -106,6 +112,7 @@ h1 {
     border-bottom: 4px solid #fff;
 }
 
+/* TITLE FIELD */
 .title {
     background: none;
     outline: none;
@@ -116,6 +123,7 @@ h1 {
     word-wrap: break-word
 }
 
+/* DESCRIPTION FIELD */
 .description {
     background: none;
     outline: none;
@@ -126,6 +134,7 @@ h1 {
     word-wrap: break-word
 }
 
+/* EDIT BUTTON */
 .editBtn {
     cursor: pointer;
     font-family: 'Hind', sans-serif;
@@ -138,6 +147,7 @@ h1 {
     cursor: pointer;
 }
 
+/* DELETE BUTTON */
 .removeBtn {
     font-family: 'Hind', sans-serif;
     font-size: 1.4rem;
@@ -148,15 +158,34 @@ h1 {
     cursor: pointer;
 }
 
+/* SAVE BUTTON */
+.saveBtn {
+    cursor: pointer;
+    font-family: 'Hind', sans-serif;
+    font-size: 1.4rem;
+    background: none;
+    outline: none;
+    border: none;
+    color: lime;
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
 
+.editBtn:hover, .removeBtn:hover, .saveBtn:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+/* IMAGE URL */
 .imageUrl{
     border-radius: 50%;
     border: none;
-    height: 50px;
-    width: 50px;
+    height: 75px;
+    width: 75px;
     margin-right: 10px;
 }
 
+/* CHECKBOX */
 .checkbox
 {
     cursor: pointer;
@@ -166,7 +195,6 @@ h1 {
 }
 
 /* POPUP MODAL */
-
 .modal {
     background: white;
     color: black;
@@ -180,13 +208,13 @@ h1 {
     z-index: 10;
     width: 31.25rem;
     max-width: 80%;
-
 }
 
 .modal.active{
     transform: translate(-50%, -50%) scale(1);
 }
 
+/* MODAL HEADER */
 .modal-header {
     padding: .625rem .9375rem;
     display: flex;
@@ -214,6 +242,7 @@ h1 {
     padding: .625rem .9375rem;
 }
 
+/* OVERLAY BACKGROUND */
 #overlay {
     position: fixed;
     opacity: 0;
@@ -232,7 +261,6 @@ h1 {
 }
 
 /* POPUP FORM */
-
 .popUp-form {
     display: flex;
     flex-direction: column;
@@ -251,15 +279,5 @@ h1 {
     border: none;
 }
 
-.saveBtn {
-    cursor: pointer;
-    font-family: 'Hind', sans-serif;
-    font-size: 1.4rem;
-    background: none;
-    outline: none;
-    border: none;
-    color: lime;
-    margin: 0 0.5rem;
-    cursor: pointer;
-}
+
 

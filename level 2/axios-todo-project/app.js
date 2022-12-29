@@ -1,8 +1,7 @@
 const container = document.querySelector(".container")
-const popUpForm = document.popUpForm
 const titleInput = document.querySelector(".titleInput")
 
-// GET THE TODO'S DATA FROM THE DATABASE
+// GET THE GROCERY'S DATA FROM THE DATABASE
 
 function getData() {
     axios
@@ -11,7 +10,7 @@ function getData() {
         .catch(err => console.error(err))
 }
 
-// LISTS THE TODO TITLES TO THE DOM
+// LISTS THE GROCERY TITLES TO THE DOM
 
 function listData(data) {
     clearList()
@@ -19,58 +18,58 @@ function listData(data) {
     for (let i = 0; i < data.length; i++) {
 
         // CREATE ELEMENTS
+
+        // WRAPER
         const div = document.createElement('div')
-        const itemTitle = document.createElement('input')
-        const itemDescription = document.createElement('input')
-        const itemPrice = document.createElement('input')
-        const imageUrl = document.createElement('img')
+        div.classList.add('item')
+        container.appendChild(div)
+
+        // CHECKBOX
         const checkBox = document.createElement('input')
-        const editButton = document.createElement('button');
-        const removeButton = document.createElement('button')
-        const saveButton = document.createElement('button')
-
-        itemTitle.value = data[i].title
-        itemTitle.classList.add('title')
-
-        itemDescription.value = data[i].description
-        itemDescription.classList.add('description')
-
-        itemPrice.value = data[i].price
-        itemPrice.classList.add('itemPrice')
-        itemPrice.setAttribute('type', 'number')
-
-        imageUrl.setAttribute('readonly', true)
-        imageUrl.classList.add('imageUrl')
-        imageUrl.src = data[i].imgUrl
-
-        removeButton.value = data[i]._id
-        removeButton.textContent = "DELETE"
-        removeButton.classList.add('removeBtn')
-
         checkBox.setAttribute('type', 'checkbox')
         checkBox.classList.add('checkbox')
         checkBox.value = data[i].completed
+        div.appendChild(checkBox)
 
+        // IMAGE
+        const imageUrl = document.createElement('img')
+        imageUrl.setAttribute('readonly', true)
+        imageUrl.classList.add('imageUrl')
+        imageUrl.src = data[i].imgUrl
+        div.appendChild(imageUrl)
+
+        // TITLE
+        const itemTitle = document.createElement('input')
+        itemTitle.value = data[i].title
+        itemTitle.classList.add('title')
+        div.appendChild(itemTitle)
+
+        // DESCRIPTION
+        const itemDescription = document.createElement('input')
+        itemDescription.value = data[i].description
+        itemDescription.classList.add('description')
+        div.appendChild(itemDescription)
+
+        // PRICE
+        const itemPrice = document.createElement('input')
+        itemPrice.setAttribute('type', 'number')
+        itemPrice.value = data[i].price
+        itemPrice.classList.add('itemPrice')
+        div.appendChild(itemPrice)
+
+        // EDIT BUTTON
+        const editButton = document.createElement('button');
         editButton.textContent = "EDIT"
         editButton.classList.add('editBtn')
         editButton.value = data[i]._id
-
-        saveButton.textContent = "SAVE"
-        saveButton.classList.add('saveBtn')
-        saveButton.value = data[i]._id
-
-        container.appendChild(div)
-        div.classList.add('item')
-
-        // APPEND ALL
-        div.appendChild(checkBox)
-        div.appendChild(imageUrl)
-        div.appendChild(itemTitle)
-        div.appendChild(itemDescription)
-        div.appendChild(itemPrice)
         div.appendChild(editButton)
+
+        // REMOVE BUTTON
+        const removeButton = document.createElement('button')
+        removeButton.value = data[i]._id
+        removeButton.textContent = "DELETE"
+        removeButton.classList.add('removeBtn')
         div.appendChild(removeButton)
-        popUpForm.appendChild(saveButton)
 
         // DELETE ITEM
         removeButton.addEventListener('click', () => {
@@ -85,14 +84,15 @@ function listData(data) {
         itemTitle.disabled = true
         itemDescription.disabled = true
 
-        // EDIT ITEM
-
-        const closeButton = document.querySelector(".closeBtn")
+        // CREATE POPUP FORM WHEN EDIT BUTTON IS CLICKED
+        const popUpForm = document.popUpForm
         const overlay = document.getElementById("overlay")
         const modal = document.getElementById("modal")
+        const closeButton = document.querySelector(".closeBtn")
 
         editButton.addEventListener('click', () => {
-            console.log(data[i]._id)
+            window.id = data[i]._id //Had to make local id global to save changes outside the list data, because my save button was making changes to all.  
+            console.log(`${data[i]._id} When edit button is clicked`)
             openModal(modal)
         })
 
@@ -112,59 +112,32 @@ function listData(data) {
             overlay.classList.remove('active')
         }
 
-        // UPDATE DATABASE WITH SAVE
+        if (data[i].completed === true) {
+            itemTitle.style.textDecoration = "line-through"
+            itemDescription.style.textDecoration = "line-through"
+            checkBox.checked = true
+        }
+        checkBox.addEventListener('change', () => {
 
-        saveButton.addEventListener('click', (event) => {
-            event.preventDefault()
+            if (checkBox.checked === true) {
 
+                const completedUpdate = {
+                    completed: true
+                }
+                axios
+                    .put(`https://api.vschool.io/adeeb/todo/${data[i]._id}`, completedUpdate)
+                    .then(res => getData())
+                    .catch(err => console.error(err))
+            } else if (checkBox.checked === false) {
 
-            const updated = {
-                title: popUpForm.title.value,
-                description: popUpForm.description.value,
-                imgUrl: popUpForm.imgUrl.value,
-                price: popUpForm.itemPrice.value,
-                completed: false
+                const notCompletedUpate = {
+                    completed: false
+                }
+                axios.put(`https://api.vschool.io/adeeb/todo/${data[i]._id}`, notCompletedUpate)
+                    .then(res => getData())
+                    .catch(err => console.error(err))
             }
-            console.log(data[i]._id)
-
-            axios
-                .put(`https://api.vschool.io/adeeb/todo/${data[i]._id}`, updated)
-                .then(res => getData())
-                .catch(err => console.error(err))
         })
-
-        // CHECKBOX CHECK
-        // if (checkBox.checked) {
-        //     itemTitle.style.textDecoration = "line-through"
-        //     itemDescription.style.textDecoration = "line-through"
-
-        //     const checked = {
-        //     completed: true,
-        //     title: itemTitle.value,
-        //     description: itemDescription.value,
-        //     imageUrl: imageUrl.value,
-        //     price: itemPrice.value,
-        //     }
-        //     axios
-        //         .put(`https://api.vschool.io/adeeb/todo/${data[i]._id}`, checked)
-        //         .catch(err => console.error(err))
-        // } else {
-
-        //     itemTitle.style.textDecoration = "none"
-        //     itemDescription.style.textDecoration = "none"
-
-        //     const notChecked = {
-        //     completed: false,
-        //     title: itemTitle.value,
-        //     description: itemDescription.value,
-        //     imageUrl: imageUrl.value,
-        //     price: itemPrice.value,
-        //     }
-        //     axios
-        //         .put(`https://api.vschool.io/adeeb/todo/${data[i]._id}`, notChecked)
-        //         .catch(err => console.error(err))
-        // }
-
     }
 }
 
@@ -179,7 +152,6 @@ function clearList() {
 getData()
 
 // FORM FOR THE POST REQUEST
-
 const todoForm = document.todoform
 
 todoForm.addEventListener('submit', (event) => {
@@ -196,9 +168,37 @@ todoForm.addEventListener('submit', (event) => {
     todoForm.title.value = ''
     todoForm.description.value = ''
     todoForm.imgUrl.value = ''
+    todoForm.itemPrice.value = ''
 
     axios
         .post('https://api.vschool.io/adeeb/todo', newTodo)
+        .then(res => getData())
+        .catch(err => console.error(err))
+})
+
+// EDIT AND UPDATE DATABASE WITH SAVE
+const saveButton = document.querySelector('.saveBtn')
+
+saveButton.addEventListener('click', (event) => {
+
+    console.log(`${id} When save button is clicked`)
+    event.preventDefault()
+
+    const updated = {
+        title: popUpForm.title.value,
+        description: popUpForm.description.value,
+        imgUrl: popUpForm.imgUrl.value,
+        price: popUpForm.itemPrice.value,
+        completed: false
+    }
+
+    popUpForm.title.value = ''
+    popUpForm.description.value = ''
+    popUpForm.imgUrl.value = ''
+    popUpForm.itemPrice.value = ''
+
+    axios
+        .put(`https://api.vschool.io/adeeb/todo/${id}`, updated)
         .then(res => getData())
         .catch(err => console.error(err))
 })
