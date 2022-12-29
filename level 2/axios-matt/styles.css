@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Maven+Pro:wght@500&display=swap');
+/* font-family: 'Julius Sans One', sans-serif;
+ffont-family: 'Julius Sans One', sans-serif;
+font-family: 'Maven Pro', sans-serif; */
+
+body{
+  background-color: rgb(30, 31, 31);
+  padding: 20px;
+  background-image: url(./images/star-4597005_1280.jpg) ;
+  background-repeat: no-repeat;
+  background-size:  100% 400px;
+
+}
+/* TITLE */
+#title{
+  color: #07a0f9;
+  font-size: 65px;
+  letter-spacing: 5px;
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+  font-family: 'Maven Pro', sans-serif;
+}
+/* TODO FORM START */
+#todoform{
+  display: flex;
+  justify-content: center;
+}
+
+#todoform input{
+  width: 300px;
+  height: 30px;
+  margin: 5px;
+  border: 1.5px solid #07a0f9;
+  border-radius: 10px;
+  background-color: rgba(245, 242, 242, 0.343);
+  color: #fff;
+}
+
+::placeholder{
+  color: #fff;
+  font-size: 15px;
+  padding-left: 5px;
+}
+#todoform button{
+  margin: 5px;
+  border-radius: 10px;
+  background-color: green;
+  cursor: pointer;
+  color: #fff;
+}
+/* START OF TODO LIST STYLING */
+#todo-list {
+  margin-top: 150px;
+  border: 2px solid rgb(237, 3, 3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(245, 228, 228, 0.133);
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  color: #fff;
+  font-family: 'Julius Sans One', sans-serif;
+  align-content: flex-start;
+}
+/* I CAN ACCESS THESE */
+#todo-list input, h2, h4, img, #deleteButton{
+  border: 3px solid crimson;
+  
+}
+
+/* this wraper for your knewly created lists. I changed the background color and added display flex. feel free to change the colors*/
+.todoWrapper{
+  width: 100%;
+  background-color: darkgray;   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 3px solid rgb(222, 210, 212); 
+
+}
+
+img{
+  height: 150px;
+  width: auto;
+}
+
+
+#deleteButton{
+  background-color: rgb(0, 0, 0);
+  color: crimson;
+  font-size: 30px;
+  border-radius: 12px;
+  cursor: pointer;
+}
