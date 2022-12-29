@@ -94,6 +94,11 @@ function listData(data) {
             window.id = data[i]._id //Had to make local id global to save changes outside the list data, because my save button was making changes to all.  
             console.log(`${data[i]._id} When edit button is clicked`)
             openModal(modal)
+
+            popUpForm.title.value = data[i].title
+            popUpForm.description.value = data[i].description
+            popUpForm.imgUrl.value = data[i].imgUrl
+            popUpForm.itemPrice.value = data[i].price
         })
 
         closeButton.addEventListener('click', () => {
@@ -192,10 +197,10 @@ saveButton.addEventListener('click', (event) => {
         completed: false
     }
 
-    popUpForm.title.value = ''
-    popUpForm.description.value = ''
-    popUpForm.imgUrl.value = ''
-    popUpForm.itemPrice.value = ''
+    // popUpForm.title.value = ''
+    // popUpForm.description.value = ''
+    // popUpForm.imgUrl.value = ''
+    // popUpForm.itemPrice.value = ''
 
     axios
         .put(`https://api.vschool.io/adeeb/todo/${id}`, updated)
