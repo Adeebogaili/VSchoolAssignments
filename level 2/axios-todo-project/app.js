@@ -12,14 +12,13 @@ function getData() {
 
 // LISTS THE GROCERY TITLES TO THE DOM
 
-function listData(data) {
+function listData(dataBase) {
     clearList()
 
-    for (let i = 0; i < data.length; i++) {
+        // CREATE ELEMENTS USING MAP()
+        dataBase.map((data) => {
 
-        // CREATE ELEMENTS
-
-        // WRAPER
+        // WRAPPER
         const div = document.createElement('div')
         div.classList.add('item')
         container.appendChild(div)
@@ -28,32 +27,32 @@ function listData(data) {
         const checkBox = document.createElement('input')
         checkBox.setAttribute('type', 'checkbox')
         checkBox.classList.add('checkbox')
-        checkBox.value = data[i].completed
+        checkBox.value = data.completed
         div.appendChild(checkBox)
 
         // IMAGE
         const imageUrl = document.createElement('img')
         imageUrl.setAttribute('readonly', true)
         imageUrl.classList.add('imageUrl')
-        imageUrl.src = data[i].imgUrl
+        imageUrl.src = data.imgUrl
         div.appendChild(imageUrl)
 
         // TITLE
         const itemTitle = document.createElement('input')
-        itemTitle.value = data[i].title
+        itemTitle.value = data.title
         itemTitle.classList.add('title')
         div.appendChild(itemTitle)
 
         // DESCRIPTION
         const itemDescription = document.createElement('input')
-        itemDescription.value = data[i].description
+        itemDescription.value = data.description
         itemDescription.classList.add('description')
         div.appendChild(itemDescription)
 
         // PRICE
         const itemPrice = document.createElement('input')
         itemPrice.setAttribute('type', 'number')
-        itemPrice.value = data[i].price
+        itemPrice.value = data.price
         itemPrice.classList.add('itemPrice')
         div.appendChild(itemPrice)
 
@@ -61,12 +60,12 @@ function listData(data) {
         const editButton = document.createElement('button');
         editButton.textContent = "EDIT"
         editButton.classList.add('editBtn')
-        editButton.value = data[i]._id
+        editButton.value = data._id
         div.appendChild(editButton)
 
         // REMOVE BUTTON
         const removeButton = document.createElement('button')
-        removeButton.value = data[i]._id
+        removeButton.value = data._id
         removeButton.textContent = "DELETE"
         removeButton.classList.add('removeBtn')
         div.appendChild(removeButton)
@@ -74,7 +73,7 @@ function listData(data) {
         // DELETE ITEM
         removeButton.addEventListener('click', () => {
             axios
-                .delete(`https://api.vschool.io/adeeb/todo/${data[i]._id}`)
+                .delete(`https://api.vschool.io/adeeb/todo/${data._id}`)
                 .then(res => console.log(res))
                 .catch(err => (console.log(err)))
             container.removeChild(div)
@@ -91,14 +90,14 @@ function listData(data) {
         const closeButton = document.querySelector(".closeBtn")
 
         editButton.addEventListener('click', () => {
-            window.id = data[i]._id //Had to make local id global to save changes outside the list data, because my save button was making changes to all.  
-            console.log(`${data[i]._id} When edit button is clicked`)
+            window.id = data._id //Had to make local id global to save changes outside the list data, because my save button was making changes to all.  
+            console.log(`${data._id} When edit button is clicked`)
             openModal(modal)
 
-            popUpForm.title.value = data[i].title
-            popUpForm.description.value = data[i].description
-            popUpForm.imgUrl.value = data[i].imgUrl
-            popUpForm.itemPrice.value = data[i].price
+            popUpForm.title.value = data.title
+            popUpForm.description.value = data.description
+            popUpForm.imgUrl.value = data.imgUrl
+            popUpForm.itemPrice.value = data.price
         })
 
         closeButton.addEventListener('click', () => {
@@ -117,9 +116,12 @@ function listData(data) {
             overlay.classList.remove('active')
         }
 
-        if (data[i].completed === true) {
+        if (data.completed === true) {
             itemTitle.style.textDecoration = "line-through"
+            itemTitle.style.textDecorationColor = "red"
             itemDescription.style.textDecoration = "line-through"
+            itemDescription.style.textDecorationColor = "red"
+
             checkBox.checked = true
         }
         checkBox.addEventListener('change', () => {
@@ -130,7 +132,7 @@ function listData(data) {
                     completed: true
                 }
                 axios
-                    .put(`https://api.vschool.io/adeeb/todo/${data[i]._id}`, completedUpdate)
+                    .put(`https://api.vschool.io/adeeb/todo/${data._id}`, completedUpdate)
                     .then(res => getData())
                     .catch(err => console.error(err))
             } else if (checkBox.checked === false) {
@@ -138,12 +140,12 @@ function listData(data) {
                 const notCompletedUpate = {
                     completed: false
                 }
-                axios.put(`https://api.vschool.io/adeeb/todo/${data[i]._id}`, notCompletedUpate)
+                axios.put(`https://api.vschool.io/adeeb/todo/${data._id}`, notCompletedUpate)
                     .then(res => getData())
                     .catch(err => console.error(err))
             }
         })
-    }
+    })
 }
 
 // CLEAR LIST
