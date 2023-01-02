@@ -1,4 +1,15 @@
 /* BASE CSS */
+
+:root {
+    --squidink-black: #2e2d2b;
+    --mushroom-grey: #565553;
+    --tahini-grey: #f8f7f5;
+    --white: #ffffff;
+    --chard-green: #004e36;
+    --local-hover: #c0303f;
+    --avocado-green: #2c8746;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -7,7 +18,7 @@
 
 body {
     height: 100vh;
-    background-color: rgb(15, 66, 10);
+    background-color: var(--chard-green);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,7 +31,7 @@ h1 {
     font-family: 'Hind', sans-serif;
     margin: 1rem 0 3rem;
     text-align: center;
-    color: #fff;
+    color: var(--white);
 }
 
 /* FORM */
@@ -31,42 +42,49 @@ h1 {
     align-items: center;
     text-align: center;
 }
+
 .styling {
     font-weight: 800;
-    color: lime;
+    color: var(--avocado-green);
     margin-right: 10px;
 }
 
 /* INPUT FIELDS STYLING */
 .titleInput,
 .desInput,
-.imgUrl
- {
+.imgUrl {
     padding: 0.5rem 1rem;
     height: 50px;
     min-width: 5%;
     outline: none;
-    background-color: #fff;
+    background-color: var(--white);
     font-size: 1.15rem;
     margin: 0.25rem;
     border-radius: 25px;
     border: none;
 }
 
-/* ITEM PRICE  */
+/* ITEM PRICE INPUT */
 .itemPrice {
     padding: 0.5rem 1rem;
     height: 50px;
     width: 125px;
     outline: none;
-    background-color: #fff;
+    background-color: var(--white);
     font-size: 1.15rem;
     margin: 0.25rem;
     border-radius: 25px;
     border: none;
 }
 
-.itemPrice::before {
+/* ITEM PRICE LIST */
+
+.price-list {
+    color: var(--mushroom-grey);
+    font-size: 1.15rem;
+}
+
+.price-list::before {
     content: "$";
 }
 
@@ -79,138 +97,148 @@ h1 {
     border-radius: 25px;
     border: none;
     outline: none;
-    color: #fff;
-    background-color: lime;
+    color: var(--avocado-green);
+    ;
+    background-color: var(--chard-green);
+    border: 2px solid var(--avocado-green);
+    ;
     cursor: pointer;
 }
 
 .submitBtn:hover {
-    cursor: pointer;
-    opacity: 0.7;
+    background-color: var(--avocado-green);
+    ;
+    color: var(--white);
+    border: 3px solid var(--chard-green);
 }
 
 /* CONTAINER FOR CREATED ITEMS BY DOM */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    background-color: var(--white);
     margin-top: 2rem;
     height: 460px;
-    width: 90%;
-    overflow: overlay;
+    width: 40%;
+    border-radius: 20px;
+    overflow-y: scroll;
 }
 
-/* ITEM  */
-.item {
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+/* LIST ITEM  */
+.item-list {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    padding: .5rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 4px solid #fff;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    border-bottom: 2px solid #F5F5F5;
+}
+
+.item-list:last-child {
+    border-bottom: none;
+}
+
+/* DIV TO ALIGN CHECKBOX, IMAGE, TITLE, AND DESCRIPTION TO THE LEFT */
+.leftWrapper {
+    margin-left: 20px;
+    display: flex;
+    align-items: left;
+}
+
+/* TITLE AND DESCRIPTION WRAPPER */
+.item-details {
+    text-align: left;
 }
 
 /* TITLE FIELD */
 .title {
-    background: none;
-    outline: none;
-    color: #fff;
-    border: none;
-    width: 150px;
+    color: var(--squidink-black);
     font-size: 1.4rem;
-    word-wrap: break-word
 }
 
 /* DESCRIPTION FIELD */
 .description {
-    background: none;
-    outline: none;
-    color: #fff;
+    color: var(--mushroom-grey);
     border: none;
-    width: 300px;
     font-size: 1.4rem;
-    word-wrap: break-word
 }
 
-/* EDIT BUTTON */
-.editBtn {
-    cursor: pointer;
-    font-family: 'Hind', sans-serif;
-    font-size: 1.4rem;
-    background: none;
-    outline: none;
-    border: none;
-    color: lime;
-    margin: 0 0.5rem;
-    cursor: pointer;
+/* BUTTONS WRAPPER */
+.buttons {
+    margin-right: 20px;
 }
 
-/* DELETE BUTTON */
-.removeBtn {
-    font-family: 'Hind', sans-serif;
-    font-size: 1.4rem;
-    background: none;
-    outline: none;
-    border: none;
-    color: #e00;
-    cursor: pointer;
-}
-
-/* SAVE BUTTON */
+/* BUTTONS */
+.editBtn,
+.removeBtn,
 .saveBtn {
+    background-color: transparent;
+    border: 0;
+    font-size: 1.5rem;
+    height: 1.25rem;
+    min-height: 44px;
+    min-width: 44px;
+    width: 1.25rem;
     cursor: pointer;
-    font-family: 'Hind', sans-serif;
-    font-size: 1.4rem;
-    background: none;
-    outline: none;
-    border: none;
-    color: lime;
-    margin: 0 0.5rem;
-    cursor: pointer;
+    transition: all .2s ease-in-out;
 }
 
-.editBtn:hover, .removeBtn:hover, .saveBtn:hover{
-    cursor: pointer;
-    opacity: 0.7;
+.editBtn:hover,
+.saveBtn:hover {
+    color: var(--avocado-green);
+    transform: scale(1.3);
+}
+
+.editBtn:focus,
+.saveBtn:focus {
+    outline: 0;
+}
+
+.removeBtn:hover {
+    color: var(--local-hover);
+    transform: scale(1.3);
+}
+
+.removeBtn:focus {
+    outline: 0;
 }
 
 /* IMAGE URL */
-.imageUrl{
-    border-radius: 50%;
+.imageUrl {
     border: none;
     height: 75px;
     width: 75px;
-    margin-right: 10px;
 }
 
 /* CHECKBOX */
-.checkbox
-{
+.checkbox {
+    margin-right: 10px;
+    width: 1.25rem;
     cursor: pointer;
-  transform: scale(2);
-  padding: 10px;
-  margin-right: 20px;
+}
+
+.checkbox:hover {
+    transform: scale(1.3);
 }
 
 /* POPUP MODAL */
 .modal {
-    background: white;
-    color: black;
+    background: var(--tahini-grey);
+    color: var(--squidink-black);
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
-    border: 1px solid black;
-    border-radius: 10px;
+    border: 1px solid var(--squidink-black);
+    border-radius: 20px;
     transition: 200ms ease-in-out;
     z-index: 10;
     width: 31.25rem;
     max-width: 80%;
 }
 
-.modal.active{
+.modal.active {
     transform: translate(-50%, -50%) scale(1);
 }
 
@@ -220,22 +248,29 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid black;
 }
 
 .modal-header .popupTitle {
-    font-size: 2rem;
+    margin-top: 20px;
+    margin-left: 15px;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
 .modal-header .closeBtn {
-    color: black;
-    cursor: pointer; 
+    color: var(--chard-green);
+    margin-right: 15px;
+    cursor: pointer;
     border: none;
     outline: none;
     background: none;
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: bold;
+    margin-top: 20px;
+}
+
+.closeBtn:hover {
+    transform: scale(1.3);
 }
 
 .modal-body {
@@ -268,16 +303,19 @@ h1 {
 }
 
 .popUp-form input {
+    width: 100%;
+    background-color: var(--tahini-grey);
     padding: 0.5rem 1rem;
     height: 50px;
     min-width: 5%;
     outline: none;
-    background-color: #fff;
+    background-color: var(--white);
     font-size: 1.15rem;
     margin: 0.25rem;
     border-radius: 25px;
     border: none;
 }
 
-
-
+.popUp-form:last-child {
+    align-items: center;
+}

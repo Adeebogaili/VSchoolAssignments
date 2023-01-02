@@ -15,60 +15,74 @@ function getData() {
 function listData(dataBase) {
     clearList()
 
-        // CREATE ELEMENTS USING MAP()
-        dataBase.map((data) => {
+    // CREATE ELEMENTS USING MAP()
+    dataBase.map((data) => {
 
-        // WRAPPER
+        // LIST WRAPPER
         const div = document.createElement('div')
-        div.classList.add('item')
+        div.classList.add('item-list')
         container.appendChild(div)
+
+        //  DIV TO WRAP CHECKBOX, IMAGE, TILTE AND DESCRIPTION
+        const leftWrapper = document.createElement('div')
+        leftWrapper.classList.add('leftWrapper')
+        div.appendChild(leftWrapper)
 
         // CHECKBOX
         const checkBox = document.createElement('input')
         checkBox.setAttribute('type', 'checkbox')
         checkBox.classList.add('checkbox')
         checkBox.value = data.completed
-        div.appendChild(checkBox)
+        leftWrapper.appendChild(checkBox)
 
         // IMAGE
         const imageUrl = document.createElement('img')
         imageUrl.setAttribute('readonly', true)
         imageUrl.classList.add('imageUrl')
         imageUrl.src = data.imgUrl
-        div.appendChild(imageUrl)
+        leftWrapper.appendChild(imageUrl)
+
+        // DETAILS DIV TO WRAP TILTE AND DESCRIPTION
+        const details = document.createElement('div')
+        details.classList.add('item-details')
+        leftWrapper.appendChild(details)
 
         // TITLE
-        const itemTitle = document.createElement('input')
-        itemTitle.value = data.title
+        const itemTitle = document.createElement('h3')
+        itemTitle.textContent = data.title
         itemTitle.classList.add('title')
-        div.appendChild(itemTitle)
+        details.appendChild(itemTitle)
 
         // DESCRIPTION
-        const itemDescription = document.createElement('input')
-        itemDescription.value = data.description
+        const itemDescription = document.createElement('p')
+        itemDescription.textContent = data.description
         itemDescription.classList.add('description')
-        div.appendChild(itemDescription)
+        details.appendChild(itemDescription)
 
         // PRICE
-        const itemPrice = document.createElement('input')
-        itemPrice.setAttribute('type', 'number')
-        itemPrice.value = data.price
-        itemPrice.classList.add('itemPrice')
-        div.appendChild(itemPrice)
+        const itemPrice = document.createElement('p')
+        itemPrice.textContent = data.price
+        itemPrice.classList.add('price-list')
+        details.appendChild(itemPrice)
+
+        // DIV TO WRAP BUTTONS
+        const buttons = document.createElement('div')
+        buttons.classList.add('buttons')
+        div.appendChild(buttons)
 
         // EDIT BUTTON
         const editButton = document.createElement('button');
-        editButton.textContent = "EDIT"
+        editButton.innerHTML = '<i class="fa-regular fa-pen-to-square" aria-hidden="true"></i>'
         editButton.classList.add('editBtn')
         editButton.value = data._id
-        div.appendChild(editButton)
+        buttons.appendChild(editButton)
 
         // REMOVE BUTTON
         const removeButton = document.createElement('button')
         removeButton.value = data._id
-        removeButton.textContent = "DELETE"
+        removeButton.innerHTML = '<i class="fa-regular fa-trash-can aria-hidden="true""></i>'
         removeButton.classList.add('removeBtn')
-        div.appendChild(removeButton)
+        buttons.appendChild(removeButton)
 
         // DELETE ITEM
         removeButton.addEventListener('click', () => {
@@ -118,9 +132,11 @@ function listData(dataBase) {
 
         if (data.completed === true) {
             itemTitle.style.textDecoration = "line-through"
-            itemTitle.style.textDecorationColor = "red"
+            itemTitle.style.textDecorationColor = "#c0303f"
             itemDescription.style.textDecoration = "line-through"
-            itemDescription.style.textDecorationColor = "red"
+            itemDescription.style.textDecorationColor = "#c0303f"
+            itemPrice.style.textDecoration = "line-through"
+            itemPrice.style.textDecorationColor = "#c0303f"
 
             checkBox.checked = true
         }
@@ -198,11 +214,6 @@ saveButton.addEventListener('click', (event) => {
         price: popUpForm.itemPrice.value,
         completed: false
     }
-
-    // popUpForm.title.value = ''
-    // popUpForm.description.value = ''
-    // popUpForm.imgUrl.value = ''
-    // popUpForm.itemPrice.value = ''
 
     axios
         .put(`https://api.vschool.io/adeeb/todo/${id}`, updated)
