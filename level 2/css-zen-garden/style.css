@@ -2,11 +2,11 @@
 
 /********************** base CSS *************************/
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
     list-style: none;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
 }
 
 body,
@@ -17,8 +17,8 @@ html {
 
 body,
 html {
-    color: #325050;
     background: #fff;
+    color: #325050;
     font-family: 'Libre Baskerville', sans-serif;
 }
 
@@ -29,12 +29,12 @@ h2 {
 }
 
 h1 {
-    padding-top: 0;
-    font-size: 3.2rem;
     border-bottom: none;
     font-family: 'Julius Sans One', sans-serif;
-    text-transform: uppercase;
+    font-size: 3.2rem;
     margin-bottom: .625rem;
+    padding-top: 0;
+    text-transform: uppercase;
 }
 
 h2 {
@@ -44,17 +44,17 @@ h2 {
 }
 
 h3 {
+    color: #2e484c;
+    font-family: 'Julius Sans One', sans-serif;
     font-size: 1.8em;
     font-weight: normal;
     text-transform: uppercase;
-    color: #2e484c;
-    font-family: 'Julius Sans One', sans-serif;
 }
 
 p {
+    font-size: 1em;
     line-height: 2;
     margin: .75em 0;
-    font-size: 1em;
 }
 
 img {
@@ -63,17 +63,17 @@ img {
 
 abbr {
     border: none;
-    text-transform: uppercase;
     font-size: 0.9em;
     letter-spacing: 0.01em;
     text-decoration: underline dotted;
+    text-transform: uppercase;
 }
 
 /********************** Main Container *************************/
 
 .container {
-    height: 100vh;
     display: grid;
+    height: 100vh;
     grid-template-areas:
         "header header nav"
         "section-a section-a section-e"
@@ -94,19 +94,19 @@ abbr {
 }
 
 #header {
-    display: flex;
     align-items: center;
+    display: flex;
+    grid-area: header;
     justify-content: center;
     text-align: center;
-    grid-area: header;
     width: 100%;
 }
 
 #header img {
-    width: 125px;
     height: 125px;
-    margin-right: 2.5rem;
     margin-left: 4.5rem;
+    margin-right: 2.5rem;
+    width: 125px;
 }
 
 #header .header-text {
@@ -115,17 +115,17 @@ abbr {
 
 #header,
 #nav {
-    position: relative;
     background: url(images/contours@2x.png), url(images/noise.png), url(images/gridlines-opaque.png), url(images/huntington.jpg);
     min-height: 19.375rem;
+    position: relative;
 }
 
 /********************** Nav *************************/
 
 #nav {
-    grid-area: nav;
-    display: flex;
     align-items: center;
+    display: flex;
+    grid-area: nav;
     justify-content: center;
     text-align: center;
 }
@@ -141,8 +141,8 @@ abbr {
 #section-d,
 footer,
 footer a {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: center;
     text-align: center;
 }
@@ -150,17 +150,17 @@ footer a {
 .next-right,
 .next-left {
     background: rgba(255, 255, 255, 0.1);
-    font-size: 2.75rem;
     font-family: 'verdemoderna';
-    width: 4.375rem;
+    font-size: 2.75rem;
     height: 4.375rem;
+    width: 4.375rem;
 }
 
 .next-right a,
 .next-left a {
-    width: 4.375rem;
-    height: 4.375rem;
     color: rgba(255, 255, 255, 0.65);
+    height: 4.375rem;
+    width: 4.375rem;
 }
 
 .next-right {
@@ -178,9 +178,9 @@ footer a {
 
 .view-all a {
     color: rgba(255, 255, 255, 0.65);
+    font-family: 'Julius Sans One', sans-serif;
     font-size: 1em;
     height: 4.375rem;
-    font-family: 'Julius Sans One', sans-serif;
     padding: 0 12px;
     transition: all 0.25s ease-out;
 }
@@ -205,34 +205,34 @@ footer a {
 }
 
 #section-a .download {
+    border-radius: 1px;
     color: #809b7e;
     font-family: 'Julius Sans One', sans-serif;
     text-transform: uppercase;
-    border-radius: 1px;
     transition: all 0.25s ease-out;
 }
 
 #section-a .download:hover {
     background: #05798d;
-    padding: 5px 10px;
-    color: #fff;
     border-radius: 5px;
+    color: #fff;
+    padding: 5px 10px;
 }
 
 #section-a .download::before {
-    display: inline-block;
-    top: .375rem;
-    left: .5rem;
-    padding: .125rem;
-    color: #a9b995;
     background: #d9e1cd;
     border-radius: .125rem;
+    color: #a9b995;
     content: 'D';
-    font-size: 1rem;
+    display: inline-block;
     font-family: 'verdemoderna';
+    font-size: 1rem;
     font-weight: normal;
-    text-transform: none;
+    left: .5rem;
     line-height: 1;
+    padding: .125rem;
+    text-transform: none;
+    top: .375rem;
     transition: all 0.25s ease-out;
 }
 
@@ -250,22 +250,22 @@ footer a {
 
 #section-b,
 #section-f {
+    background-attachment: fixed;
     background-color: rgba(138, 188, 159, 0.5);
     background-image: url(images/contours-opaque.png), url(images/gridlines-opaque.png), url(images/bamboo.png);
     background-size: contain;
-    background-attachment: fixed;
 }
 
 .pHover {
     color: #0d8ba1;
-    transform: all 0.25s ease-out;
     text-decoration: none;
+    transform: all 0.25s ease-out;
 }
 
 .pHover:hover {
     color: #0d8ba1;
-    text-decoration: underline;
     cursor: pointer;
+    text-decoration: underline;
 }
 
 /********************** Section C *************************/
@@ -276,19 +276,18 @@ footer a {
 
 /********************** Section D *************************/
 #section-d {
-    grid-area: section-d;
-
-    font-size: 2em;
-    color: rgba(255, 255, 255, 0.4);
-    background: #3e5d67 url(images/koi.jpg);
     background-size: cover;
-    padding: 2.8125rem 0;
+    background: #3e5d67 url(images/koi.jpg);
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 2em;
     font-style: italic;
+    grid-area: section-d;
+    padding: 2.8125rem 0;
 }
 
 #section-d a {
-    font-style: normal;
     color: rgba(255, 255, 255, 0.7);
+    font-style: normal;
     transition: all 0.25s ease-out;
 }
 
@@ -299,23 +298,22 @@ footer a {
 /********************** Main Footer *************************/
 
 footer {
-    grid-area: footer;
     background: #134347;
-    width: 100%;
-    padding: 2.1em 10%;
     flex-wrap: wrap;
+    grid-area: footer;
+    padding: 2.1em 10%;
+    width: 100%;
 }
 
 footer a {
-
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 4.5rem;
-    margin: 0 3.125rem;
-    font-family: 'verdemoderna';
-    transition: all 0.25s ease-out;
     border-radius: 50%;
-    width: 4.3125rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'verdemoderna';
+    font-size: 4.5rem;
     height: 4.3125rem;
+    margin: 0 3.125rem;
+    transition: all 0.25s ease-out;
+    width: 4.3125rem;
 }
 
 footer a:hover {
@@ -326,30 +324,30 @@ footer a:hover {
 /********************** Section E *************************/
 
 #section-e {
-    grid-area: section-e;
     background: #edf4f0;
+    grid-area: section-e;
 }
 
 #section-e ul {
-    margin-top: 15%;
     font-family: 'Julius Sans One', sans-serif;
+    margin-top: 15%;
 }
 
 #section-e ul li,
 #section-f ul li {
+    border-top: solid 1px #d9e3dc;
     color: #607476;
     font-size: 1.2em;
     font-style: normal;
-    width: auto;
     margin: 0 30% 0 15%;
     padding: 1.5rem 0;
-    border-top: solid 1px #d9e3dc;
+    width: auto;
 }
 
 #section-e ul li a,
 #section-f ul li a {
-    display: block;
     color: #607476;
+    display: block;
     transition: all 0.25s ease-out;
 }
 
@@ -365,21 +363,21 @@ footer a:hover {
 }
 
 #section-e ul li .designer-name {
-    display: inline;
     color: #616857;
+    display: inline;
+    font-family: 'Libre Baskerville', sans-serif;
     font-size: .875rem;
     font-style: normal;
-    font-family: 'Libre Baskerville', sans-serif;
     ;
 }
 
 #section-e ul li p {
     color: #c0cac3;
     display: inline;
-    margin-right: 5px;
+    font-family: 'Libre Baskerville', sans-serif;
     font-size: .875rem;
     font-style: italic;
-    font-family: 'Libre Baskerville', sans-serif;
+    margin-right: 5px;
     text-transform: lowercase;
 }
 
@@ -409,8 +407,8 @@ footer a:hover {
 /********************** Section G *************************/
 
 #section-g {
-    grid-area: section-g;
     background: #edf4f0;
+    grid-area: section-g;
 }
 
 @media only screen and (min-width: 501px) and (max-width: 1132px) {
@@ -450,9 +448,9 @@ footer a:hover {
     }
 
     #header img {
-        width: 5rem;
         height: 5rem;
         margin: 0 1.25rem 3.125rem 0;
+        width: 5rem;
     }
 
     #header .header-text {
@@ -483,18 +481,18 @@ footer a:hover {
     /********** Section E (min-width: 501px) and (max-width: 1132px) **********/
     #section-e ul,
     #section-f ul {
-        margin: 0;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        margin: 0;
     }
 
     #section-e ul li,
     #section-f ul li {
+        border-bottom: solid 1px #a0b9ad;
+        border-top: none;
         margin: 0;
         padding: .9375rem 0 .9375rem 7.5rem;
         width: 100%;
-        border-bottom: solid 1px #a0b9ad;
-        border-top: none;
     }
 
     #section-e ul li:first-child {
@@ -505,17 +503,17 @@ footer a:hover {
     /********** Main Footer (min-width: 501px) and (max-width: 1132px) **********/
 
     footer a {
-        width: 2.875rem;
-        height: 2.875rem;
         font-size: 3rem;
+        height: 2.875rem;
         margin: 0 0.6em;
+        width: 2.875rem;
     }
 }
 
 @media only screen and (min-width: 501px) and (max-width: 800px) {
 
     /********** Sction D (min-width: 501px) and (max-width: 800px) **********/
-    
+
     #section-d p {
         font-size: 1.4rem;
         margin: 0;
@@ -525,19 +523,19 @@ footer a:hover {
 
     #section-e ul,
     #section-f ul {
-        margin: 0;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        margin: 0;
     }
 
     #section-e ul li,
     #section-f ul li {
-        margin: 0;
-        font-size: 1em;
-        padding: 1em 10%;
-        width: 100%;
         border-bottom: solid 1px #a0b9ad;
         border-top: none;
+        font-size: 1em;
+        margin: 0;
+        padding: 1em 10%;
+        width: 100%;
     }
 
     #section-e ul li .designer-name {
@@ -580,13 +578,13 @@ footer a:hover {
     /********** Base CSS (min-width: 500px) **********/
 
     h1 {
-        margin-top: 15px;
         font-size: 1.75em;
+        margin-top: 15px;
     }
 
     h2 {
-        margin-bottom: 1.25rem;
         font-size: 1.2rem;
+        margin-bottom: 1.25rem;
     }
 
     h3 {
@@ -600,11 +598,11 @@ footer a:hover {
     /********** Header (min-width: 500px) **********/
 
     #header {
+        align-items: center;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        text-align: center;
         min-height: 10rem;
+        text-align: center;
     }
 
     #nav {
@@ -612,9 +610,9 @@ footer a:hover {
     }
 
     #header img {
-        width: 3.125rem;
         height: 3.125rem;
         margin: 15px 0 0 0;
+        width: 3.125rem;
     }
 
 
@@ -635,19 +633,19 @@ footer a:hover {
 
     #section-e ul,
     #section-f ul {
-        margin: 0;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        margin: 0;
     }
 
     #section-e ul li,
     #section-f ul li {
-        margin: 0;
-        font-size: 1em;
-        padding: 1em 10%;
-        width: 100%;
         border-bottom: solid 1px #a0b9ad;
         border-top: none;
+        font-size: 1em;
+        margin: 0;
+        padding: 1em 10%;
+        width: 100%;
     }
 
     #section-e ul li .designer-name {
@@ -673,12 +671,11 @@ footer a:hover {
 
     /********** Main Footer (min-width: 500px) **********/
     footer a {
-        width: 2.0625rem;
-        height: 2.0625rem;
         font-size: 2.2rem;
+        height: 2.0625rem;
         margin: 0 .6rem;
+        width: 2.0625rem;
     }
-
 }
 
 @media only screen and (max-width: 320px) {
@@ -697,9 +694,8 @@ footer a:hover {
 
     footer a {
         font-size: 2rem;
-        width: 1.75rem;
         height: 1.75rem;
-
+        width: 1.75rem;
     }
 
     #section-e ul,
@@ -717,7 +713,7 @@ footer a:hover {
 /********** Custome Fonts/Icons **********/
 @font-face {
     font-family: 'verdemoderna';
-    src: url(fonts/verdemoderna.woff);
-    font-weight: normal;
     font-style: normal;
+    font-weight: normal;
+    src: url(fonts/verdemoderna.woff);
 }
