@@ -80,7 +80,7 @@ h1 {
 /* ITEM PRICE LIST */
 
 .price-list {
-    color: var(--mushroom-grey);
+    color: var(--avocado-green);
     font-size: 1.15rem;
 }
 
@@ -90,24 +90,23 @@ h1 {
 
 /* SUBMIT BUTTON */
 .submitBtn {
-    background-color: var(--chard-green);
-    border-radius: 25px;
-    border: 2px solid var(--avocado-green);
-    border: none;
-    color: var(--avocado-green);
+    background-color: var(--avocado-green);
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    color: var(--white);
     cursor: pointer;
-    font-size: 1.5625rem;
+    font-size: 1rem;
     height: 50px;
-    margin: .025rem;
-    outline: none;
     width: 50px;
+    transition: all .3s ease-in-out;
 }
 
 .submitBtn:hover {
-    background-color: var(--avocado-green);
-    border: 3px solid var(--chard-green);
-    color: var(--white);
+    background-color: var(--white);
+    border: 2px solid var(--chard-green);
+    color: var(--avocado-green);
 }
+
 
 /* CONTAINER FOR CREATED ITEMS BY DOM */
 .container {
@@ -165,7 +164,8 @@ h1 {
 
 /* BUTTONS WRAPPER */
 .buttons {
-    margin-right: 20px;
+    margin-left: auto;
+
 }
 
 /* BUTTONS */
@@ -192,7 +192,8 @@ h1 {
 }
 
 .editBtn:focus,
-.saveBtn:focus {
+.saveBtn:focus,
+.submitBtn:focus {
     outline: 0;
 }
 
@@ -222,6 +223,7 @@ h1 {
     cursor: pointer;
     margin-right: 20px;
     width: 1.25rem;
+    transition: all .3s ease-in-out;
 }
 
 .checkbox:hover {
@@ -252,6 +254,7 @@ h1 {
 .modal-header {
     align-items: center;
     display: flex;
+    font-size: 1rem;
     justify-content: space-between;
     padding: .625rem .9375rem;
 }
@@ -270,13 +273,17 @@ h1 {
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
-    margin-right: 15px;
-    margin-top: 20px;
+    margin: 20px 15px 0 5px;
     outline: none;
 }
 
-.closeBtn:hover {
-    transform: scale(1.3);
+.modal-close:hover {
+    color: var(--avocado-green);
+    border-bottom: 2px solid var(--avocado-green) ;
+}
+
+.fa-ellipsis-vertical {
+    margin-right: 20px;
 }
 
 .modal-body {
