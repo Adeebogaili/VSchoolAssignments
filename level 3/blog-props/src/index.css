@@ -1,0 +1,220 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --white: #ffffff
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+/* Header */
+
+header {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images/blogger.jpg);
+  align-items: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  height: 532px;
+  width: 100%;
+}
+
+/* Navbar */
+.navbar {
+  align-items: center;
+  flex-wrap: inherit;
+  justify-content: space-around;
+  width: 100%;
+  display: flex;
+  margin-top: 10px;
+}
+
+.navbar-brand,
+.navbar-link {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.navbar-brand {
+  color: var(--white);
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding-bottom: 0.3125rem;
+  padding-top: 0.3125rem;
+  white-space: nowrap;
+}
+
+.navbar-brand:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.navbar-list {
+  display: flex;
+  list-style: none;
+}
+
+.navbar-item {
+  margin: 1.5rem 1rem;
+}
+
+.navbar-link:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.navbar-link {
+  font-weight: 800;
+  letter-spacing: 0.0625em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+/* hero section */
+
+.hero {
+  text-align: center;
+}
+
+.hero-title {
+  color: var(--white);
+  font-size: 5rem;
+  margin-top: 130px;
+}
+
+.hero-par {
+  color: var(--white);
+  display: block;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.1;
+  margin-top: 0.625rem;
+}
+
+/* Main */
+
+.main-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  display: flex;
+  max-width: 700px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blog-preview {
+  margin: 0 1.5rem;
+  width: 100%;
+  border-bottom: 2px solid #F5F5F5;
+}
+
+.blog-title {
+  color: #212529;
+  font-size: 2.25rem;
+  margin-top: 1.875rem;
+  margin-bottom: 0.625rem;
+}
+
+.blog-title:hover,
+.blog-subtitle:hover {
+  color: #0085A1;
+}
+
+.blog-subtitle {
+  color: #6c757d;
+  font-weight: 300;
+  margin-bottom: 0.625rem;
+  font-size: 1.75rem;
+}
+
+.blog-meta {
+  font-size: 1.125rem;
+  font-style: italic;
+  margin-top: 0;
+  color: #6c757d;
+}
+
+.blog-meta a {
+  color: #212529;
+  margin: 0 .25rem;
+}
+
+.blog-preview>a,
+.blog-meta>a {
+  text-decoration: none;
+}
+
+.blog-meta>a:hover {
+  color: #0085A1;
+}
+
+.older-posts {
+  background-color: #0085A1;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.0625em;
+  line-height: 1.5;
+  margin-top: 1.5rem;
+  padding: 1rem 1.75rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+  vertical-align: middle;
+  margin-left: auto;
+}
+
+.older-posts:hover {
+  background-color: #006579;
+}
+
+/* Footer */
+
+.main-footer {
+  width: 100%;
+  border-top: 2px solid #F5F5F5;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2.5rem 0;
+}
+
+.footer-icons {
+  margin-top: 2.5rem;
+  font-size: 3rem;
+}
+
+.fa-brands {
+  margin: 0 .75rem;
+}
+
+.footer-copyRight {
+  color: #6c757d;
+  margin-top: .625rem;
+  font-size: 1.2rem;
+}
