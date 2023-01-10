@@ -6,11 +6,21 @@ function App() {
 
   const [colors, setColors] = React.useState(["white", "white", "white", "white"])
 
+  const colorElements = colors.map((color, index) => {
+    return (
+      <Box
+        key={index}
+        color={color}
+        className="box"
+        />
+    )
+  })
+
 
   // Small Time DJ Toggle
-  function smallTimeDJ() {
+  const smallTimeDJ = () => {
     console.log("Small Time DJ")
-    setColors( () => {
+    setColors( (prevColors) => {
         const newColors = colors.map(color => {
              if (color === "white"){
                 return "black"
@@ -26,7 +36,7 @@ function App() {
 
 // Party DJ Toggle
 
-function partyDJ() {
+const partyDJ = () => {
   console.log("Party DJ")
   setColors(prevColor => ["purple", "purple", prevColor, prevColor]
   )
@@ -34,7 +44,7 @@ function partyDJ() {
 
 // Professional DJ Toggle bottom left blue
 
-function bottomLeftBlue() {
+const bottomLeftBlue = () => {
   console.log("Bottom Left Blue")
   setColors(prevColor => [prevColor, prevColor, "blue", prevColor]
   )
@@ -42,26 +52,24 @@ function bottomLeftBlue() {
 
 // Professional DJ Toggle bottom right blue
 
-function bottomRightBlue() {
+const bottomRightBlue = () => {
   console.log("Bottom Right Blue")
   setColors(prevColor => [prevColor, prevColor, prevColor, "blue"]
   )
 }
 
-function bigTimeDJ() {
+// Big Time DJ random colors
+
+const bigTimeDJ = () => {
   console.log("Big Time DJ")
   setColors(prevColor => ["yellow", "orange", "green", "pink"]
   )
 }
 
-
   return (
     <section className="main-container">
       <div className='boxes-container'>
-          <Box className="box box-1" color={colors[0]}/>
-          <Box className="box box-2" color={colors[1]}/>
-          <Box className="box box-3" color={colors[2]}/>
-          <Box className="box box-4" color={colors[3]}/>
+          {colorElements}
       </div>
       <div className='buttons-container'>
           <Button text="Small Time DJ" onClick={smallTimeDJ}/>
