@@ -20,14 +20,14 @@ html, body {
 .boxes-container {
   height: 250px;
   display: grid;
-  grid-template-columns: 100px 100px;
-  grid-template-rows: 100px;
+  grid-template-columns: 150px 150px;
+  grid-template-rows: 150px;
   gap: 5px;
 }
 
 .box {
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
   border: 2px solid black;
   border-radius: 10px;
 }
@@ -37,6 +37,7 @@ html, body {
   gap: 5px;
   grid-template-columns: 150px 150px;
   align-items: center;
+  margin-top: 100px;
 }
 
 .buttons {
