@@ -5,7 +5,7 @@ export default function Navbar () {
         <header>
             <nav>
                 <div className="nav-brand">
-                    <i class="fa-solid fa-paw"></i>
+                    <i className="fa-solid fa-paw"></i>
                     <a href="#" className="brand-name">Pet's</a>
                 </div>
                 <ul className="nav-list">

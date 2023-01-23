@@ -1,42 +1,67 @@
-* {
-    margin: 0;
-    padding: 0;
+/* Heading styles */
+h1 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Container styles */
 .container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
-}
-
-.numbers-container {
-    margin: 2rem 0 2rem 0;
-    display: flex;
     justify-content: center;
-    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, #fddb92, #d1fdff);
+    text-align: center;
 }
 
-.number {
-    margin: 0 10px;
-    color: white;
-    font-size: 2rem;
-    background-color: red;
-    padding: 20px;
-    border: 1px solid black;
+/* Numbers container styles */
+.numbers-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+/* Dice Box styles */
+.dice-box {
+    width: 120px;
+    height: 120px;
+    background: #fff;
     border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px;
 }
 
+/* Button styles */
 .button {
-     padding: 1rem 2rem;
-     font-size: 2rem;
-     background-color: black;
-     color: white;
-     border: 1px solid red;
-     border-radius: 10px;
+    background: linear-gradient(to right, #fddb92, #d1fdff);
+    color: #333;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    margin: 10px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
 }
+
+/* Button hover styles */
+.button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to left, #fddb92, #d1fdff);
+}
+

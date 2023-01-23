@@ -3,10 +3,11 @@ import Pet from "./Pet"
 
 export default function Friend(props) {
 
-    const pets = props.friend.pets.map(pet => {
+    const pets = props.friend.pets.map((pet, index) => {
         return (
             <Pet 
-                pet = {pet}
+                key={index}
+                pet={pet}
             />
         )
     })

@@ -3,63 +3,47 @@ import Box from './components/Box'
 import Button from './components/Button'
 
 function App() {
-
+  // create a state variable named `colors` with an initial value of an array of four "white" strings
   const [colors, setColors] = React.useState(["white", "white", "white", "white"])
 
+  // create an array of Box components with the color prop set to the corresponding color from the `colors` state variable
   const colorElements = colors.map((color, index) => {
     return (
       <Box
         key={index}
         color={color}
-        className="box"
         />
     )
   })
 
-
-  // Small Time DJ Toggle
+  // function that changes the first square to black, or white if it's already black
   const smallTimeDJ = () => {
     console.log("Small Time DJ")
-    setColors( (prevColors) => {
-        const newColors = colors.map(color => {
-             if (color === "white"){
-                return "black"
-            } else if (color === "black"){
-                 return "white"
-            } else {
-                return "white"
-            }
-        })
-        return newColors
-    })
-}
+    setColors(prevColor => prevColor[0] === 'white' ? ['black', 'black', 'black', 'black'] : ['white', 'white', 'white', 'white'])
+  }
 
-// Party DJ Toggle
-
+  // function that changes the top two squares to purple
 const partyDJ = () => {
   console.log("Party DJ")
   setColors(prevColor => ["purple", "purple", prevColor, prevColor]
   )
 }
 
-// Professional DJ Toggle bottom left blue
-
+// This function will change the color of the bottom left square to blue by
 const bottomLeftBlue = () => {
   console.log("Bottom Left Blue")
   setColors(prevColor => [prevColor, prevColor, "blue", prevColor]
   )
 }
 
-// Professional DJ Toggle bottom right blue
-
+// This function will change the color of the bottom right square to blue
 const bottomRightBlue = () => {
   console.log("Bottom Right Blue")
   setColors(prevColor => [prevColor, prevColor, prevColor, "blue"]
   )
 }
 
-// Big Time DJ random colors
-
+// This function will change all the squares to yellow, orange, green and pink
 const bigTimeDJ = () => {
   console.log("Big Time DJ")
   setColors(prevColor => ["yellow", "orange", "green", "pink"]
@@ -67,18 +51,18 @@ const bigTimeDJ = () => {
 }
 
   return (
-    <section className="main-container">
-      <div className='boxes-container'>
+    <div className='dj-color-board'>
+      <div className='grid'>
           {colorElements}
       </div>
-      <div className='buttons-container'>
+      <div className='buttons'>
           <Button text="Small Time DJ" onClick={smallTimeDJ}/>
           <Button text="Party DJ" onClick={partyDJ}/>
           <Button text="Professional DJ/BL" onClick={bottomLeftBlue}/>
           <Button text="Professional DJ/BR" onClick={bottomRightBlue}/>
           <Button text="Big Time DJ" onClick={bigTimeDJ}/>
       </div>
-    </section>
+      </div>
   )
 }
 

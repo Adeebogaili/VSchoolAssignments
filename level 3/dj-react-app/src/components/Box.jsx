@@ -8,7 +8,7 @@ export default function Box(props) {
     return (
             <div 
                 style={styles}
-                className={props.className}
+                className="square"
                 >
             </div>
     )
