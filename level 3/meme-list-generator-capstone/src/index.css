@@ -1,21 +1,32 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
     font-family: "Karla", sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #2C2F34;
 }
 
-.header {
+
+nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height: 65px;
-    background: #121211;
-    padding: 20px;
+    justify-content: space-between;
+    background-color: #FDB813;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 80%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 80%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    padding: 30px 25px;
+    height: 70px;
+    border-bottom: 1px solid #121211;
+    z-index: 1;
+    color: #121211;
+}
+
+nav.dark {
+    background-color: #121211;
+    color: #FDB813;
 }
 
 .brand-name {
@@ -27,34 +38,98 @@ html, body {
 .fa-brands {
     margin-left: 15px;
     font-size: 3rem;
-    color: #faed26;
 }
-.header-title {
+.nav-title {
     font-size: 1.3rem;
     margin-right: auto;
     font-style: italic;
-    color: #faed26;
 }
 
-.header-project {
-    font-size: 0.75rem;
-    font-weight: 500;
-    margin-right: 15px;
+.toggler {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.toggler p {
+    font-size: 0.625rem;
+    font-weight: 600;
+}
+
+.toggler--slider {
+    width: 25px;
+    height: 13px;
+    background-color: #2B283A;
+    border-radius: 2rem;
+    margin-inline: 7px;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid black;
+    box-sizing: content-box;
+}
+
+nav.dark .toggler--slider {
+    border-color: white;
+    background-color: #F5F5F5;
+}
+
+.toggler--slider--circle {
+    height: 13px;
+    width: 13px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+nav.dark .toggler--slider--circle {
+    background-color: black;
+}
+
+.toggler--light {
+    color: #2B283A;
+}
+
+nav.dark .toggler--light {
+    color: #918E9B;
+}
+
+.toggler--dark {
+    color: #D5D4D8;
+}
+
+nav.dark .toggler-dark {
+    color: #FFFFFF;
+}
+
+nav.dark .toggler--slider {
+    justify-content: flex-end;
 }
 
 main {
-    padding: 36px;
+    color: #2C2F34;
+    background-color: #FFFBDC;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 80%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 80%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+}
+
+main.dark {
+    background-color: #121211;
+    
+    color: #FFFBDC ;
 }
 
 .hero-title {
-    color: #faed26;
+    color: #FDB813;
     font-style: italic;
 }
 
 .hero-description {
     width: 550px;
-    margin-bottom: 3rem;
-    color: #ddddd1;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
     font-style: italic;
 }
 
@@ -66,11 +141,19 @@ main {
     margin-bottom: 17px;
 }
 
-.form-input {
+.modal-form {
+    display: flex;
+    flex-direction: column;
+}
+.form-input, .modal-form input {
     font-family: "Karla", sans-serif;
     border-radius: 5px;
-    border: 1px solid #faed26;
+    border: 1px solid #FDB813;
     text-indent: 5px;
+}
+
+.modal-form input {
+    margin: 10px;
 }
 
 .form-btn, .submit-btn {
@@ -82,9 +165,9 @@ main {
     font-weight: 700;
     font-family: "Karla", sans-serif;
     border-radius: 5px;
-    border: 2px solid #faed26;
+    border: 2px solid #FDB813;
     background: -webkit-linear-gradient(top,#2C2F34 0,#121211 99%);
-    color: #ddddd1;
+    color: #FDB813;
     cursor: pointer;
     text-align: center;
     transition: all .3s ease-in-out;
@@ -92,12 +175,10 @@ main {
 
 .form-btn:hover, .submit-btn:hover {
     color: #121211;
-    background: #faed26;
+    background: #FDB813;
     font-size: 1.2rem;
-}
+    border: 2px solid #121211;
 
-.fa-solid {
-    margin-left: 10px;
 }
 
 .meme-wrapper {
@@ -138,12 +219,12 @@ main {
 }
 
 .bottom-text {
-    bottom: 50px;
+    bottom: 70px;
 }
 
 .image {
-    max-width: 500px;
-    height: 500px;
+    max-width: 600px;
+    height: 400px;
     background-size: cover;
     box-shadow: rgba(0, 0, 0, 0.56) 0px 2px 4px 0px inset;
     border-top-left-radius: 5px;
@@ -182,30 +263,77 @@ main {
     border-bottom-right-radius: 15px;
 }
 
-.btn {
+.button {
     background-color: transparent;
-    border: 0;
+    margin: 0 5px;
+    border-radius: 50%;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.2rem;
     height: 1.25rem;
-    min-height: 44px;
-    min-width: 44px;
+    min-height: 40px;
+    min-width: 40px;
     transition: all .3s ease-in-out;
     width: 1.25rem;
+    color: white;
 }
 
 .delete-btn {
-    color: rgba(233, 27, 27, 0.638);
+    border: 1px solid #C82647;
+    color: #C82647;
+}
+
+.delete-btn:hover {
+    background-color: #C82647;
+    color: #121211;
+    rotate: 25deg;
 }
 
 .edit-btn {
-    color: lime;
+    border: 1px solid #FDB813;
+    color: #FDB813;
 }
 
-.edit-btn:hover, .delete-btn:hover {
-    scale: 1.5;
+.edit-btn:hover {
+    background-color: #FDB813;
+    color: #121211;
 }
 
 .btn:hover {
     cursor: pointer;
 }
+
+.exit-btn, .save-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    transition: all .3s ease-in-out;
+}
+
+.save-btn:hover {
+    text-decoration: underline;
+    color: #8CC63F;
+}
+
+.exit-btn:hover {
+    text-decoration: underline;
+    color: #121211;
+}
+
+
+footer {
+    text-align: center;
+    width: 100%;
+    height: 2.5rem;
+    padding-top: 11px;
+    background-color: #FDB813;
+  }
+
+  footer.dark {
+    background-color: #121211;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 80%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 80%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    color:#FDB813;
+  }
