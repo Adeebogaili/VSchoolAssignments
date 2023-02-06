@@ -1,0 +1,259 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+}
+
+input {
+    border-radius: 5px;
+    padding: 3px;
+}
+
+div.container {
+    max-width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+/* Nav */
+
+nav {
+    align-items: center;
+    background-image: url('https://www.activewild.com/wp-content/uploads/2016/12/active-wild-background-dk-green-scales.png');
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    color: #F9F8F7;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    height: 80px;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+}
+
+nav.Dark-theme{
+    background-image: url(https://i.pinimg.com/originals/f9/b5/98/f9b598b02c9babbefb4c729bb40a08d8.jpg);
+}
+
+nav:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+nav span {
+    color: yellow;
+}
+
+nav i {
+    font-size: 1.7rem;
+    margin-right: 5px;
+}
+
+nav .brand-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+nav h3 {
+    rotate: -11deg;
+    font-style: italic;
+}
+
+.brand-name-2 {
+    margin-left: -6px;
+}
+
+.theme-toggle button {
+    border: none;
+    background: transparent;
+    padding: .3rem 1rem;
+    border-radius: 15px;
+    color: #F9F8F7;
+
+    font-size: 1rem;
+}
+.theme-toggle button:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Main */
+
+main {
+    color: rgba(52,53,65);
+    position: relative;
+    background-color: #F9F8F7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+
+.hero-section {
+    text-align: center;
+}
+
+.hero-section h1 {
+    color: #8CAE4B;
+    font-size: 4rem;
+    margin-top: rem;
+}
+
+.hero-section h3 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.animals-wrapper {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.animal-details {
+    position: relative;
+    margin: 1rem;
+    width: 325px;
+    height: 690px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+.animal-info {
+    height: 590px;
+    border-bottom: 1px solid #14141560;
+}
+
+.animal-img {
+    max-width: 325px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+.animal-title {
+    margin: 1rem;
+    color: #8CAE4B;
+}
+
+.animal-description {
+    margin: 1rem;
+}
+
+.interaction {
+    display: flex;
+    justify-content: space-around;
+}
+
+.likes-count {
+    margin: .5rem 1rem;
+    display: flex;
+    align-items: baseline;
+    border-bottom: 1px solid #14141560;
+}
+
+.likes-count .fa-thumbs-up {
+    color: #F9F8F7;
+    padding: 5px;
+    background-color: #026EE1;
+    border-radius: 50%;
+    margin-right: 7px;
+}
+
+.interaction .like,
+.interaction .comment {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    height: 35px;
+    padding: 5px ;
+    width: 110px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.interaction .like:hover,
+.interaction .comment:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.interaction .like i,
+.interaction .comment i {
+    margin-right: 7px;
+}
+
+.edit-form input, .input-form input {
+    margin-right: 1rem;
+    padding: .5rem;
+    margin: .5rem;
+    border: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.edit-form input {
+    width: 100%;
+    margin-left: 0;
+}
+
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: .5rem;
+    border: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 5px;
+}
+
+.submit-btn {
+    transition: all 0.3s ease-in-out;
+    margin: 1rem;
+    width: 45px;
+    height: 45px;
+    color: #8CAE4B;
+    border-radius: 50%;
+    padding: 9px;
+    margin-left: 5px;
+    border: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.submit-btn:hover {
+    color: #F9F8F7;
+    background-color: #8CAE4B;
+}
+
+main.Dark-theme {
+    color: #A7A7AF;
+    background-color: #202123;
+}
+
+.main-wrapper {
+    width: 90%;
+    margin: 2rem;
+}
+
+/* Footer */
+
+footer {
+    font-size: .9rem;
+    flex-wrap: wrap;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url('https://www.activewild.com/wp-content/uploads/2016/12/active-wild-background-dk-green-scales.png');
+}
+
+footer.Dark-theme {
+    background-image: url(https://i.pinimg.com/originals/f9/b5/98/f9b598b02c9babbefb4c729bb40a08d8.jpg);
+    color: #A7A7AF;
+}
+
+footer p {
+    margin: 0 1rem;
+}
+
+

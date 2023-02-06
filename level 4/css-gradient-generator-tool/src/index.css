@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #f5f5f5;
+}
+
+.main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+}
+
+.left-side, .right-side {
+    max-width: 300px;
+}
+
+.right-side {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 1rem 1rem 8rem 1rem;
+}
+
+.display {
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+}
+
+.rgbaValues {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 1rem 0;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+}
+
+.options {
+    margin-bottom: 1rem;
+}
+
+.color-wrapper {
+    margin: 1rem 0;
+    max-width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label, p {
+    margin-right: 2.5rem;
+}
+
+input[type="text"] {
+    width: 75px;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.degree {
+    width: 40px;
+    padding: 5px;
+    border-radius: 15px;
+    margin-left: 5px;
+    background-color: #f5f5f5;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+}

@@ -1,0 +1,57 @@
+.trending-movies {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+.movie-item {
+    position: relative;
+}
+.movie-item img {
+    border-radius: 6px;
+    width: 200px;
+    height: 300px;
+}
+
+.movie-item h3 {
+    position: absolute;
+    font-size: 13px;
+    line-height: 1.3em;
+    font-weight: 400;
+    margin: 0;
+    right: 0;
+    bottom: 10px;
+    left: 0;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* top-rated-movies */
+
+.top-rated-movies {
+    width: 90%;
+}
+
+.movies-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.top-rated-movies .page-title {
+    font-size: 20px!important;
+    line-height: 28px;
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+    border-radius: 3px;
+    color: #00acc1;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-weight: 500;
+}
