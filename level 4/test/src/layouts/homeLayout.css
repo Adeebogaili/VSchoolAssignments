@@ -1,0 +1,155 @@
+/* carousel */
+
+.poster-image{
+    height: 700px;
+}
+
+.posterimage > img {
+    margin: auto;
+    display: block;
+    width: 100%;
+}
+
+.posterImage-overlay {
+    position: absolute;
+    padding: 5rem;
+    bottom: 0px;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-start;
+    background-image: linear-gradient(rgb(0,0,0,0), rgb(0,0,0,1));
+    opacity: 1;
+    transition: opacity .3s;
+}   
+
+.posterImage-overlay:hover {
+    opacity: 1;
+}
+
+.posterImage-title {
+    font-weight: 900;
+    font-size: 3rem;
+    margin-bottom: 0.4rem;
+    text-align: left;
+}
+
+.posterImage-runtime {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.posterImage-rating {
+    margin-left: 2rem;
+}
+
+.posterImage-rating .fa-star {
+    margin-left: 10px;
+}
+
+.posterImage-description {
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    display: flex;
+    text-align: left;
+    width: 50%;
+}
+
+/* trending header */
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.main-container p {
+    color: #8e95a5;
+    margin: 1rem 0;
+}
+
+.main-container .main-title {
+    font-size: 20px!important;
+    line-height: 28px;
+    height: 28px;
+    color: #00acc1;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.main-header, .main-header nav ul {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.main-header nav a {
+    margin-left: 10px;
+    font-size: 13px;
+    color: #8e95a5;
+}
+
+.main-header nav i {
+    padding: 5px;
+    color: #8e95a5;
+    font-size: 13px;
+}
+
+.main-header a:hover, .main-header i:hover {
+    color: white; 
+}
+
+@media only screen and (max-width: 620px) {
+    .poster-image {
+        height: 550px;
+    }
+    .posterImage-description {
+        font-size: .9rem;
+        width: 100%;
+    }
+
+    .posterImage-title {
+        font-size: 2rem;
+    }
+
+    .posterImage-runtime, 
+    .posterImage-rating {
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+
+    .poster-image {
+        height: 500px;
+    }
+    .posterImage-description {
+        font-size: .7rem;
+    }
+
+    .posterImage-title {
+        font-size: 1.5rem;
+    }
+
+    .posterImage-runtime, 
+    .posterImage-rating {
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

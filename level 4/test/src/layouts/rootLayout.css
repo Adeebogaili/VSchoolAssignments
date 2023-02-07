@@ -67,7 +67,7 @@ header button {
     display: none;
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 620px) {
     header nav .flexSB {
         display: none;
     }

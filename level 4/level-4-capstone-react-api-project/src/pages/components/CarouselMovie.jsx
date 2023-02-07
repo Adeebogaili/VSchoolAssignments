@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Carousel = ({movie, id, title,backDrop, releaseDate, averageVote, description}) => {
+const CarouselMovie = ({movie, id, title,backDrop, releaseDate, averageVote, description}) => {
   return (
-    <Link style={{ textDecoration: "none", color: "white" }} to={`/movie/${id}`}>
+    <Link to={`/moviedetails/${id}`} style={{ textDecoration: "none", color: "white" }}>
       <div className='poster-image'>
         <img src={`https://image.tmdb.org/t/p/original${movie && backDrop}`} />
       </div>
@@ -22,4 +22,4 @@ const Carousel = ({movie, id, title,backDrop, releaseDate, averageVote, descript
   )
 }
 
-export default Carousel
+export default CarouselMovie

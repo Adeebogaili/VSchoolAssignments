@@ -1,0 +1,98 @@
+.movie-container {
+    font-family: poppins;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.movie-wrapper {
+    width: 60%;
+}
+
+.movie-backdrop {
+    max-height: 675px;
+    max-width: 100%;
+}
+
+.left-side {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.movie-poster {
+    max-height: 240px;
+    max-width: 160px;    
+    border-radius: 5px;
+}
+
+.movie-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+}
+
+.movie-title {
+    color: #00acc1;
+    margin-bottom: 1rem;
+}
+
+.trailer-wrapper {
+    display: flex;
+}
+
+.trailer-btn {
+    font-size: 13px;
+    padding: 3px 8px;
+    cursor: pointer;
+    background: #3598db;
+    border: none;
+    border-radius: 3px;
+    margin-right: 10px;
+    margin-bottom: 1rem;
+}
+
+.raiting {
+    font-size: 13px;
+    color: #ffa600!important ;
+    font-weight: 600;
+}
+
+.movie-description {
+    margin-bottom: 15px;
+    line-height: 1.4em;
+    color: #8e95a5;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.release {
+    color: #8e95a5;
+    line-height: 1.3rem;
+    font-size: 13px;
+}
+
+.release span {
+    color: #00acc1;
+    font-size: 11px;
+}
+
+
+@media screen and (min-width: 1200px) {
+    .movie-backdrop {
+      max-width: 1200px;
+    }
+  }
+
+@media screen and (max-width: 1200px) {
+    .movie-wrapper{
+        width: 90%;
+}
+}
+
+
+@media screen and (max-width: 1000px) {
+    
+    img.movie-poster {
+        display: none;
+    }
+}

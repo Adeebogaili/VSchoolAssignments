@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import "./homeTrendingMovies.css"
 
-const HomeTrendingMovies = ({ movie, id, title, poster }) => {
+const HomeTrendingMovies = ({ movie, id, title, poster, releaseDate, averageVote, description }) => {
   return (
     <Link to={`/moviedetails/${id}`} style={{ textDecoration: "none", color: "white" }}>
 
