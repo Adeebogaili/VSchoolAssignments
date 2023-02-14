@@ -39,6 +39,7 @@ const Bounty = ({
             _id={_id}
             btnText="Submit Edit"
             submit={editBounty}
+            setEditToggle={setEditToggle}
           />
           <button onClick={() => setEditToggle((preveToggle) => !preveToggle)}>
             Close

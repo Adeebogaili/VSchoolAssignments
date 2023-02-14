@@ -12,14 +12,19 @@ const bounties = [
     
     // Get all Bounties
     bountyRouter.get("/", (req, res) => {
-        res.send(bounties)
+        res.status(200).send(bounties)
     })
     
     // Get one Bounty
-    bountyRouter.get("/:bountyId", (req, res) => {
+    bountyRouter.get("/:bountyId", (req, res, next) => {
         const bountyId = req.params.bountyId
         const foundBounty = bounties.find(bounty => bounty._id === bountyId)
-        res.send(foundBounty)
+        if(!foundBounty){
+            const error = new Error(`The bounty with ID: ${bountyId} was not found.`)
+            res.status(500)
+            return next(error)
+        }
+        res.status(200).send(foundBounty)
     })
     
     // Post Bounty
@@ -27,11 +32,11 @@ const bounties = [
         const newBounty = req.body
         newBounty._id = uuidv4()
         bounties.push(newBounty)
-        res.send(newBounty)
+        res.status(201).send(newBounty)
     })
     
     // Delete Bounty
-    bountyRouter.delete("/:bountyId", (req, res) => {
+    bountyRouter.delete("/:bountyId", (req, res, next) => {
         const bountyId = req.params.bountyId
         const bountyIndex = bounties.findIndex(bounty => bounty._id === bountyId)
         bounties.splice(bountyIndex, 1)
@@ -43,7 +48,7 @@ const bounties = [
         const bountyId = req.params.bountyId
         const bountyIndex = bounties.findIndex(bounty => bounty._id === bountyId)
         const updatedBounty = Object.assign(bounties[bountyIndex], req.body)
-        res.send(updatedBounty)
+        res.status(201).send(updatedBounty)
     })
 
     module.exports = bountyRouter
