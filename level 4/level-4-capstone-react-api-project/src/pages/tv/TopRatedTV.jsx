@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import "./topRatedTV.css"
 
-const TopRatedTV = ({ tv, id, title, poster, releaseDate, averageVote, description }) => {
+const TopRatedTV = ({ tv, id, title, poster}) => {
     return (
         <Link to={`/tvdetails/${id}`} style={{ textDecoration: "none", color: "white" }}>
 

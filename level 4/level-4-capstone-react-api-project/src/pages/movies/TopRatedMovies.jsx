@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import "./topRatedMovies.css"
 
 
-const TopRatedMovies = ({ movie, id, title, poster, releaseDate, averageVote, description }) => {
+const TopRatedMovies = ({ movie, id, title, poster}) => {
     return (
         <Link to={`/moviedetails/${id}`} style={{ textDecoration: "none", color: "white" }}>
 

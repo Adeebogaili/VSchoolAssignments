@@ -7,7 +7,6 @@ import "./movieDetails.css"
 const MovieDetails = () => {
 
     const [movieDetails, setMovieDetails] = useState({})
-
     const { id } = useParams()
 
     useEffect(() => {
@@ -24,6 +23,7 @@ const MovieDetails = () => {
                 setMovieDetails(res.data)
             })
     }
+    console.log(movieDetails)
 
     return (
         <div className="movie-container">

@@ -91,7 +91,6 @@ function listData(dataBase) {
                 .then(res => console.log(res))
                 .catch(err => (console.log(err)))
             container.removeChild(div)
-
         })
 
         itemTitle.disabled = true

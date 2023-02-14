@@ -23,7 +23,6 @@ import TVShowDetails from "./pages/tvShowDetails/TVShowDetails"
 import RootLayout from "./layouts/RootLayout"
 import HomeLayout from "./layouts/HomeLayout"
 
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>

@@ -7,6 +7,8 @@ const TVShows = () => {
 
   const [topRatedTV, setTopRatedTV] = useState([])
 
+  console.log(topRatedTV)
+
   useEffect(() => {
     getData()
   }, [])

@@ -78,7 +78,6 @@
     /********** Main Container (min-width: 500px) **********/
 
     .container {
-        display: grid;
 
         /* You can re-arrange the boxes if you like. */
         grid-template-areas: 
@@ -88,12 +87,12 @@
             "box-4"
             "box-5"
             "box-6"
+            "box-7"
             "box-8"
             "box-9"
-            "box-7"
             "box-10"
             ;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr ;
         grid-template-rows: 1fr;
     }
 }
