@@ -65,7 +65,7 @@ movieRouter.delete("/:movieId", (req, res, next) => {
 })
 
 // Update one 
-movieRouter.put("/:movieId", (req, res) => {
+movieRouter.put("/:movieId", (req, res, next) => {
     Movie.findOneAndUpdate(
         {_id: req.params.movieId}, // find this one to update
         (req.body), // update the object

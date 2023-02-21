@@ -2,8 +2,7 @@ const express = require("express")
 const app = express()
 const morgan = (require("morgan"))
 const mongoose = require("mongoose")
-
-
+require('dotenv').config()
 
 // Middleware (for every request) //
 app.use(express.json()) // Looks for a request body, and it turns it into "req.body"
@@ -11,7 +10,7 @@ app.use(morgan("dev"))
 
 // Connect to DB
 mongoose.set("strictQuery", false)
-mongoose.connect("mongodb://localhost:27017/moviesdb",
+mongoose.connect(process.env.MONGO_URL,
 () => console.log("Connected to MongoDB")
 )
 
@@ -19,7 +18,7 @@ mongoose.connect("mongodb://localhost:27017/moviesdb",
 app.use("/movies", require("./routes/movieRouter.js"))
 app.use("/tvshows", require("./routes/tvshowRouter.js"))
 
-// Error Handle //
+// Error Handling //
 app.use((err, req, res, next) => {
     console.log(err)
     return res.send({errMsg: err.message})

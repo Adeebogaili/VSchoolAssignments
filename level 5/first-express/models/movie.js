@@ -13,6 +13,8 @@ const movieSchema = new Schema({
         required: true
     },
     releaseYear: Number
+}, {
+    timestamps: true
 })
 
 module.exports = mongoose.model("Movie", movieSchema)
