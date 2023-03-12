@@ -3,7 +3,6 @@ import axios from "axios";
 import { useParams} from "react-router-dom";
 import "./movieDetails.css"
 
-
 const MovieDetails = () => {
 
     const [movieDetails, setMovieDetails] = useState({})
@@ -23,7 +22,6 @@ const MovieDetails = () => {
                 setMovieDetails(res.data)
             })
     }
-    console.log(movieDetails)
 
     return (
         <div className="movie-container">

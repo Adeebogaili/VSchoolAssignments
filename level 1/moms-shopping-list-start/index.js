@@ -37,7 +37,6 @@ function addNewItem() {
         editButton.addEventListener('click', function () {
             itemName.disabled = false
 
-
             itemName.style.backgroundColor = "#dddbdb";
             itemName.style.padding = "0.5rem 1rem";
             itemName.style.height = "35px";
