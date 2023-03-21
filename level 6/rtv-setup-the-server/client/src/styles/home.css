@@ -1,0 +1,128 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #E4E6E8;
+
+}
+.post, .issues-wrapper {
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    padding: 1rem;
+    max-width: 700px;
+    border-radius: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    background-color: white;
+    color: #C20017;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.profile-pic:hover, .name-time h3:hover {
+    cursor: pointer;
+}
+
+.issue-question {
+    color: #050505;
+}
+
+.issue-form {
+    position: relative;
+}
+
+.issue-form input, .popup-input {
+    background-color: #E4E6E8;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    border-radius: 25px;
+    margin: 5px 0 5px ;
+}
+
+.issue-form button {
+    top: 5px;
+    right: 1px;
+    position: absolute;
+    color: white;
+    background-color: #C20017;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+}
+
+.issue-form button:hover {
+    background-color: #C20017;
+}
+
+.issues-wrapper {
+    margin-top: 1rem;    
+}
+
+.issue-div {
+    position: relative;
+}
+
+#dropdown-basic {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+}
+
+.dropdown {
+    color: #C20017;
+}
+.user-profile {
+    display: flex;
+    padding: 1rem 0;
+    border-bottom: 1px solid#CED0D4;
+}
+
+.name-time, .issue-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.issue-title {
+    margin-top: 1rem;
+}
+
+.issue-img {
+    margin-top: 1rem;
+    border-radius: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    width: 100%;
+    height: auto;
+}
+
+/* Edit issue popup */
+.popup-textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: .5rem;
+    border: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 5px;
+    background-color: #E4E6E8;
+    margin-top: 1rem;
+
+}
+
+@media (max-width: 648px) {
+    .issue-form input {
+        width: 100%;
+    }
+
+}

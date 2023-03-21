@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import "../styles/home.css"
 
 const initInputs = {
   title: "",
@@ -6,8 +7,10 @@ const initInputs = {
   imgUrl: ""
 }
 
-export default function TodoForm(){
+export default function IssueForm(props){
+
   const [inputs, setInputs] = useState(initInputs)
+  const { addIssue } = props
 
   function handleChange(e){
     const {name, value} = e.target
@@ -19,12 +22,13 @@ export default function TodoForm(){
 
   function handleSubmit(e){
     e.preventDefault()
-    // add todo
+    addIssue(inputs)
+    setInputs(initInputs)
   }
 
   const { title, description, imgUrl } = inputs
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="issue-form" onSubmit={handleSubmit}>
       <input 
         type="text" 
         name="title" 
@@ -43,7 +47,7 @@ export default function TodoForm(){
         value={imgUrl} 
         onChange={handleChange} 
         placeholder="Image Url"/>
-      <button>Add Todo</button>
+      <button><i className="fa-solid fa-plus"></i></button>
     </form>
   )
 }

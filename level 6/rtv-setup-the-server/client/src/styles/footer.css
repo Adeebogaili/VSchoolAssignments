@@ -1,0 +1,11 @@
+footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #003366;
+    height: 80px;
+    padding: 0 40px
+}
+
+footer a {
+    color: white;
+}

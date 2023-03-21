@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
+const AutoIncrement = require('mongoose-sequence')(mongoose)
 const Schema = mongoose.Schema
 
-const todoSchema = new Schema({
+const issueSchema = new Schema(
+  {
   title: {
     type: String,
     required: true
@@ -17,11 +19,20 @@ const todoSchema = new Schema({
     type: String,
     required: true
   },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
     required: true
   }
-})
+},
+{
+  timestaps: true
+}
+)
 
-module.exports = mongoose.model("Todo", todoSchema)
+
+module.exports = mongoose.model("Issue", issueSchema)
