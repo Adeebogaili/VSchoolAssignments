@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import IssueForm from '../components/IssueForm'
 import IssueList from "../components/IssueList"
 import { UserContext } from '../context/UserProvider.jsx'
@@ -18,6 +18,8 @@ const Home = () => {
     addIssue
   } = useContext(IssuesContext)
 
+  
+
   const firstLetter = token ? username.charAt(0).toUpperCase() : '';
 
   return (
@@ -25,7 +27,7 @@ const Home = () => {
       <div className="post">
         <div className="profile-pic">{firstLetter}</div>
         <div className="post-wrapper">
-          <h3 className="issue-question">What's on your mind?</h3>
+          <h3 className="issue-question">Hi {username}! What's on your mind?</h3>
           <IssueForm addIssue={addIssue} />
         </div>
       </div>

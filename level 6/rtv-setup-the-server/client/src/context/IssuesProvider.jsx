@@ -15,11 +15,16 @@ userAxios.interceptors.request.use(config => {
 export default function IssuesProvider(props) {
 
     const initState = {
-        issues: [],
+        issues: []
     }
 
     const [issueState, setIssueState] = useState(initState)
 
+    const initPublic = {
+        publicIssues: []
+    }
+
+    const [publicIssues, setPublicIssues] = useState(initPublic)
 
     // Add user issue
     function addIssue(newIssue){
@@ -31,19 +36,32 @@ export default function IssuesProvider(props) {
                 }))
             })
             .catch(err => console.log(err))
-
     }
 
     // Get user issues
-    function getUserIssues(){
-        userAxios.get("/api/issue/user")
-        .then(res => {
+    const getUserIssues = async () => {
+        try {
+            const response = await userAxios.get("/api/issue/user");
             setIssueState(prevState => ({
                 ...prevState,
-                issues: res.data
+                issues: response.data
+            }));
+        } catch (err) {
+            console.log(err.response.data.errMsg);
+        }
+    };
+
+    // Get public issues
+    const getpublicIssues = async () => {
+        try {
+            const response = await userAxios.get("/api/issue")
+            setPublicIssues(prevState => ({
+                ...prevState,
+                publicIssues: response.data
             }))
-        })
-        .catch(err => console.log(err.response.data.errMsg))
+        } catch (err) {
+            console.log(err.resposne.errMsg)
+        }
     }
 
     // Delete user issue
@@ -70,25 +88,19 @@ export default function IssuesProvider(props) {
           .catch(err => console.log(err))
     }
     
-    
-      useEffect (() => {
-        getUserIssues()
-      }, [])
-      
-
     return (
         <IssuesContext.Provider
             value={{
                 ...issueState,
+                ...publicIssues,
                 addIssue,
                 deleteIssue,
                 editIssue,
-                getUserIssues
+                getUserIssues,
+                getpublicIssues
             }}
         >
             {props.children}
         </IssuesContext.Provider>
     )
 }
-
-

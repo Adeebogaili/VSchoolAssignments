@@ -5,7 +5,7 @@ const Issue = require('../models/Issue.js')
 // Get All Issues
 issueRouter.get("/", (req, res, next) => {
   Issue.find((err, issues) => {
-    if(err){
+    if (err) {
       res.status(500)
       return next(err)
     }
@@ -15,8 +15,10 @@ issueRouter.get("/", (req, res, next) => {
 
 // Get issues by user id
 issueRouter.get("/user", (req, res, next) => {
-  Issue.find({ user: req.auth._id }, (err, issues) => {
-    if(err){
+  Issue.find({
+    user: req.auth._id
+  }, (err, issues) => {
+    if (err) {
       res.status(500)
       return next(err)
     }
@@ -25,11 +27,11 @@ issueRouter.get("/user", (req, res, next) => {
 })
 
 // Add new Issue
-issueRouter.post("/", (req, res, next) => {  //issueId   .populate user for get spec comment -
+issueRouter.post("/", (req, res, next) => { //issueId   .populate user for get spec comment -
   req.body.user = req.auth._id
   const newIssue = new Issue(req.body)
   newIssue.save((err, savedIssue) => {
-    if(err){
+    if (err) {
       res.status(500)
       return next(err)
     }
@@ -39,10 +41,12 @@ issueRouter.post("/", (req, res, next) => {  //issueId   .populate user for get 
 
 // Delete Issue
 issueRouter.delete("/:issueId", (req, res, next) => {
-  Issue.findOneAndDelete(
-    { _id: req.params.issueId, user: req.auth._id },
+  Issue.findOneAndDelete({
+      _id: req.params.issueId,
+      user: req.auth._id
+    },
     (err, deletedIssue) => {
-      if(err){
+      if (err) {
         res.status(500)
         return next(err)
       }
@@ -53,12 +57,15 @@ issueRouter.delete("/:issueId", (req, res, next) => {
 
 // Update Issue
 issueRouter.put("/:issueId", (req, res, next) => {
-  Issue.findOneAndUpdate(
-    { _id: req.params.issueId, user: req.auth._id },
-    req.body,
-    { new: true },
+  Issue.findOneAndUpdate({
+      _id: req.params.issueId,
+      user: req.auth._id
+    },
+    req.body, {
+      new: true
+    },
     (err, updatedIssue) => {
-      if(err){
+      if (err) {
         res.status(500)
         return next(err)
       }

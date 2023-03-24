@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { CommentContext } from '../context/CommentProvider';
+import "../styles/commentForm.css"
 
 function CommentForm(props) {
 
@@ -18,7 +19,6 @@ function CommentForm(props) {
         ...prevInputs,
         [name]: value
       }))
-  
     }
 
     function handleSubmit(e){
@@ -31,15 +31,15 @@ function CommentForm(props) {
     
   return(
       <>
-      <form onSubmit={handleSubmit}>
-          <textarea
+      <form className="comment-form" onSubmit={handleSubmit}>
+          <input
           type='text'
           name='comment'
           value={comment}
           onChange={handleChange}
-          placeholder='Type Comment'
+          placeholder='Write a comment...'
           />
-          <button>Submit Comment</button>
+          <button className="comment-submit-btn"><i className="fa-regular fa-paper-plane"></i></button>
       </form>
       </>
   )

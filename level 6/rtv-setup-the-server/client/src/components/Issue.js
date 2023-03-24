@@ -1,17 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-import Modal from 'react-bootstrap/Modal';
-import CommentForm from "./commentForm";
-import "../styles/home.css";
+import Modal from "react-bootstrap/Modal";
+import "../styles/issue.css";
 
 // Contexts
 import { UserContext } from "../context/UserProvider";
 import { IssuesContext } from "../context/IssuesProvider";
-import { CommentContext } from "../context/CommentProvider";
 
 export default function Issue(props) {
-
-  const [comments, setComments] = useState([])
   const { title, description, imgUrl, _id, createdAt } = props;
 
   const {
@@ -19,36 +15,28 @@ export default function Issue(props) {
     user: { username },
   } = useContext(UserContext);
 
-  const { user } = useContext(UserContext)
+  const { editIssue, deleteIssue } = useContext(IssuesContext);
 
-  const {
-    editIssue,
-    deleteIssue
-  } = useContext(IssuesContext)
-  
-  const {
-    addComment
-  } = useContext(CommentContext)
   const [issue, setIssue] = useState({
     title,
     description,
-    imgUrl
-  })
+    imgUrl,
+  });
 
-  const [isEditing, setIsEditing] = useState(false)
+  const [isEditing, setIsEditing] = useState(false);
 
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
 
   const handleClose = () => {
-    setShow(false)
-    setIsEditing(!isEditing)
+    setShow(false);
+    setIsEditing(!isEditing);
   };
 
   function handleEdit() {
-    setIsEditing(!isEditing)
-    handleShow()
+    setIsEditing(!isEditing);
+    handleShow();
   }
 
   function handleDelete() {
@@ -56,10 +44,10 @@ export default function Issue(props) {
   }
 
   function handleSave() {
-    editIssue(_id, issue)
-    setIsEditing(false)
-    handleClose()
-}
+    editIssue(_id, issue);
+    setIsEditing(false);
+    handleClose();
+  }
 
   // Capitalize first letter
   const firstLetter = token ? username.charAt(0).toUpperCase() : "";
@@ -84,19 +72,17 @@ export default function Issue(props) {
     timeElapsedStr = `${days} day${days > 1 ? "s" : ""} ago`;
   }
 
-
   return (
-    <div className="issue">
-      <div className="user-profile">
+    <div className="issue-container">
+      <div>
+        <div className="user-info">
         <div className="profile-pic">{firstLetter}</div>
-        <div className="issue-wrapper">
-          <div className="name-time">
+        <div className="name-time">
+          <div>
             <h3>{username}</h3>
             <p>{timeElapsedStr}</p>
           </div>
-          <div className="issue-div">
-            <h3 className="issue-title">{title}</h3>
-            <p className="issue-des">{description}</p>
+          <div className="dropdown">
             <Dropdown drop="start">
               <Dropdown.Toggle
                 className="text-dark bg-transparent border-0"
@@ -109,50 +95,56 @@ export default function Issue(props) {
                 <Dropdown.Item onClick={handleDelete}>Delete</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
+          </div>
+        </div>
+        </div>
+        <div className="issue-wrapper">
+          <div className="issue-div">
+            <h3 className="issue-title">{title}</h3>
+            <p className="issue-des">{description}</p>
             <img className="issue-img" src={imgUrl} alt={title} width={300} />
           </div>
         </div>
       </div>
       <>
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Edit Issue</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <input
-        className="popup-input"
-                  value={issue.title}
-                  onChange={e => setIssue({ ...issue, title: e.target.value })}
-                  placeholder="title" />
-        <input
-                className="popup-input"
-
-                  value={issue.imgUrl}
-                  onChange={e => setIssue({ ...issue, imgUrl: e.target.value })}
-                  placeholder="ImgUrl" />
-        <textarea
-                className="popup-textarea"
-
-                  value={issue.description}
-                  rows="6"
-                  onChange={e => setIssue({ ...issue, description: e.target.value })}
-                  placeholder="Description" />
-        </Modal.Body>
-        <Modal.Footer>
-          <button onClick={handleClose}>
-            Close
-          </button>
-          <button onClick={handleSave}>Save</button>
-        </Modal.Footer>
-      </Modal>
-    </>
-    <h2>Add a Comment</h2>
-    <CommentForm issueId={_id}/>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Edit Issue</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <input
+              className="popup-input"
+              value={issue.title}
+              onChange={(e) => setIssue({ ...issue, title: e.target.value })}
+              placeholder="title"
+            />
+            <input
+              className="popup-input"
+              value={issue.imgUrl}
+              onChange={(e) => setIssue({ ...issue, imgUrl: e.target.value })}
+              placeholder="ImgUrl"
+            />
+            <textarea
+              className="popup-textarea"
+              value={issue.description}
+              rows="6"
+              onChange={(e) =>
+                setIssue({ ...issue, description: e.target.value })
+              }
+              placeholder="Description"
+            />
+          </Modal.Body>
+          <Modal.Footer>
+            <button onClick={handleClose}>Close</button>
+            <button onClick={handleSave}>Save</button>
+          </Modal.Footer>
+        </Modal>
+      </>
     </div>
   );
 }

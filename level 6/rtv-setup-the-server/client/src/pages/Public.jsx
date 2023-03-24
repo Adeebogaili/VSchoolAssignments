@@ -1,19 +1,26 @@
 import React, { useContext} from 'react'
+import AllIssuesList from '../components/AllIssuesList'
 import { IssuesContext } from '../context/IssuesProvider'
-import IssueList from "../components/IssueList"
+import { UserContext} from '../context/UserProvider'
+import "../styles/public.css"
 
 
 export default function Public(){
 
-  const {
-    issues,
-    addIssue
-  } = useContext(IssuesContext)
+  const { 
+    user: {
+       username
+     },
+    token,
+  } = useContext(UserContext)
 
+  const {
+    publicIssues,
+  } = useContext(IssuesContext)
 
   return (
     <div className="public">
-      {/* <IssueList /> */}
+      <AllIssuesList publicIssues={publicIssues}/>
     </div>
   )
 }

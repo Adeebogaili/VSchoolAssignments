@@ -12,16 +12,16 @@ userAxios.interceptors.request.use(config => {
 });
 
 export default function CommentProvider(props) {
+
     const initState = {
         comments: [],
         errMsg: ''
     };
 
     const [commentState, setCommentState] = useState(initState);
-
+    
     // Add comment to an issue post
     function addComment(issueId, newComment) {
-        console.log(newComment)
         userAxios.post(`/api/comment/${issueId}`, newComment)
             .then(res => 
                 {
@@ -32,8 +32,20 @@ export default function CommentProvider(props) {
             })
             .catch(err => console.log(err));
     }
-    
 
+    // Get all comments for an issue post
+    const getComments = async (issueId) => {
+        try {
+           const response = await userAxios.get(`/api/comment/${issueId}`)
+            setCommentState(prevState => ({
+                    ...prevState,
+                    comments: response.data
+                }))
+        } catch (err) {
+            console.log(err.response.data.errMsg);
+        }
+    }
+    
     // Edit a comment on an issue post
     function editComment(issueId, commentId, updatedComment) {
         userAxios.put(`/api/comment/${issueId}/${commentId}`, updatedComment)
@@ -48,23 +60,13 @@ export default function CommentProvider(props) {
 
     // Delete a comment on an issue post
     function deleteComment(issueId, commentId) {
+
+        console.log(issueId, commentId )
         userAxios.delete(`/api/comment/${issueId}/${commentId}`)
             .then(res => {
                 setCommentState(prevState => ({
                     ...prevState,
                     comments: prevState.comments.filter(comment => comment._id !== commentId)
-                }));
-            })
-            .catch(err => console.log(err));
-    }
-
-    // Get all comments for an issue post
-    function getComments(issueId) {
-        userAxios.get(`/api/comment/${issueId}`)
-            .then(res => {
-                setCommentState(prevState => ({
-                    ...prevState,
-                    comments: res.data
                 }));
             })
             .catch(err => console.log(err));
@@ -85,10 +87,6 @@ export default function CommentProvider(props) {
             errMsg
         }));
     }
-
-    useEffect(() => {
-        getComments();
-    }, []);
 
     return (
         <CommentContext.Provider

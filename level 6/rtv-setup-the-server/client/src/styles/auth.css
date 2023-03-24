@@ -1,6 +1,6 @@
 .auth-container {
     height: 100vh;
-    background-color: #004D99;
+    background-color: white;
     font-family: Helvetica Neue,Helvetica,Arial,Utkal,sans-serif;
     display: flex;
     justify-content: center;
@@ -13,13 +13,14 @@
 
 .auth-wrapper {
     background-color: transparent;
+    background-color: #112a42;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px, rgba(255, 255, 255, 0.8) 0px 0px 0px 1px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     border-radius: 8px;
-    width: 480px;
+    width: 400px;
     margin: 3rem;
     padding: 2rem 1rem;
     max-height: 500px;

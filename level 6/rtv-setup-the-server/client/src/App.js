@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import './styles/index.css'
 import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar.js";
 import Auth from "./components/Auth.js";

@@ -14,7 +14,7 @@ userAxios.interceptors.request.use(config => {
 
 export default function UserProvider(props) {
 
-    const { getUserIssues } = useContext(IssuesContext)
+    const { getUserIssues, getpublicIssues } = useContext(IssuesContext)
 
     const initState = {
         user: JSON.parse(localStorage.getItem("user")) || {},
@@ -48,7 +48,8 @@ export default function UserProvider(props) {
             const { user, token } = res.data
             localStorage.setItem("token", token) //save the token data and not lose it after browser refresh
             localStorage.setItem("user", JSON.stringify(user))
-            getUserIssues()
+            getUserIssues();
+            getpublicIssues();
             setUserState(prevUserState => ({
                 ...prevUserState,
                 user, 
@@ -96,26 +97,7 @@ function updateUser(updatedUser) {
             }))
         })
         .catch(err => console.log(err))
-}
-
-    // Add user issue
-    function addIssue(newIssue){
-        userAxios.post("/api/issue", newIssue)
-            .then(res => {
-                setUserState(prevUserState => ({
-                    ...prevUserState,
-                    issues: [...prevUserState.issues, res.data]
-                }))
-            })
-            .catch(err => console.log(err))
-
-    }
-
-      useEffect (() => {
-        getUserIssues()
-      }, [])
-      
-
+}    
     return (
         <UserContext.Provider
             value={{
@@ -123,7 +105,6 @@ function updateUser(updatedUser) {
                 signup,
                 login,
                 logout,
-                addIssue,
                 resetAuthErr,
                 updateUser,
             }}
