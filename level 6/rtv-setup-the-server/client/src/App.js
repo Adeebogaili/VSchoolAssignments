@@ -1,19 +1,19 @@
 import React, { useContext } from "react";
 import './styles/index.css'
 import { Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "./components/Navbar.js";
-import Auth from "./components/Auth.js";
-import Profile from "./pages/Profile.jsx";
-import Public from "./pages/Public.jsx";
-import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import Navbar from "./components/Navbar/Navbar.js";
+import Auth from "./components/Auth/Auth.js";
+import Profile from "./pages/profile/Profile.jsx";
+import Public from "./pages/public/Public.jsx";
+import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoute.jsx";
 import { UserContext } from "./context/UserProvider.jsx";
 
 
 // components
-import Footer from "./components/Footer.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
 // pages
-import Home from "./pages/Home.jsx";
+import Home from "./pages/home/Home.jsx";
 
 export default function App() {
   const { token, logout } = useContext(UserContext);

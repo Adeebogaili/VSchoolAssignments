@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+
+Schema = mongoose.Schema
 
 const issueSchema = new Schema(
   {
@@ -37,5 +38,10 @@ const issueSchema = new Schema(
     timestamps: true
   }
 )
+
+issueSchema.statics.incrementLikes = async function(issueId) {
+  const issue = await this.findByIdAndUpdate(issueId, { $inc: { likes: 1 } }, { new: true });
+  return issue.likes;
+};
 
 module.exports = mongoose.model("Issue", issueSchema);

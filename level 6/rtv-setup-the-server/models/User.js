@@ -1,20 +1,7 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
 
-// When a user likes an iussue or a comment
-const likeSchema = new mongoose.Schema({
-  post: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Issue'
-  },
-  comment: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Comment'
-  }
-});
-
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -39,12 +26,7 @@ const userSchema = new Schema({
     type: String,
     default: ''
   },
-  likes: [likeSchema],
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-    memberSince: {
+  memberSince: {
     type: Date,
     default: Date.now
   },

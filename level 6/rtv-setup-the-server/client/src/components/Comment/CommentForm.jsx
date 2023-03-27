@@ -1,17 +1,26 @@
 import React, { useState, useContext } from 'react';
-import { CommentContext } from '../context/CommentProvider';
-import "../styles/commentForm.css"
+import { CommentContext } from '../../context/CommentProvider';
+import { UserContext } from '../../context/UserProvider';
+import "./comment.css"
 
 function CommentForm(props) {
+
+  const {issueId} = props
 
   const initInputs = {
     comment: ""
   }
 
   const [inputs, setInputs] = useState(initInputs)
+
   const { addComment } = useContext(CommentContext)
 
-  const {issueId} = props
+  const { 
+    user: {
+       username
+     },
+    token,
+  } = useContext(UserContext)
 
   function handleChange(e){
       const {name, value} = e.target
@@ -28,9 +37,13 @@ function CommentForm(props) {
     }
 
     const { comment} = inputs
+
+    const firstLetter = username ? username.charAt(0).toUpperCase() : '';
+
     
   return(
-      <>
+      <div className="comment-form-wrapper">
+      <div className="profile-pic">{firstLetter}</div>
       <form className="comment-form" onSubmit={handleSubmit}>
           <input
           type='text'
@@ -41,7 +54,7 @@ function CommentForm(props) {
           />
           <button className="comment-submit-btn"><i className="fa-regular fa-paper-plane"></i></button>
       </form>
-      </>
+      </div>
   )
 }
 

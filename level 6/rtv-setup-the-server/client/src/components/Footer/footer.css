@@ -3,7 +3,8 @@ footer {
     justify-content: space-between;
     background-color: #003366;
     height: 80px;
-    padding: 0 40px
+    padding: 0 40px;
+    margin-bottom: 0;
 }
 
 footer a {

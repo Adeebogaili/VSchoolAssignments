@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "../styles/home.css"
+import "./issue.css"
 
 const initInputs = {
   title: "",

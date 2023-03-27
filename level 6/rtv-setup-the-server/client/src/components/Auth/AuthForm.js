@@ -1,5 +1,5 @@
 import React from 'react'
-import "../styles/auth.css"
+import "./auth.css"
 
 export default function AuthForm(props){
   const {
@@ -22,7 +22,7 @@ export default function AuthForm(props){
         onChange={handleChange} 
         placeholder="Username"/>
       <input 
-        type="text" 
+        type="password" 
         value={password} 
         name="password" 
         onChange={handleChange} 

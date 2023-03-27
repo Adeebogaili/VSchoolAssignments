@@ -54,7 +54,7 @@ export default function IssuesProvider(props) {
     // Get public issues
     const getpublicIssues = async () => {
         try {
-            const response = await userAxios.get("/api/issue")
+            const response = await userAxios.get("/api/issue/")
             setPublicIssues(prevState => ({
                 ...prevState,
                 publicIssues: response.data
@@ -88,6 +88,12 @@ export default function IssuesProvider(props) {
           .catch(err => console.log(err))
     }
     
+    // Call getUserIssues and getpublicIssues on mount
+    useEffect(() => {
+        getUserIssues();
+        getpublicIssues();
+    }, []);
+
     return (
         <IssuesContext.Provider
             value={{

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 export const CommentContext = React.createContext();
@@ -23,15 +23,15 @@ export default function CommentProvider(props) {
     // Add comment to an issue post
     function addComment(issueId, newComment) {
         userAxios.post(`/api/comment/${issueId}`, newComment)
-            .then(res => 
-                {
+        .then(res => 
+            {
                 setCommentState(prevState => ({
                     ...prevState,
                     comments: [...prevState.comments, res.data]
                 }));
             })
             .catch(err => console.log(err));
-    }
+        }
 
     // Get all comments for an issue post
     const getComments = async (issueId) => {
@@ -60,8 +60,6 @@ export default function CommentProvider(props) {
 
     // Delete a comment on an issue post
     function deleteComment(issueId, commentId) {
-
-        console.log(issueId, commentId )
         userAxios.delete(`/api/comment/${issueId}/${commentId}`)
             .then(res => {
                 setCommentState(prevState => ({
@@ -88,7 +86,7 @@ export default function CommentProvider(props) {
         }));
     }
 
-    return (
+   return (
         <CommentContext.Provider
             value={{
                 ...commentState,
@@ -97,7 +95,7 @@ export default function CommentProvider(props) {
                 deleteComment,
                 getComments,
                 resetCommentErr,
-                setCommentErr
+                setCommentErr,
             }}
         >
             {props.children}

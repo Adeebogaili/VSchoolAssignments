@@ -1,11 +1,11 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import Modal from "react-bootstrap/Modal";
-import "../styles/issue.css";
+import "./issue.css";
 
 // Contexts
-import { UserContext } from "../context/UserProvider";
-import { IssuesContext } from "../context/IssuesProvider";
+import { UserContext } from "../../context/UserProvider";
+import { IssuesContext } from "../../context/IssuesProvider";
 
 export default function Issue(props) {
   const { title, description, imgUrl, _id, createdAt } = props;
@@ -51,6 +51,8 @@ export default function Issue(props) {
 
   // Capitalize first letter
   const firstLetter = token ? username.charAt(0).toUpperCase() : "";
+  const usernameCased = username.charAt(0).toUpperCase() + username.slice(1).toLowerCase();
+
 
   // Calculate the time elapsed since the issue was posted
   const ONE_MINUTE = 60;
@@ -79,7 +81,7 @@ export default function Issue(props) {
         <div className="profile-pic">{firstLetter}</div>
         <div className="name-time">
           <div>
-            <h3>{username}</h3>
+            <h3>{usernameCased}</h3>
             <p>{timeElapsedStr}</p>
           </div>
           <div className="dropdown">

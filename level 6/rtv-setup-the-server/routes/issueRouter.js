@@ -1,77 +1,64 @@
-const express = require("express")
-const issueRouter = express.Router()
-const Issue = require('../models/Issue.js')
+const express = require("express");
+const issueRouter = express.Router();
+const Issue = require('../models/Issue.js');
+const User = require('../models/User.js');
 
 // Get All Issues
-issueRouter.get("/", (req, res, next) => {
-  Issue.find((err, issues) => {
-    if (err) {
-      res.status(500)
-      return next(err)
-    }
-    return res.status(200).send(issues)
-  })
-})
+issueRouter.get("/", async (req, res, next) => {
+  try {
+    const issues = await Issue.find().populate('user', 'username profileImage');
+    res.status(200).send(issues);
+  } catch (err) {
+    res.status(500);
+    return next(err);
+  }
+});
 
 // Get issues by user id
-issueRouter.get("/user", (req, res, next) => {
-  Issue.find({
-    user: req.auth._id
-  }, (err, issues) => {
-    if (err) {
-      res.status(500)
-      return next(err)
-    }
-    return res.status(200).send(issues)
-  })
-})
+issueRouter.get("/user", async (req, res, next) => {
+  try {
+    const issues = await Issue.find({ user: req.auth._id }).populate('user', 'username profileImage');
+    res.status(200).send(issues);
+  } catch (err) {
+    res.status(500);
+    return next(err);
+  }
+});
 
 // Add new Issue
-issueRouter.post("/", (req, res, next) => { //issueId   .populate user for get spec comment -
-  req.body.user = req.auth._id
-  const newIssue = new Issue(req.body)
-  newIssue.save((err, savedIssue) => {
-    if (err) {
-      res.status(500)
-      return next(err)
-    }
-    return res.status(201).send(savedIssue)
-  })
-})
+issueRouter.post("/", async (req, res, next) => {
+  try {
+    req.body.user = req.auth._id;
+    const newIssue = new Issue(req.body);
+    const savedIssue = await newIssue.save();
+    const populatedIssue = await savedIssue.populate('user', 'username profileImage');
+    res.status(201).send(populatedIssue);
+  } catch (err) {
+    res.status(500);
+    return next(err);
+  }
+});
 
 // Delete Issue
-issueRouter.delete("/:issueId", (req, res, next) => {
-  Issue.findOneAndDelete({
-      _id: req.params.issueId,
-      user: req.auth._id
-    },
-    (err, deletedIssue) => {
-      if (err) {
-        res.status(500)
-        return next(err)
-      }
-      return res.status(200).send(`Successfully delete issue: ${deletedIssue.title}`)
-    }
-  )
-})
+issueRouter.delete("/:issueId", async (req, res, next) => {
+  try {
+    const deletedIssue = await Issue.findOneAndDelete({ _id: req.params.issueId, user: req.auth._id }).populate('user', 'username profileImage');
+    res.status(200).send(`Successfully delete issue: ${deletedIssue.title}`);
+  } catch (err) {
+    res.status(500);
+    return next(err);
+  }
+});
 
 // Update Issue
-issueRouter.put("/:issueId", (req, res, next) => {
-  Issue.findOneAndUpdate({
-      _id: req.params.issueId,
-      user: req.auth._id
-    },
-    req.body, {
-      new: true
-    },
-    (err, updatedIssue) => {
-      if (err) {
-        res.status(500)
-        return next(err)
-      }
-      return res.status(201).send(updatedIssue)
-    }
-  )
-})
+issueRouter.put("/:issueId", async (req, res, next) => {
+  try {
+    const updatedIssue = await Issue.findOneAndUpdate({ _id: req.params.issueId, user: req.auth._id }, req.body, { new: true }).populate('user', 'username profileImage');
+    res.status(201).send(updatedIssue);
+  } catch (err) {
+    res.status(500);
+    return next(err);
+  }
+});
 
-module.exports = issueRouter
+module.exports = issueRouter;

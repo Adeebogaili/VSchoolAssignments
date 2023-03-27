@@ -23,7 +23,6 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    margin-right: 5px;
 }
 
 .profile-pic:hover, .name-time h3:hover {
@@ -45,12 +44,6 @@
     border-radius: 50%;
 }
   
-.comment{ 
-    display: flex;
-    align-items: baseline;
-    text-align: left;
-}
-
 .name-time{
     width: 100%;
     display: flex;
@@ -58,7 +51,22 @@
     align-items: center;
     margin-left: 10px;
 } 
+
+.name-time h3 {
+    margin: 0;
+    color: #050505;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.name-time p {
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0;
+}
 .issue-question {
+    margin-left: 5px;
+    padding-top: 5px;
     color: #050505;
 }
 
@@ -132,38 +140,7 @@
 
 }
 
-.comment-list {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column-reverse;
-}
 
-.comment-section {
-    background-color: white;
-    margin: 1rem;
-    border-radius: 10px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-}
-
-.comment p {
-    max-width: 600px;
-    background-color: #E4E6E8;
-    padding: 5px;
-    border-radius: 10px;
-}
-
-.comment-btn-wrapper {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-top: 1px solid #E4E6E8;
-    padding: .5rem;
-}
-
-.comment-btn-wrapper button {
-    background-color: transparent;
-    border: none;
-}
 
 @media (max-width: 648px) {
     .issue-form input {
