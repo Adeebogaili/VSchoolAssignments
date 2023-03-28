@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://devconnector:devconnector@cluster0.ulyei4m.mongodb.net/?retryWrites=true&w=majority",
+    "jwtSecret": "velkoz bottm carries adc",
+    "githubClientId": "bcaa7f423b29ce12f111",
+    "githubSecret": "18cac0cd630c034561130000d9f31e011985295b"
+}
