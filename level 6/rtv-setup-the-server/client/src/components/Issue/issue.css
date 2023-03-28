@@ -3,7 +3,7 @@
     background-color: white;
     justify-content: center;
     padding: 1rem;
-    max-width: 700px;
+    max-width: 660px;
     border-radius: 10px;
 }
 
@@ -23,6 +23,12 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
+}
+
+.issue-list{
+    display: flex;
+    max-width: 700px;
+    flex-direction: column-reverse;
 }
 
 .profile-pic:hover, .name-time h3:hover {

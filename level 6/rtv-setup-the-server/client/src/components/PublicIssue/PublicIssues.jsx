@@ -6,7 +6,12 @@ import Comments from '../Comment/Comments';
 
 const PublicIssues = ({ publicIssues }) => {
 
-  const { getComments, comments  } = useContext(CommentContext);
+  const { 
+    getComments, 
+    comments  
+  } = useContext(CommentContext);
+
+  
 
   const [currentIssueId, setCurrentIssueId] = useState(null);
   const [showComments, setShowComments] = useState(false);
@@ -21,7 +26,7 @@ const PublicIssues = ({ publicIssues }) => {
   }, [currentIssueId]);
 
   return (
-    <div className="AllIssuesList">
+    <div className="publicIssues-list">
       {publicIssues.map(issue => (
         <div className="comment-section" key={issue._id}>
           <PublicIssue {...issue} />

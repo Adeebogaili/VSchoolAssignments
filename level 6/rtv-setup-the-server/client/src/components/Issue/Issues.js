@@ -1,21 +1,39 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Issue from './Issue';
 import Comments from '../Comment/Comments'
 import CommentForm from '../Comment/CommentForm';
 import { CommentContext } from '../../context/CommentProvider';
+import { IssuesContext } from '../../context/IssuesProvider';
 import "./issue.css"
 
-export default function Issues({issues}) {
+export default function Issues({userId}) {
 
-  const {
-    comments
+  const { 
+    comments, 
+    getComments
   } = useContext(CommentContext)
 
+  const {
+    getUserIssues,
+    issues
+  } = useContext(IssuesContext)
+
+  const [currentIssueId, setCurrentIssueId] = useState(null);
   const [showComments, setShowComments] = useState(false);
 
-  const handleShow = () => {
-    setShowComments(prevState => !prevState)
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      await getUserIssues(userId);
+      if (currentIssueId) {
+        getComments(currentIssueId);
+        setShowComments(true);
+      } else {
+        setShowComments(false);
+      }
+    };
+    fetchData();
+  }, [userId, currentIssueId,]);
+  
 
   return (
     <div className="issue-list">
@@ -26,12 +44,16 @@ export default function Issues({issues}) {
           <button>
           <span><i className="fa-regular fa-thumbs-up"></i> Like</span>
           </button>
-          <button onClick={handleShow}>
-            {showComments ?  <span><i className="fa-regular fa-comment"></i> Comment </span> : <span><i className="fa-regular fa-comment"></i> Comments</span>}
+          <button onClick={() => setCurrentIssueId(currentIssueId === issue._id ? null : issue._id)}>
+          {currentIssueId === issue._id ? <span><i className="fa-regular fa-comment"></i> Comments {comments.length}</span> : <span><i className="fa-regular fa-comment"></i> Comment</span>}
           </button>
           </div>
-              <CommentForm issueId={issue._id} username={issue.user.username} />
-              {showComments && <Comments issueId={issue._id} comments={comments} />}
+          {currentIssueId === issue._id && (
+            <>
+              <CommentForm issueId={issue._id} />
+              {showComments && <Comments comments={comments} issueId={issue._id} />}
+            </>
+          )}
         </div>
       ))}
     </div>

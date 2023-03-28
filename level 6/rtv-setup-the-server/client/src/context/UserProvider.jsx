@@ -14,7 +14,7 @@ userAxios.interceptors.request.use(config => {
 
 export default function UserProvider(props) {
 
-    const { getUserIssues, getpublicIssues } = useContext(IssuesContext)
+    const { getpublicIssues } = useContext(IssuesContext)
 
     const initState = {
         user: JSON.parse(localStorage.getItem("user")) || {},
@@ -24,7 +24,7 @@ export default function UserProvider(props) {
     }
 
     const [userState, setUserState] = useState(initState)
-
+    
     // Singup new user
     function signup(credentials){
         axios.post("/auth/signup", credentials)
@@ -43,21 +43,20 @@ export default function UserProvider(props) {
 
     // Login user
     function login(credentials){
-        axios.post("/auth/login", credentials)
-        .then(res => {
-            const { user, token } = res.data
-            localStorage.setItem("token", token) //save the token data and not lose it after browser refresh
-            localStorage.setItem("user", JSON.stringify(user))
-            getUserIssues();
-            getpublicIssues();
-            setUserState(prevUserState => ({
-                ...prevUserState,
-                user, 
-                token
-            }))
-        })
-        .catch(err => handleAuthErr(err.response.data.errMsg))
-    }
+    axios.post("/auth/login", credentials)
+    .then(res => {
+        const { user, token } = res.data
+        localStorage.setItem("token", token)
+        localStorage.setItem("user", JSON.stringify(user))
+        getpublicIssues();
+        setUserState(prevUserState => ({
+            ...prevUserState,
+            user, 
+            token
+        }))
+    })
+    .catch(err => handleAuthErr(err.response.data.errMsg))
+}
 
     // Logout user
     function logout(){
@@ -98,6 +97,7 @@ function updateUser(updatedUser) {
         })
         .catch(err => console.log(err))
 }    
+
     return (
         <UserContext.Provider
             value={{

@@ -50,8 +50,6 @@ commentRouter.post("/:issueId", async (req, res, next) => {
   }
 });
 
-
-
 // Delete Comment
 commentRouter.delete("/:issueId/:commentId", async (req, res, next) => {
   try {

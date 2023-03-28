@@ -39,17 +39,25 @@ export default function IssuesProvider(props) {
     }
 
     // Get user issues
-    const getUserIssues = async () => {
-        try {
-            const response = await userAxios.get("/api/issue/user");
-            setIssueState(prevState => ({
-                ...prevState,
-                issues: response.data
-            }));
-        } catch (err) {
-            console.log(err.response.data.errMsg);
-        }
-    };
+    const getUserIssues = async (userId) => {
+  console.log(userId);
+  try {
+    const response = await userAxios.get(`/api/issue/user`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    console.log(response.data); // <-- console log the data returned from the API
+    setIssueState((prevState) => ({
+      ...prevState,
+      issues: response.data,
+    }));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+      
 
     // Get public issues
     const getpublicIssues = async () => {
@@ -90,7 +98,6 @@ export default function IssuesProvider(props) {
     
     // Call getUserIssues and getpublicIssues on mount
     useEffect(() => {
-        getUserIssues();
         getpublicIssues();
     }, []);
 

@@ -8,19 +8,15 @@ import "./home.css"
 const Home = () => {
   const { 
     user: {
-       username
+       username,
+       _id
      },
     token,
   } = useContext(UserContext)
 
   const {
-    issues,
     addIssue
   } = useContext(IssuesContext)
-
-  console.log(issues)
-
-  
 
   const firstLetter = token ? username.charAt(0).toUpperCase() : '';
   const usernameCased = username.charAt(0).toUpperCase() + username.slice(1).toLowerCase();
@@ -36,7 +32,7 @@ const Home = () => {
         </div>
       </div>
       <div className="issues-wrapper">
-          <Issues issues={issues}/>
+          <Issues userId={_id}/>
       </div>
     </div>
   )
