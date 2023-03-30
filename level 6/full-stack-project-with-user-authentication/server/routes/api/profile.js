@@ -10,7 +10,7 @@ const User = require('../../models/User');
 
 // @route   GET api/profile/me
 // @des     Get Current user's profile
-// @access  Privite
+// @access  Private
 router.get('/me', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user.id }).populate(

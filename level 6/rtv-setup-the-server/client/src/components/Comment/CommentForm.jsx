@@ -5,57 +5,61 @@ import "./comment.css"
 
 function CommentForm(props) {
 
-  const {issueId} = props
+  const { issueId } = props;
 
   const initInputs = {
     comment: ""
-  }
+  };
 
-  const [inputs, setInputs] = useState(initInputs)
+  const [inputs, setInputs] = useState(initInputs);
 
-  const { addComment } = useContext(CommentContext)
+  const { addComment } = useContext(CommentContext);
 
-  const { 
+  const {
     user: {
-       username
-     },
+      username
+    },
     token,
-  } = useContext(UserContext)
+  } = useContext(UserContext);
 
   function handleChange(e){
-      const {name, value} = e.target
-      setInputs(prevInputs => ({
-        ...prevInputs,
-        [name]: value
-      }))
-    }
+    const { name, value } = e.target;
+    setInputs(prevInputs => ({
+      ...prevInputs,
+      [name]: value
+    }));
+  }
 
-    function handleSubmit(e){
-      e.preventDefault()
-      addComment(issueId, inputs)
-      setInputs(initInputs)
-    }
+  function handleSubmit(e){
+    e.preventDefault();
+    addComment(issueId, inputs);
+    setInputs(initInputs);
+  }
 
-    const { comment} = inputs
+  const { comment } = inputs;
 
-    const firstLetter = username ? username.charAt(0).toUpperCase() : '';
+  const firstLetter = username ? username.charAt(0).toUpperCase() : '';
 
-    
+  if (!token) {
+    return null; // or render some other component instead
+  }
+
   return(
-      <div className="comment-form-wrapper">
+    <div className="comment-form-wrapper">
       <div className="profile-pic">{firstLetter}</div>
       <form className="comment-form" onSubmit={handleSubmit}>
-          <input
+        <input
           type='text'
           name='comment'
           value={comment}
           onChange={handleChange}
           placeholder='Write a comment...'
-          />
-          <button className="comment-submit-btn"><i className="fa-regular fa-paper-plane"></i></button>
+        />
+        <button className="comment-submit-btn"><i className="fa-regular fa-paper-plane"></i></button>
       </form>
-      </div>
-  )
+    </div>
+  );
 }
 
-export default CommentForm
+export default CommentForm;
+

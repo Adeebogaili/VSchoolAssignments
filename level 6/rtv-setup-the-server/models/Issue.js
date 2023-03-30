@@ -1,47 +1,46 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-Schema = mongoose.Schema
+Schema = mongoose.Schema;
 
 const issueSchema = new Schema(
   {
     title: {
       type: String,
-      required: true
+      required: true,
     },
     description: {
-      type: String
+      type: String,
     },
     completed: {
       type: Boolean,
-      default: false
+      default: false,
     },
     imgUrl: {
       type: String,
-      required: true
+      required: true,
     },
     createdAt: {
       type: Date,
-      default: Date.now
+      default: Date.now,
     },
     user: {
       type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true
-    },
-    likes: {
-      type: Number,
+      ref: 'User',
       required: true,
-      default: 0
-    }
+    },
+    likes: [
+      {
+        user: {
+          type: Schema.Types.ObjectId,
+          ref: 'User',
+        },
+      },
+    ],
   },
   {
-    timestamps: true
+    timestamps: true,
   }
-)
+);
 
-issueSchema.statics.incrementLikes = async function(issueId) {
-  const issue = await this.findByIdAndUpdate(issueId, { $inc: { likes: 1 } }, { new: true });
-  return issue.likes;
-};
 
-module.exports = mongoose.model("Issue", issueSchema);
+module.exports = mongoose.model('Issue', issueSchema);

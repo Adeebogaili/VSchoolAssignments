@@ -28,7 +28,7 @@
 .issue-list{
     display: flex;
     max-width: 700px;
-    flex-direction: column-reverse;
+    flex-direction: column;
 }
 
 .profile-pic:hover, .name-time h3:hover {

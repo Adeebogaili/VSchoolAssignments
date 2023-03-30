@@ -42,7 +42,7 @@ export default function IssuesProvider(props) {
     const getUserIssues = async (userId) => {
   console.log(userId);
   try {
-    const response = await userAxios.get(`/api/issue/user`, {
+    const response = await userAxios.get(`/api/issue/user/:id`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

@@ -2,11 +2,14 @@ const express = require("express");
 const issueRouter = express.Router();
 const Issue = require('../models/Issue.js');
 const User = require('../models/User.js');
+const {expressjwt} = require('express-jwt')
+require('dotenv').config()
+
 
 // Get All Issues
 issueRouter.get("/", async (req, res, next) => {
   try {
-    const issues = await Issue.find().populate('user', 'username profileImage');
+    const issues = await Issue.find().sort({ createdAt: -1 }).populate('user', 'username profileImage');
     res.status(200).send(issues);
   } catch (err) {
     res.status(500);
@@ -15,9 +18,9 @@ issueRouter.get("/", async (req, res, next) => {
 });
 
 // Get issues by user id
-issueRouter.get("/user", async (req, res, next) => {
+issueRouter.get("/user/:id", expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }), async (req, res, next) => {
   try {
-    const issues = await Issue.find({ user: req.auth._id }).populate('user', 'username profileImage');
+    const issues = await Issue.find({ user: req.auth._id }).sort({ createdAt: -1 }).populate('user', 'username profileImage');
     res.status(200).send(issues);
   } catch (err) {
     res.status(500);
@@ -25,8 +28,9 @@ issueRouter.get("/user", async (req, res, next) => {
   }
 });
 
+
 // Add new Issue
-issueRouter.post("/", async (req, res, next) => {
+issueRouter.post("/",expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }), async (req, res, next) => {
   try {
     req.body.user = req.auth._id;
     const newIssue = new Issue(req.body);
@@ -40,7 +44,7 @@ issueRouter.post("/", async (req, res, next) => {
 });
 
 // Delete Issue
-issueRouter.delete("/:issueId", async (req, res, next) => {
+issueRouter.delete("/:issueId",expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }), async (req, res, next) => {
   try {
     const deletedIssue = await Issue.findOneAndDelete({ _id: req.params.issueId, user: req.auth._id }).populate('user', 'username profileImage');
     res.status(200).send(`Successfully delete issue: ${deletedIssue.title}`);
@@ -51,13 +55,70 @@ issueRouter.delete("/:issueId", async (req, res, next) => {
 });
 
 // Update Issue
-issueRouter.put("/:issueId", async (req, res, next) => {
+issueRouter.put("/:issueId",expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }), async (req, res, next) => {
   try {
     const updatedIssue = await Issue.findOneAndUpdate({ _id: req.params.issueId, user: req.auth._id }, req.body, { new: true }).populate('user', 'username profileImage');
     res.status(201).send(updatedIssue);
   } catch (err) {
     res.status(500);
     return next(err);
+  }
+});
+
+// @route   PUT api/issues/like/:id
+// @des     Like a issue
+// @access  Private
+issueRouter.put('/like/:id', async (req, res) => {
+  try {
+    const issue = await Issue.findById(req.params.id);
+
+    // Check if the issue has already been liked
+    if (
+      issue.likes.filter((like) => like.user.toString() === req.user.id).length >
+      0
+    ) {
+      return res.status(400).json({ msg: 'Issue already liked' });
+    }
+
+    issue.likes.unshift({ user: req.user.id });
+
+    await issue.save();
+
+    res.json(issue.likes);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route   PUT api/issues/unlike/:id
+// @des     Unlike a issue
+// @access  Private
+issueRouter.put('/unlike/:id', async (req, res) => {
+  try {
+    const issue = await Issue.findById(req.params.id);
+
+    // Check if the issue has already been liked
+    if (
+      issue.likes.filter((like) => like.user.toString() === req.user.id)
+        .length === 0
+    ) {
+      return res.status(400).json({ msg: 'Issue has not yet been liked' });
+    }
+
+    // Get remove index
+    const removeIndex = issue.likes
+      .map((like) => like.user.toString())
+      .indexOf(req.user.id);
+
+    issue.likes.splice(removeIndex, 1);
+
+    await issue.save();
+
+    res.json(issue.likes);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
   }
 });
 

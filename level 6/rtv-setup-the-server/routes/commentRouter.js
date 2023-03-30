@@ -1,14 +1,16 @@
-const express = require("express");
+const express = require('express');
 const commentRouter = express.Router();
-const Comment = require("../models/Comment.js");
-const User = require("../models/User.js");
+const Comment = require('../models/Comment.js');
+const User = require('../models/User.js');
+const {expressjwt} = require('express-jwt')
+require('dotenv').config()
 
 // Get All Comments
-commentRouter.get("/", async (req, res, next) => {
+commentRouter.get('/', async (req, res, next) => {
   try {
-    const comments = await Comment.find().populate({
-      path: "user",
-      select: "username profileImage",
+    const comments = await Comment.find().sort({ createdAt: -1 }).populate({
+      path: 'user',
+      select: 'username profileImage',
     });
     return res.status(200).send(comments);
   } catch (err) {
@@ -18,12 +20,14 @@ commentRouter.get("/", async (req, res, next) => {
 });
 
 // Get comments by issue id
-commentRouter.get("/:issueId", async (req, res, next) => {
+commentRouter.get('/:issueId', async (req, res, next) => {
   try {
-    const comments = await Comment.find({ issue: req.params.issueId }).populate({
-      path: "user",
-      select: "username profileImage",
-    });
+    const comments = await Comment.find({ issue: req.params.issueId }).sort({ createdAt: -1 })
+      .sort({ createdAt: -1 })
+      .populate({
+        path: 'user',
+        select: 'username profileImage',
+      });
     return res.status(200).send(comments);
   } catch (err) {
     res.status(500);
@@ -32,7 +36,7 @@ commentRouter.get("/:issueId", async (req, res, next) => {
 });
 
 // Add new Comment
-commentRouter.post("/:issueId", async (req, res, next) => {
+commentRouter.post('/:issueId',expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }), async (req, res, next) => {
   try {
     const user = await User.findById(req.auth._id);
     req.body.user = user._id;
@@ -40,8 +44,8 @@ commentRouter.post("/:issueId", async (req, res, next) => {
     const newComment = new Comment(req.body);
     const savedComment = await newComment.save();
     await savedComment.populate({
-      path: "user",
-      select: "username profileImage",
+      path: 'user',
+      select: 'username profileImage',
     });
     return res.status(201).send(savedComment);
   } catch (err) {
@@ -51,7 +55,7 @@ commentRouter.post("/:issueId", async (req, res, next) => {
 });
 
 // Delete Comment
-commentRouter.delete("/:issueId/:commentId", async (req, res, next) => {
+commentRouter.delete('/:issueId/:commentId',expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }), async (req, res, next) => {
   try {
     const deletedComment = await Comment.findOneAndDelete({
       _id: req.params.commentId,
@@ -60,7 +64,7 @@ commentRouter.delete("/:issueId/:commentId", async (req, res, next) => {
     });
     if (!deletedComment) {
       res.status(404);
-      return next(new Error("Comment not found."));
+      return next(new Error('Comment not found.'));
     }
     return res
       .status(200)
@@ -72,15 +76,15 @@ commentRouter.delete("/:issueId/:commentId", async (req, res, next) => {
 });
 
 // Update Comment
-commentRouter.put("/:commentId", async (req, res, next) => {
+commentRouter.put('/:commentId',expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }), async (req, res, next) => {
   try {
     const updatedComment = await Comment.findOneAndUpdate(
       { _id: req.params.commentId, user: req.auth._id },
       req.body,
       { new: true }
     ).populate({
-      path: "user",
-      select: "username profileImage",
+      path: 'user',
+      select: 'username profileImage',
     });
     return res.status(201).send(updatedComment);
   } catch (err) {

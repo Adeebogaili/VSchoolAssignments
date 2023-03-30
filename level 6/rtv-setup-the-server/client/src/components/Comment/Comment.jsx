@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import Dropdown from "react-bootstrap/Dropdown";
 import { CommentContext } from '../../context/CommentProvider';
+import { UserContext } from '../../context/UserProvider'
 import "./comment.css"
 
 function Comment(props) {
@@ -39,35 +40,38 @@ function Comment(props) {
     timeElapsedStr = `${days} day${days > 1 ? "s" : ""} ago`;
   }
 
+  const { token } = useContext(UserContext);
+
   return (
     <div className="comment-container">
       <div className="profile-pic">{firstLetter}</div>
       <div className="comment-layout">
-      <div className="comment">
-        <div className="comment-content">
-        <h3>{usernameCased}</h3>
-        <p>{comment}</p>
+        <div className="comment">
+          <div className="comment-content">
+            <h3>{usernameCased}</h3>
+            <p>{comment}</p>
+          </div>
+          {token && (
+            <Dropdown drop="start">
+              <Dropdown.Toggle 
+                variant="success" 
+                id="dropdown-basic"
+                className="text-dark bg-transparent border-0"
+              >
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={handleDelete}>Delete</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
         </div>
-        <Dropdown
-        drop="start">
-        <Dropdown.Toggle 
-          variant="success" 
-          id="dropdown-basic"
-          className="text-dark bg-transparent border-0"
-          >
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item onClick={handleDelete}>Delete</Dropdown.Item>
-        </Dropdown.Menu>
-        </Dropdown>
-      </div>
-      <div className="comment-btns">
-        <button>Like</button>
-        <button>Reply</button>
-        <p>{timeElapsedStr}</p>
+        <div className="comment-btns">
+          <button>Like</button>
+          <button>Reply</button>
+          <p>{timeElapsedStr}</p>
+        </div>
       </div>
     </div>
-      </div>
   );
 }
 

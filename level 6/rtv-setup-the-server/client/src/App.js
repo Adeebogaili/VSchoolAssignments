@@ -14,6 +14,7 @@ import Footer from "./components/Footer/Footer.jsx";
 
 // pages
 import Home from "./pages/home/Home.jsx";
+import NotFound from "./pages/notfound/NotFound";
 
 export default function App() {
   const { token, logout } = useContext(UserContext);
@@ -52,6 +53,11 @@ export default function App() {
           path="/public"
           element={<Public />}
         />
+        <Route path="/*" element={
+           <ProtectedRoute token={token} redirectTo="/public">
+           <NotFound />
+         </ProtectedRoute>
+        } />
       </Routes>
       <Footer />
     </div>
