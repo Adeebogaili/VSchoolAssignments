@@ -1,4 +1,5 @@
 import api from '../utils/api';
+import setAuthToken from '../utils/setAuthToken';
 import { setAlert } from './alert';
 import {
   REGISTER_SUCCESS,
@@ -62,12 +63,14 @@ export const login = (email, password) => async (dispatch) => {
 
   try {
     const res = await api.post('/auth', body);
+    const token = res.data.token; // Get the token from the response
 
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data
     });
 
+    setAuthToken(token); // Set the new token in the header and local storage
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
