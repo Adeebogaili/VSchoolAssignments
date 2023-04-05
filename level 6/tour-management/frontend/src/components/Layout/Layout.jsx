@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-// Components 
+// components 
 import Header from './../Header/Header'
 import Routers from '../../router/Routers'
 import Footer from './../Footer/Footer'

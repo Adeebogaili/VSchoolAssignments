@@ -44,7 +44,7 @@ const Header = () => {
     <header className='header' ref={headerRef}>
       <Container>
         <Row>
-          <div className='nav_wrapper d-flex align-items-center justify-content-between'>
+          <div className='nav__wrapper d-flex align-items-center justify-content-between'>
             {/* Logo start */}
             <div className='logo'>
               <img src={logo} alt='logo' />
@@ -78,7 +78,7 @@ const Header = () => {
                 </Button>
               </div>
               <span className='mobile__menu'>
-                <i class='ri-menu-line'></i>
+                <i className='ri-menu-line'></i>
               </span>
             </div>
           </div>
