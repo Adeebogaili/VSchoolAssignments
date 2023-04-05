@@ -12,14 +12,13 @@ function Comment(props) {
   const firstLetter = user ? user.username.charAt(0).toUpperCase() : '';
   const usernameCased = user.username.charAt(0).toUpperCase() + user.username.slice(1).toLowerCase();
 
-  function handleDelete() {
-    deleteComment(issueId, _id);
-  }
-
   const {
     deleteComment
   } = useContext(CommentContext)
-
+  
+  function handleDelete() {
+    deleteComment(issueId, _id);
+  }
   // Calculate the time elapsed since the issue was posted
   const ONE_MINUTE = 60;
   const ONE_HOUR = 60 * ONE_MINUTE;

@@ -17,6 +17,7 @@ import Home from "./pages/home/Home.jsx";
 import NotFound from "./pages/notfound/NotFound";
 
 export default function App() {
+  
   const { token, logout } = useContext(UserContext);
 
   return (
