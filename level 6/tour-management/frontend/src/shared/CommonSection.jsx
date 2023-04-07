@@ -2,7 +2,7 @@ import React from 'react';
 import './common-section.css';
 import { Container, Row, Col } from 'reactstrap';
 
-export const CommonSection = ({ title }) => {
+ const CommonSection = ({ title }) => {
   return (
     <section className='common__section'>
       <Container>
@@ -15,3 +15,5 @@ export const CommonSection = ({ title }) => {
     </section>
   );
 };
+
+export default CommonSection
