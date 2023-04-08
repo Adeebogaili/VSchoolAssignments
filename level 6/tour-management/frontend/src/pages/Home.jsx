@@ -29,7 +29,7 @@ const Home = () => {
             <Col lg='6'>
               <div className='hero__content'>
                 <div className='hero__subtitle d-flex align-items-center'>
-                  <Subtitle subtitle={'Know Before You Go'} />
+                  <Subtitle subtitle={'Do more with Tour-Tastic'} />
                   <img src={worldImg} alt='world' />
                 </div>
                 <h1>
@@ -37,10 +37,9 @@ const Home = () => {
                   <span className='highlight'> memories</span>
                 </h1>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Eligendi, facilis explicabo vitae autem distinctio placeat
-                  atque mollitia aut consequatur dolorem commodi dolorum nostrum
-                  nemo at neque culpa assumenda, non deleniti.
+                  Have a dream destination in mind? Whether you want to follow
+                  your appetite to Tuscany or go wild in America's greatest
+                  national parks, our guided tour packages will get you there.
                 </p>
               </div>
             </Col>
@@ -50,7 +49,7 @@ const Home = () => {
               </div>
             </Col>
             <Col lg='2'>
-              <div className='hero__img-box mt-4'>
+              <div className='hero__img-box hero__video-box mt-4'>
                 <video src={heroVideo} alt='hero' controls />
               </div>
             </Col>
@@ -68,8 +67,7 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg='3'>
-              <h5 className='services__subtitle'>What we serve</h5>
-              <h5 className='services__title'>We offer our best services</h5>
+              <h5 className='services__subtitle'>Why book with Tour-Tastic?</h5>
             </Col>
             <ServiceList />
           </Row>
@@ -95,14 +93,13 @@ const Home = () => {
             <Col lg='6'>
               <div className='experience__content'>
                 <Subtitle subtitle={'Experience'} />
-                <h2>
-                  With our all Experience <br /> we will serve you
-                </h2>
+                
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-                  officiis!
-                  <br />
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Welcome to Tour-Tastic, where we are dedicated to
+                  providing you with an unforgettable travel experience. Our
+                  team of knowledgeable and experienced tour guides will take
+                  you on a journey through some of the world's most beautiful
+                  and fascinating destinations.
                 </p>
               </div>
 
@@ -149,13 +146,11 @@ const Home = () => {
       {/* gallery section end */}
       {/* testimonial section start */}
       <section>
-      <Container>
+        <Container>
           <Row>
             <Col lg='12'>
               <Subtitle subtitle={'Fans Love'} />
-              <h2 className='testimonial__title'>
-                What our fans say about us
-              </h2>
+              <h2 className='testimonial__title'>What our fans say about us</h2>
             </Col>
             <Col lg='12'>
               <Testimonials />
@@ -164,7 +159,7 @@ const Home = () => {
         </Container>
       </section>
       {/* testimonial section end */}
-      <NewsLetter/>
+      <NewsLetter />
     </>
   );
 };

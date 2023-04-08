@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './booking.css';
 import {
   Form,
@@ -10,33 +10,63 @@ import {
 } from 'reactstrap';
 
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+import { BASE_URL } from '../../utils/config';
 
 const Booking = ({ tour, avgRating }) => {
-  const { price, reviews } = tour;
+  const { price, reviews, title } = tour;
 
   const navigate = useNavigate();
 
-  const [credentials, setCredentials] = useState({
-    userId: '01', //later it will be dynamic
-    userEmail: 'example@gmail.com',
+  const { user } = useContext(AuthContext);
+
+  const [booking, setBooking] = useState({
+    userId: user && user._id,
+    userEmail: user && user.email,
+    tourName: title,
     fullName: '',
     phone: '',
     guestSize: 1,
     bookAt: '',
   });
   const handleChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    setBooking((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
   const serviceFee = 10;
   const totalAmount =
-    Number(price) * Number(credentials.guestSize) + Number(serviceFee);
+    Number(price) * Number(booking.guestSize) + Number(serviceFee);
 
   //   send data to the server
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    navigate('/thank-you');
+    console.log(booking);
+
+    try {
+      if (!user || user === undefined || user === null) {
+        return alert('Please sign in');
+      }
+
+      const res = await fetch(`${BASE_URL}/booking`, {
+        method: 'post',
+        headers: {
+          'content-type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify(booking),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        return alert(result.message);
+      }
+
+      navigate('/thank-you');
+    } catch (err) {
+      alert(err.message);
+    }
   };
   return (
     <div className='booking'>
@@ -95,7 +125,7 @@ const Booking = ({ tour, avgRating }) => {
         <ListGroup>
           <ListGroupItem className='border-0 px-0'>
             <h5 className='d-flex align-items-center gap-1'>
-              ${price} <i className='ri-close-line'></i> {credentials.guestSize}{' '}
+              ${price} <i className='ri-close-line'></i> {booking.guestSize}{' '}
               person
             </h5>
             <span>${price}</span>

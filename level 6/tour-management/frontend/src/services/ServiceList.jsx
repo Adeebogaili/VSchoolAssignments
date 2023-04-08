@@ -2,25 +2,26 @@ import React from 'react'
 import ServiceCard from './ServiceCard'
 import { Col } from 'reactstrap'
 
-import weatherImg from '../assets/images/weather.png'
-import guideImg from '../assets/images/guide.png'
-import customizationImg from '../assets/images/customization.png'
+import money from '../assets/images/money.png'
+import light from '../assets/images/light.png'
+import star from '../assets/images/star.png'
+import trophy from '../assets/images/trophy.png'
 
 const servicesData = [
     {
-        imgUrl: weatherImg,
-        title: "Calculate Weather",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, dignissimos."
+        imgUrl: money,
+        title: "Ultimate flexibility",
+        desc: "You're in control, with free cancellation and payment options to satisfy any plan or budget"
     },
     {
-        imgUrl: guideImg,
-        title: "Best Tour Guide",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, dignissimos."
+        imgUrl: light,
+        title: "Memorable experiences",
+        desc: "Browse and book tours and activities so incredible, you'll want to tell your friends and loved onse."
     },
     {
-        imgUrl: customizationImg,
-        title: "Customization",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, dignissimos."
+        imgUrl: star,
+        title: "Quality at our core",
+        desc: "High quality standards. Millions of reviews. A Tripadvisor company. Award winning support."
     },
 ]
 
@@ -29,7 +30,7 @@ const ServiceList = () => {
         <>
             {
                 servicesData.map((item, index) => (
-                    <Col lg='3' key={index}>
+                    <Col lg='3' md='6' sm='12' className='mb-4' key={index}>
                         <ServiceCard item={item} />
                     </Col>
                 ))
