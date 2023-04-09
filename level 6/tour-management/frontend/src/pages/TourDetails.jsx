@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useContext } from 'react';
 import '../styles/tour-details.css';
-import { Container, Row, Col, Form, ListGroup, List } from 'reactstrap';
+import { Container, Row, Col, Form, ListGroup, Button } from 'reactstrap';
 import { useParams } from 'react-router-dom';
 import calculateAvgRating from './../utils/avgRating';
 import avatar from '../assets/images/avatar.jpg';
@@ -16,6 +16,14 @@ const TourDetails = () => {
   const reviewMsgRef = useRef();
 
   const [tourRating, setTourRating] = useState(null);
+
+  const handleClick = (rating) => {
+    const newTourRating = {
+      rating,
+      color: '#ff7e01',
+    };
+    setTourRating(newTourRating);
+  };
 
   const { user } = useContext(AuthContext);
 
@@ -40,7 +48,7 @@ const TourDetails = () => {
   //format date
   const options = { day: 'numeric', month: 'long', year: 'numeric' };
 
-  // submit reuest to the server
+  // submit request to the server
   const handleSubmit = async (e) => {
     e.preventDefault();
     const reviewText = reviewMsgRef.current.value;
@@ -52,8 +60,9 @@ const TourDetails = () => {
 
       const reviewObj = {
         username: user?.username,
+        userId: user?._id,
         reviewText,
-        rating: tourRating,
+        rating: tourRating.rating,
       };
       const res = await fetch(`${BASE_URL}/review/${id}`, {
         method: 'post',
@@ -76,8 +85,33 @@ const TourDetails = () => {
     }
   };
 
+  const handleDelete = async (reviewId) => {
+    console.log(id)
+    console.log(reviewId)
+    try {
+      const res = await fetch(`${BASE_URL}/review/${id}/${reviewId}`, {
+        method: 'DELETE',
+        credentials: 'include',
+      });
+  
+      const result = await res.json();
+  
+      if (!res.ok) {
+        return alert(result.message);
+      }
+  
+      alert(result.message);
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+  
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, [tour]);
 
   return (
@@ -134,20 +168,60 @@ const TourDetails = () => {
 
                     <Form onSubmit={handleSubmit}>
                       <div className='rating__group d-flex align-items-center gap-3'>
-                        <span onClick={() => setTourRating(1)}>
-                          1 <i className='ri-star-s-fill'></i>
+                        <span onClick={() => handleClick(1)}>
+                          1{' '}
+                          <i
+                            className='ri-star-s-fill'
+                            style={
+                              tourRating && tourRating.rating >= 1
+                                ? { color: tourRating.color }
+                                : {}
+                            }
+                          ></i>
                         </span>
-                        <span onClick={() => setTourRating(2)}>
-                          2 <i className='ri-star-s-fill'></i>
+                        <span onClick={() => handleClick(2)}>
+                          2{' '}
+                          <i
+                            className='ri-star-s-fill'
+                            style={
+                              tourRating && tourRating.rating >= 2
+                                ? { color: tourRating.color }
+                                : {}
+                            }
+                          ></i>
                         </span>
-                        <span onClick={() => setTourRating(3)}>
-                          3 <i className='ri-star-s-fill'></i>
+                        <span onClick={() => handleClick(3)}>
+                          3{' '}
+                          <i
+                            className='ri-star-s-fill'
+                            style={
+                              tourRating && tourRating.rating >= 3
+                                ? { color: tourRating.color }
+                                : {}
+                            }
+                          ></i>
                         </span>
-                        <span onClick={() => setTourRating(4)}>
-                          4 <i className='ri-star-s-fill'></i>
+                        <span onClick={() => handleClick(4)}>
+                          4{' '}
+                          <i
+                            className='ri-star-s-fill'
+                            style={
+                              tourRating && tourRating.rating >= 4
+                                ? { color: tourRating.color }
+                                : {}
+                            }
+                          ></i>
                         </span>
-                        <span onClick={() => setTourRating(5)}>
-                          5 <i className='ri-star-s-fill'></i>
+                        <span onClick={() => handleClick(5)}>
+                          5{' '}
+                          <i
+                            className='ri-star-s-fill'
+                            style={
+                              tourRating && tourRating.rating >= 5
+                                ? { color: tourRating.color }
+                                : {}
+                            }
+                          ></i>
                         </span>
                       </div>
 
@@ -177,10 +251,9 @@ const TourDetails = () => {
                               <div>
                                 <h5>{review.username}</h5>
                                 <p>
-                                  {new Date(review.createdAt).toLocaleDateString(
-                                    'en-US',
-                                    options
-                                  )}
+                                  {new Date(
+                                    review.createdAt
+                                  ).toLocaleDateString('en-US', options)}
                                 </p>
                               </div>
                               <span className='d-flex align-items-center'>
@@ -190,6 +263,7 @@ const TourDetails = () => {
                             </div>
                             <h6>{review.reviewText}</h6>
                           </div>
+                          <Button onClick={() => handleDelete(review._id)}>Delete</Button>
                         </div>
                       ))}
                     </ListGroup>

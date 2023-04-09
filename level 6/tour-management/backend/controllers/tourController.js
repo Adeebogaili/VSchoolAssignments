@@ -63,7 +63,9 @@ export const getOneTour = async (req, res, next) => {
   const id = req.params.tourId;
 
   try {
-    const tour = await Tour.findById(id).populate('reviews');
+    const tour = await Tour.findById(id)
+      .sort({ createdAt: -1 })
+      .populate('reviews');
 
     res.status(200).json({
       success: true,
@@ -83,6 +85,7 @@ export const getAllTours = async (req, res, next) => {
 
   try {
     const tours = await Tour.find()
+      .sort({ createdAt: -1 })
       .populate('reviews')
       .skip(page * 8)
       .limit(8);

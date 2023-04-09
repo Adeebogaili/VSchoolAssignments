@@ -37,41 +37,41 @@ const Testimonials = () => {
     <Slider {...settings}>
       <div className='testimonial py-4 px-3'>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi autem
-          cupiditate error nostrum. Magnam fugiat doloribus aliquid ex iste
-          impedit aspernatur atque, facilis tempora consequuntur! Cum dolore
-          enim voluptatem temporibus?
+          Tour-Tastic provided a seamless, enjoyable and memorable experience.
+          Knowledgeable guides, well-planned itinerary, comfortable
+          accommodations, delicious food, and attention to detail make it highly
+          recommended for a remarkable tour.
         </p>
         <div className='d-flex align-items-center gap-4 mt-3'>
           <img src={ava01} alt='avatar1' className='w-25 h-25 rounded-2' />
         </div>
-        <h6 className='mb-0 mt-3'>John Doe</h6>
+        <h6 className='mb-0 mt-3'>Robert Peston</h6>
         <p>Customer</p>
       </div>
       <div className='testimonial py-4 px-3'>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi autem
-          cupiditate error nostrum. Magnam fugiat doloribus aliquid ex iste
-          impedit aspernatur atque, facilis tempora consequuntur! Cum dolore
-          enim voluptatem temporibus?
+          Tour-Tastic provided me with an unforgettable tour experience. The
+          friendly guides, and delicious food exceeded my expectations. The
+          attention to detail and flexibility were also commendable. Highly
+          recommended for a remarkable tour.
         </p>
         <div className='d-flex align-items-center gap-4 mt-3'>
           <img src={ava02} alt='avatar1' className='w-25 h-25 rounded-2' />
         </div>
-        <h6 className='mb-0 mt-3'>Lia Franklin</h6>
+        <h6 className='mb-0 mt-3'>Agnes Martin </h6>
         <p>Customer</p>
       </div>
       <div className='testimonial py-4 px-3'>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi autem
-          cupiditate error nostrum. Magnam fugiat doloribus aliquid ex iste
-          impedit aspernatur atque, facilis tempora consequuntur! Cum dolore
-          enim voluptatem temporibus?
+          I had an amazing experience with Tour-Tastic. The knowledgeable and
+          friendly guides, well-planned itinerary, and delicious food made it an
+          unforgettable trip. Highly recommended for anyone looking for a great
+          tour experience.
         </p>
         <div className='d-flex align-items-center gap-4 mt-3'>
           <img src={ava03} alt='avatar1' className='w-25 h-25 rounded-2' />
         </div>
-        <h6 className='mb-0 mt-3'>Sam Smith</h6>
+        <h6 className='mb-0 mt-3'>Clint Hermes</h6>
         <p>Customer</p>
       </div>
     </Slider>

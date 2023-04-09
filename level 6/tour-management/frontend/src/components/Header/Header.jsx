@@ -12,14 +12,21 @@ const nav__links = [
     display: 'Home',
   },
   {
-    path: '/about',
-    display: 'About',
-  },
-  {
     path: '/tours',
     display: 'Tours',
   },
+  {
+    path: '/about',
+    display: 'About',
+  }
 ];
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
 
 const Header = () => {
   const headerRef = useRef(null);
@@ -58,7 +65,7 @@ const Header = () => {
           <div className='nav__wrapper d-flex align-items-center justify-content-between'>
             {/* Logo start */}
             <div className='logo'>
-              <img src={logo} alt='logo' />
+              <Link to='/home'><img src={logo} alt='logo' onClick={scrollToTop} /></Link> 
             </div>
             {/* Logo end */}
             {/* menu start */}
@@ -83,9 +90,9 @@ const Header = () => {
               <div className='nav__right d-flex align-items-center gap-4'>
                 {user ? (
                   <>
-                    <h5 className='mb-0'>{user.username}</h5>
+                    <h5 className='mb-0 pb-1 d-flex gap-1'><i className="ri-user-line"></i>{user.username}</h5>
                     <Button className='btn btn-dark' onClick={logout}>
-                      Log out
+                      Logout
                     </Button>
                   </>
                 ) : (

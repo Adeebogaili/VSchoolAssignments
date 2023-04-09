@@ -16,9 +16,9 @@ const useFetch = (url) => {
           setError('Failed to fetch data');
         }
 
-        const result = await res.json()
+        const result = await res.json();
         setData(result.data);
-        setLoading(false)
+        setLoading(false);
       } catch (err) {
         setError(err.message);
         setLoading(false);
@@ -29,6 +29,7 @@ const useFetch = (url) => {
   }, [url]);
 
   return {
+    setData,
     data,
     error,
     loading,

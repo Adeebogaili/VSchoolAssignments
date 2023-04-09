@@ -3,11 +3,8 @@ import '../styles/home.css';
 import { Container, Row, Col } from 'reactstrap';
 
 // Media
-import heroImg from '../assets/images/hero-img01.jpg';
-import heroImg02 from '../assets/images/hero-img02.jpg';
 import heroVideo from '../assets/images/hero-video.mp4';
 import worldImg from '../assets/images/world.png';
-import experienceImg from '../assets/images/experience.png';
 
 import Subtitle from '../shared/Subtitle';
 
@@ -33,8 +30,8 @@ const Home = () => {
                   <img src={worldImg} alt='world' />
                 </div>
                 <h1>
-                  Traveling opens the door to creating{' '}
-                  <span className='highlight'> memories</span>
+                Traveling is a gateway to crafting unforgettable{' '}
+                  <span className='highlight'> memories.</span>
                 </h1>
                 <p>
                   Have a dream destination in mind? Whether you want to follow
@@ -43,9 +40,9 @@ const Home = () => {
                 </p>
               </div>
             </Col>
-            <Col lg='2'>
+            <Col lg=''>
               <div className='hero__img-box'>
-                <img src={heroImg} alt='hero' />
+                <img src='https://images.pexels.com/photos/2072583/pexels-photo-2072583.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='hero' />
               </div>
             </Col>
             <Col lg='2'>
@@ -55,7 +52,7 @@ const Home = () => {
             </Col>
             <Col lg='2'>
               <div className='hero__img-box mt-5'>
-                <img src={heroImg02} alt='hero' />
+                <img src='https://images.pexels.com/photos/1020016/pexels-photo-1020016.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='hero' />
               </div>
             </Col>
             <SearchBar />
@@ -120,7 +117,7 @@ const Home = () => {
             </Col>
             <Col lg='6'>
               <div className='experience__img'>
-                <img src={experienceImg} alt='' />
+                <img src='https://images.pexels.com/photos/3769138/pexels-photo-3769138.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='' />
               </div>
             </Col>
           </Row>
@@ -149,8 +146,8 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg='12'>
-              <Subtitle subtitle={'Fans Love'} />
-              <h2 className='testimonial__title'>What our fans say about us</h2>
+              <Subtitle subtitle={'Testimonials'} />
+              <h2 className='testimonial__title'>See why people love our service</h2>
             </Col>
             <Col lg='12'>
               <Testimonials />

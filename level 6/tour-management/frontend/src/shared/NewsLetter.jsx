@@ -19,8 +19,7 @@ const NewsLetter = () => {
               </div>
 
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-                accusantium sed quos eum nobis harum quis rem sit quod quo!
+              Get exclusive discounts and deals on travel! Not only will you get useful travel information, but you'll also be the first to know about special offers that will save you money on your next trip. Don't miss out on these amazing deals, sign up today!
               </p>
             </div>
           </Col>

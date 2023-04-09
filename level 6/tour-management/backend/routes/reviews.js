@@ -1,5 +1,5 @@
 import express from 'express';
-import { createReview } from '../controllers/reviewController.js';
+import { createReview, deleteReview } from '../controllers/reviewController.js';
 import { verifyUser } from '../utils/verifyToken.js';
 
 const router = express.Router();
@@ -8,5 +8,10 @@ const router = express.Router();
 // @des     Post a review
 // @access  Private
 router.post('/:tourId', verifyUser, createReview);
+
+// @route   DELETE api/review/:tourId
+// @des     Post a review
+// @access  Private
+router.delete('/:tourId/:reviewId', verifyUser, deleteReview)
 
 export default router;

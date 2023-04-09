@@ -5,7 +5,6 @@ const User = require('../models/User.js');
 const {expressjwt} = require('express-jwt')
 require('dotenv').config()
 
-
 // Get All Issues
 issueRouter.get("/", async (req, res, next) => {
   try {

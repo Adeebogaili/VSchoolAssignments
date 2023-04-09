@@ -36,20 +36,27 @@ const quick__links2 = [
   },
 ];
 
-
 const Footer = () => {
+  const year = new Date().getFullYear();
 
-  const year = new Date().getFullYear()
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <div className='footer'>
       <Container>
         <Row>
           <Col lg='3'>
             <div className='logo'>
-              <img src={logo} alt='logo' />
+              <Link to='/home'>
+                <img src={logo} alt='logo' onClick={scrollToTop} />
+              </Link>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non,
-                neque.
+              New price? New plan? No problem. We’re here to help, 24/7
               </p>
               <div className='social__links d-flex align-items-center gap-4'>
                 <span>
@@ -106,7 +113,7 @@ const Footer = () => {
               <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-3'>
                 <h6 className='mb-0 d-flex align-items-center gap-3'>
                   <span>
-                  <i className="ri-mail-line"></i>
+                    <i className='ri-mail-line'></i>
                   </span>
                   Email:
                 </h6>
@@ -115,7 +122,7 @@ const Footer = () => {
               <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-3'>
                 <h6 className='mb-0 d-flex align-items-center gap-3'>
                   <span>
-                  <i className="ri-phone-fill"></i>
+                    <i className='ri-phone-fill'></i>
                   </span>
                   Phone: 123-312-3232
                 </h6>
@@ -125,7 +132,10 @@ const Footer = () => {
           </Col>
 
           <Col lg='12' className='text-center pt-5'>
-            <p className="copyright">Copyright {year}, designed and developed by Adeeb Ogaili. All rights reserved.</p>
+            <p className='copyright'>
+              Copyright {year}, designed and developed by Adeeb Ogaili. All
+              rights reserved.
+            </p>
           </Col>
         </Row>
       </Container>

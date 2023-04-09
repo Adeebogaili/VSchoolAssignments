@@ -93,6 +93,7 @@
 
 .experience__img img {
   width: 90%;
+  border-radius: 10px;
 }
 
 .gallery__title {
