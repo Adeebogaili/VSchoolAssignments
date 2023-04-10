@@ -58,14 +58,20 @@ export const deleteTour = async (req, res, next) => {
   }
 };
 
-//  get tour by id
+// get tour by ID
 export const getOneTour = async (req, res, next) => {
   const id = req.params.tourId;
 
   try {
     const tour = await Tour.findById(id)
       .sort({ createdAt: -1 })
-      .populate('reviews');
+      .populate({
+        path: 'reviews',
+        model: 'Review',
+        options: {
+          sort: { createdAt: -1 }
+        }
+      })
 
     res.status(200).json({
       success: true,
@@ -85,8 +91,14 @@ export const getAllTours = async (req, res, next) => {
 
   try {
     const tours = await Tour.find()
-      .sort({ createdAt: -1 })
-      .populate('reviews')
+    .sort({ createdAt: -1 })
+    .populate({
+      path: 'reviews',
+      model: 'Review',
+      options: {
+        sort: { createdAt: -1 }
+      }
+    })
       .skip(page * 8)
       .limit(8);
 
@@ -113,7 +125,15 @@ export const getTourBySearch = async (req, res, next) => {
       city,
       distance: { $gte: distance },
       maxGroupSize: { $gte: maxGroupSize },
-    });
+    })
+    .sort({ createdAt: -1 })
+      .populate({
+        path: 'reviews',
+        model: 'Review',
+        options: {
+          sort: { createdAt: -1 }
+        }
+      })
 
     res.status(200).json({
       success: true,
@@ -129,7 +149,10 @@ export const getTourBySearch = async (req, res, next) => {
 //  get featured tours
 export const getFeaturedTours = async (req, res, next) => {
   try {
-    const tours = await Tour.find({ featured: true }).limit(8);
+    const tours = await Tour.find({ featured: true }).limit(8).populate({
+      path: 'reviews',
+      model: 'Review',
+    });
 
     res.status(200).json({
       success: true,

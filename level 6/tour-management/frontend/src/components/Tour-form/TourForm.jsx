@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { BASE_URL } from '../../utils/config';
+import { AuthContext } from '../../context/AuthContext';
+
 
 const initInputs = {
   title: "",
@@ -6,10 +9,12 @@ const initInputs = {
   imgUrl: ""
 }
 
-export default function TourForm(props){
+export default function TourForm(){
+
+  const { user } = useContext(AuthContext);
+
 
   const [inputs, setInputs] = useState(initInputs)
-  const { addIssue } = props
 
   function handleChange(e){
     const {name, value} = e.target
@@ -21,7 +26,6 @@ export default function TourForm(props){
 
   function handleSubmit(e){
     e.preventDefault()
-    addIssue(inputs)
     setInputs(initInputs)
   }
 

@@ -72,7 +72,7 @@ const Header = () => {
             <div className='navigation' ref={menuRef} onClick={toggleMenue}>
               <ul className='menu d-flex align-items-center gap-5'>
                 {nav__links.map((item, index) => (
-                  <li className='nav__item' key={index}>
+                  <li className='nav__item' key={index} onClick={scrollToTop}>
                     <NavLink
                       to={item.path}
                       className={(navClass) =>

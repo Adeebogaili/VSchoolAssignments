@@ -28,7 +28,7 @@ const TourDetails = () => {
   const { user } = useContext(AuthContext);
 
   // fetch data from database
-  const { data: tour, loading, error } = useFetch(`${BASE_URL}/tours/${id}`);
+  const { data: tour, loading, error, setData } = useFetch(`${BASE_URL}/tours/${id}`);
 
   // destructure properties from tour object
   const {
@@ -52,12 +52,12 @@ const TourDetails = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const reviewText = reviewMsgRef.current.value;
-
+  
     try {
       if (!user || user === undefined || user === null) {
         alert('Please sign in');
       }
-
+  
       const reviewObj = {
         username: user?.username,
         userId: user?._id,
@@ -72,22 +72,28 @@ const TourDetails = () => {
         credentials: 'include',
         body: JSON.stringify(reviewObj),
       });
-
+  
       const result = await res.json();
-
+  
       if (!res.ok) {
         return alert(result.message);
       }
-
-      alert(result.message);
+  
+      setData((prevData) => ({
+        ...prevData,
+        reviews: [...prevData.reviews, result.data],
+      }));
+  
+      reviewMsgRef.current.value = '';
+      setTourRating(null);
+  
     } catch (err) {
       alert(err.message);
     }
   };
-
+  
+// delete a review
   const handleDelete = async (reviewId) => {
-    console.log(id)
-    console.log(reviewId)
     try {
       const res = await fetch(`${BASE_URL}/review/${id}/${reviewId}`, {
         method: 'DELETE',
@@ -100,18 +106,32 @@ const TourDetails = () => {
         return alert(result.message);
       }
   
-      alert(result.message);
+      // Remove the deleted review ID from the Tour model's reviews array
+      await fetch(`${BASE_URL}/tour/${id}/reviews/${reviewId}`, {
+        method: 'DELETE',
+        credentials: 'include',
+      });
+    
+      // Update the data after deleting the review
+      setData(prevData => {
+        const updatedReviews = prevData.reviews.filter(review => review._id !== reviewId);
+        return {
+          ...prevData,
+          reviews: updatedReviews
+        };
+      });
     } catch (err) {
       alert(err.message);
     }
   };
   
-
+  
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
+
   }, [tour]);
 
   return (

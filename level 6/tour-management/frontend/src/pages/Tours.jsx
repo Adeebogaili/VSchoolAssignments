@@ -4,7 +4,6 @@ import { Container, Row, Col } from 'reactstrap';
 import '../styles/tour.css';
 import { AuthContext } from './../context/AuthContext';
 
-
 // shared components
 import TourCard from '../shared/TourCard';
 import SearchBar from '../shared/SearchBar';
@@ -16,7 +15,8 @@ import { BASE_URL } from '../utils/config';
 
 const Tours = () => {
 
-  const { user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const role = user?.role
 
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
@@ -31,16 +31,16 @@ const Tours = () => {
   useEffect(() => {
     const pages = Math.ceil(tourCount / 8);
     setPageCount(pages);
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [page, tourCount, tours]);
+
   return (
     <>
       <CommonSection title={'All Tours'} />
       <section>
         <Container>
           <Row>
-          {user.role === 'admin' && <TourForm />}
-
+            {role === 'admin' && <TourForm />}
             <SearchBar />
           </Row>
         </Container>
