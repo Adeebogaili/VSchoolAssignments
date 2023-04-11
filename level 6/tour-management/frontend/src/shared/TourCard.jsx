@@ -1,23 +1,27 @@
-import React from 'react';
+import {useContext} from 'react';
 import { Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import calculateAvgRating from '../utils/avgRating';
-
-
-
+import { AuthContext } from '../context/AuthContext';
 import './tour-card.css';
 
-const TourCard = ({ tour }) => {
+const TourCard = ({ tour, handleDelete }) => {
 
-  const { _id, title, city, photo, price, featured, reviews, } = tour;
+  const { user } = useContext(AuthContext);
+  const role = user?.role
+
+  const { _id, title, city, photo, price, featured, reviews } = tour;
 
   const { totalRating, avgRating } = calculateAvgRating(reviews);
   return (
     <div className='tour__card'>
       <Card>
         <div className='tour__img'>
-         <Link to={`/tours/${_id}`}><img src={photo} alt='tour-img' /></Link> 
+          <Link to={`/tours/${_id}`}>
+            <img src={photo} alt='tour-img' />
+          </Link>
           {featured && <span>Featured</span>}
+          {role === 'admin' ? <button onClick={() => handleDelete(_id)}>Delete</button> : ''}
         </div>
         <CardBody>
           <div className='card__top d-flex align-items-center justify-content-between'>
@@ -25,11 +29,12 @@ const TourCard = ({ tour }) => {
               <i className='ri-map-pin-line'></i> {city}
             </span>
             <span className='tour__rating d-flex align-items-center justify-content-between gap-1'>
-              <i className='ri-star-fill'></i> {avgRating === 0 ? null : avgRating}
+              <i className='ri-star-fill'></i>{' '}
+              {avgRating === 0 ? null : avgRating}
               {totalRating === 0 ? (
                 'Not rated'
               ) : (
-                <span>({reviews.length})</span>
+                <span>({reviews?.length})</span>
               )}
             </span>
           </div>

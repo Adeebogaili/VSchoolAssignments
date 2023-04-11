@@ -11,6 +11,9 @@ import { AuthContext } from './../context/AuthContext';
 import { BASE_URL } from './../utils/config';
 
 const Register = () => {
+
+
+
   const [credentials, setCredentials] = useState({
     username: undefined,
     email: undefined,

@@ -13,11 +13,13 @@ const useFetch = (url) => {
         const res = await fetch(url);
 
         if (!res.ok) {
-          setError('Failed to fetch data');
+          const result = await res.json();
+          setError(result.message);
+        } else {
+          const result = await res.json();
+          setData(result.data);
         }
 
-        const result = await res.json();
-        setData(result.data);
         setLoading(false);
       } catch (err) {
         setError(err.message);
@@ -33,6 +35,7 @@ const useFetch = (url) => {
     data,
     error,
     loading,
+    setError
   };
 };
 

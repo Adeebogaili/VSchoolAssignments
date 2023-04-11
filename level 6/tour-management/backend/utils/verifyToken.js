@@ -4,7 +4,7 @@ const verifyToken = (req, res, next) => {
   const token = req.cookies.accessToken;
 
   if (!token) {
-    return res.status(401);
+    res.status(401);
     return next(err);
   }
 

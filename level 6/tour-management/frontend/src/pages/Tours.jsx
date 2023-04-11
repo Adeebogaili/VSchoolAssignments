@@ -14,9 +14,8 @@ import useFetch from '../hooks/useFetch';
 import { BASE_URL } from '../utils/config';
 
 const Tours = () => {
-
   const { user } = useContext(AuthContext);
-  const role = user?.role
+  const role = user?.role;
 
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
@@ -25,8 +24,56 @@ const Tours = () => {
     data: tours,
     loading,
     error,
+    setError,
+    setData,
   } = useFetch(`${BASE_URL}/tours?page=${page}`);
   const { data: tourCount } = useFetch(`${BASE_URL}/tours/search/getTourCount`);
+
+  // Add tour
+  const addTour = async (tourData) => {
+    try {
+      const res = await fetch(`${BASE_URL}/tours`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify(tourData),
+      });
+
+      if (!res.ok) {
+        const result = await res.json();
+        setError(result.message);
+      } else {
+        const newTour = await res.json();
+        setData((prevData) => [...prevData, newTour]);
+      }
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  // Delete a tour
+  const handleDelete = async (tourId) => {
+    try {
+      const res = await fetch(`${BASE_URL}/tours/${tourId}`, {
+        method: 'DELETE',
+        credentials: 'include',
+      });
+
+      if (!res.ok) {
+        const result = await res.json();
+        setError(result.message);
+      } else {
+        setData((prevData) => {
+          const deletedTour = prevData.filter((tour) => tour._id !== tourId);
+          return [...deletedTour];
+        });
+      }
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
   useEffect(() => {
     const pages = Math.ceil(tourCount / 8);
@@ -40,7 +87,7 @@ const Tours = () => {
       <section>
         <Container>
           <Row>
-            {role === 'admin' && <TourForm />}
+            {role === 'admin' && <TourForm addTour={addTour} />}
             <SearchBar />
           </Row>
         </Container>
@@ -51,8 +98,17 @@ const Tours = () => {
           {error && <h4 className='text-center pt-5'>${error}</h4>}
           <Row>
             {tours?.map((tour) => (
-              <Col lg='3' md='6' sm='6' className='mb-4' key={tour._id}>
-                <TourCard tour={tour} />
+              <Col
+                lg='3'
+                md='6'
+                sm='6'
+                className='mb-4'
+                key={`tour-${tour._id}`}
+              >
+                <TourCard
+                  tour={tour}
+                  handleDelete={() => handleDelete(tour._id)}
+                />
               </Col>
             ))}
             <Col lg='12'>
