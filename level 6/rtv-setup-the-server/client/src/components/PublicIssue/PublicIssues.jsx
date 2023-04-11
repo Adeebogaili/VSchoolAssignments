@@ -45,12 +45,16 @@ const PublicIssues = ({ publicIssues }) => {
                 (like) => like.user === userId
               );
               const otherLikes = issue.likes.length - userLike.length;
-              if (userLike.length > 0 && otherLikes > 0) {
+              if (userLike.length > 0 && otherLikes > 2) {
                 return `You and ${otherLikes} others`;
               } else if (userLike.length > 0 && otherLikes === 0) {
                 return `${username}`;
               } else if (userLike.length === 0 && otherLikes === 0) {
                 return '';
+              }else if (userLike.length === 0 && otherLikes === 1) {
+                return `${issue.likes?.map(like => `${like.username}`)}`;
+              } else if (userLike.length > 0 && otherLikes === 1) {
+                return `${issue.likes?.map(like => `${like.username}`).join(' and ')}`;
               } else {
                 return `${otherLikes}`;
               }
