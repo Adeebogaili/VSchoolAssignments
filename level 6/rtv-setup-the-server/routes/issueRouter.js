@@ -67,20 +67,23 @@ issueRouter.put("/:issueId",expressjwt({ secret: process.env.SECRET, algorithms:
 // @route   PUT api/issues/like/:id
 // @des     Like a issue
 // @access  Private
-issueRouter.put('/like/:id', async (req, res) => {
+issueRouter.put('/like/:id',expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }), async (req, res) => {
   try {
     const issue = await Issue.findById(req.params.id);
+    const userId = req.auth._id;
+    const username = req.auth.username;
+    console.log(username)
 
-    // Check if the issue has already been liked
-    if (
-      issue.likes.filter((like) => like.user.toString() === req.user.id).length >
-      0
-    ) {
+    if (!issue) {
+      return res.status(404).json({ msg: 'Issue not found' });
+    }
+
+    // Check if the issue has already been liked by the user
+    if (issue.likes.some(like => like.user.toString() === userId)) {
       return res.status(400).json({ msg: 'Issue already liked' });
     }
 
-    issue.likes.unshift({ user: req.user.id });
-
+    issue.likes.push({ user: userId, username: username });
     await issue.save();
 
     res.json(issue.likes);
@@ -91,15 +94,16 @@ issueRouter.put('/like/:id', async (req, res) => {
 });
 
 // @route   PUT api/issues/unlike/:id
-// @des     Unlike a issue
+// @des     Unlike an issue
 // @access  Private
-issueRouter.put('/unlike/:id', async (req, res) => {
+issueRouter.put('/unlike/:id', expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }), async (req, res) => {
   try {
     const issue = await Issue.findById(req.params.id);
+    const userId = (req.auth._id)
 
     // Check if the issue has already been liked
     if (
-      issue.likes.filter((like) => like.user.toString() === req.user.id)
+      issue.likes.filter((like) => like.user.toString() === userId)
         .length === 0
     ) {
       return res.status(400).json({ msg: 'Issue has not yet been liked' });
@@ -108,7 +112,7 @@ issueRouter.put('/unlike/:id', async (req, res) => {
     // Get remove index
     const removeIndex = issue.likes
       .map((like) => like.user.toString())
-      .indexOf(req.user.id);
+      .indexOf(userId);
 
     issue.likes.splice(removeIndex, 1);
 

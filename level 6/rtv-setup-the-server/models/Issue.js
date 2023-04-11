@@ -34,6 +34,10 @@ const issueSchema = new Schema(
           type: Schema.Types.ObjectId,
           ref: 'User',
         },
+        username: {
+          type: String,
+          required: true,
+        },
       },
     ],
   },
@@ -41,6 +45,5 @@ const issueSchema = new Schema(
     timestamps: true,
   }
 );
-
 
 module.exports = mongoose.model('Issue', issueSchema);
