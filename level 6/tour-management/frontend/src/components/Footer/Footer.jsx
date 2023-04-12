@@ -42,8 +42,7 @@ const scrollToTop = () => {
     behavior: 'smooth'
   });
 };
-
-
+const todos = [1, 2, 3]
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -58,7 +57,7 @@ const Footer = () => {
                 <img src={logo} alt='logo' onClick={scrollToTop} />
               </Link>
               <p>
-              New price? New plan? No problem. We’re here to help, 24/7
+              New price? New plan? No problem. We're here to help, 24/7
               </p>
               <div className='social__links d-flex align-items-center gap-4'>
                 <span>

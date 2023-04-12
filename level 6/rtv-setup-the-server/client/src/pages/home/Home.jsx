@@ -27,7 +27,7 @@ const Home = () => {
       <div className="post">
         <div className="profile-pic">{firstLetter}</div>
         <div className="post-wrapper">
-          <h3 className="issue-question">What's on your mind, {usernameCased}?</h3>
+          <h3 className="issue-question">Have an issue to discuss, {usernameCased}?</h3>
           <IssueForm addIssue={addIssue} />
         </div>
       </div>

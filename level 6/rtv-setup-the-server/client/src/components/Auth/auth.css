@@ -43,8 +43,8 @@
     color: white;
 }
 
-.span-span {
-    text-decoration: underline;
+.auth-span {
+    text-decoration: #CC0000 underline;
 }
 
 span:hover {

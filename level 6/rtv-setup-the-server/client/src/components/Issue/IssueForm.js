@@ -34,19 +34,19 @@ export default function IssueForm(props){
         name="title" 
         value={title} 
         onChange={handleChange} 
-        placeholder="Title"/>
+        placeholder="Issue Title"/>
       <input 
         type="text" 
         name="description" 
         value={description} 
         onChange={handleChange} 
-        placeholder="Description"/>
+        placeholder=" Issue Description"/>
       <input 
         type="text" 
         name="imgUrl" 
         value={imgUrl} 
         onChange={handleChange} 
-        placeholder="Image Url"/>
+        placeholder="Issue Image Url"/>
       <button><i className="fa-solid fa-plus"></i></button>
     </form>
   )

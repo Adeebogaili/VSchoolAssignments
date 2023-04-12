@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import '../styles/login.css';
 import { Container, Row, Col, Form, FormGroup, Button } from 'reactstrap';
 import { Link, useNavigate } from 'react-router-dom';
@@ -12,6 +12,11 @@ import { BASE_URL } from './../utils/config';
 
 const Register = () => {
 
+  const inputRef = useRef()
+
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
 
 
   const [credentials, setCredentials] = useState({
@@ -74,6 +79,7 @@ const Register = () => {
                       required
                       id='username'
                       onChange={handleChange}
+                      ref={inputRef}
                     />
                   </FormGroup>
                   <FormGroup>

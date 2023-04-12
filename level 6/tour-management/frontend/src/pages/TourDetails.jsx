@@ -85,6 +85,7 @@ const TourDetails = () => {
       }));
   
       reviewMsgRef.current.value = '';
+      
       setTourRating(null);
   
     } catch (err) {
@@ -124,16 +125,6 @@ const TourDetails = () => {
       alert(err.message);
     }
   };
-  
-  
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-
-  }, [tour]);
-
   return (
     <>
       <section>
