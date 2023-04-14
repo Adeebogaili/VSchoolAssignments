@@ -90,8 +90,7 @@ export const getAllTours = async (req, res, next) => {
   const page = parseInt(req.query.page);
 
   try {
-    const tours = await Tour.find()
-    .sort({ createdAt: -1 })
+    const tours = await Tour.find().sort({ createdAt: -1 })
     .populate({
       path: 'reviews',
       model: 'Review',

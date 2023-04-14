@@ -12,7 +12,6 @@ import ThankYou from '../pages/ThankYou';
 import About from '../pages/About';
 
 import { AuthContext } from '../context/AuthContext';
-import { Nav } from 'reactstrap';
 
 const Router = () => {
   const { user } = useContext(AuthContext);
