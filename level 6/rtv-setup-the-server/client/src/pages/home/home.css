@@ -1,7 +1,8 @@
 .home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem 40px;
-    background-color: #E4E6E8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 40px;
+  background-color: #e4e6e8;
+  height: 100vh;
 }

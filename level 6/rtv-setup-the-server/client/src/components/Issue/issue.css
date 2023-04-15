@@ -11,19 +11,21 @@
     display: flex;
     align-items: center;
 }
+
 .profile-pic {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     border: 1px solid #333;
     background-color: white;
     color: #C20017;
     font-size: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
+    text-align: center;
+    line-height: 45px; /* Centers the text vertically */
+    padding: 0; /* Removes any extra padding */
+    margin: 0; /* Removes any extra margin */
 }
+
 
 .issue-list{
     display: flex;

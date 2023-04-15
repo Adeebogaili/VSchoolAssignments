@@ -78,7 +78,7 @@ export default function Issue(props) {
     <div className="issue-container">
       <div>
         <div className="user-info">
-        <div className="profile-pic">{firstLetter}</div>
+        <h3 className="profile-pic">{firstLetter}</h3>
         <div className="name-time">
           <div>
             <h3>{usernameCased}</h3>
