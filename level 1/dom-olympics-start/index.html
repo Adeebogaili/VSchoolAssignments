@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,35 +8,25 @@
     <link rel="stylesheet" href="style.css">
     <title>DOM Olympics</title>
 </head>
+
 <body>
     <header id="header"></header>
     <label>Theme</label>
     <select id="theme-drop-down">
-        <option class="light-theme" value="theme-one">blue/brown</option>
-        <option class="dark-theme" value="theme-two">red/black</option>
+        <option class="light-theme" value="theme-one">Blue/Brown</option>
+        <option class="dark-theme" value="theme-two">Red/Black</option>
     </select>
     <div id="main">
         <button id='clear-button'>clear</button>
-        <div class="messages">
-            <div class="message left ">
-                I have something serious to talk about
-            </div>
-            <div class="message right ">
-                I don't want to talk
-            </div>
-            <div class="message left ">
-                You have to, you're the police
-            </div>
-            <div class="message right ">
-                I'm just a simple farmer
-            </div>
+        <div id="messages-container">
         </div>
-        <form name="message">
-            <input id="textInput" value="Thanks! Goodbye"/>
-            <button id="submitInput">Send</button>
-        </form>
     </div>
-   
+    <form name="message-form">
+        <input type="text" name="message-input" placeholder="Write a message..." />
+        <button type="submit">Send</button>
+    </form>
+    </div>
     <script src="main.js"></script>
 </body>
+
 </html>
