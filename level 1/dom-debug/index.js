@@ -5,6 +5,8 @@ document.getElementById("add").addEventListener("click", function(e){
     document.getElementById("list").appendChild(subItem)
 })
 
+debugger
+
 function createDropDown(){
     const dropDown = document.createElement("select")
     for (let i = 0; i < colors.length; i++){
