@@ -3,7 +3,11 @@ import Pet from "./Pet"
 
 export default function Friend(props) {
 
-    const pets = props.friend.pets.map((pet, index) => {
+    const {
+        friend
+    } = props
+
+    const pets = friend.pets.map((pet, index) => {
         return (
             <Pet 
                 key={index}
@@ -14,7 +18,7 @@ export default function Friend(props) {
 
     return (
         <div className="owner-container">
-            <h2 className="owner-name">Hi, my name is {props.friend.name}. I'm {props.friend.age} Years old. My pets are:</h2>
+            <h2 className="owner-name">Hi, my name is {friend.name}. I'm {friend.age} Years old. My pets are:</h2>
             <ul className="pet-list">
                 <li>{pets}</li>
             </ul>
