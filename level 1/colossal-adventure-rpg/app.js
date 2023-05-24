@@ -40,6 +40,8 @@ while (player.health > 0 && dragons.length > 0) {
         const index = readlineSync.keyInSelect(actions, 'What do you want to do?');
         if (index === 0) { // Attack
             const damage = Math.floor(Math.random() * 10) + 1;
+
+          
             console.log(`\nYou attack ${dragon.name} with ${damage} damage.`);
             dragon.health -= damage;
             if (dragon.health > 0) {

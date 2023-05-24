@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+body {
+    padding: 1rem;
+}
+
 .header {
     display: flex;
     align-items: center;
@@ -21,6 +25,7 @@
     width: 500px;
     border-radius: 1rem;
     padding: 1rem;
+    margin: 1rem 0;
 }
 #messages-container{
     margin-top: 1rem;

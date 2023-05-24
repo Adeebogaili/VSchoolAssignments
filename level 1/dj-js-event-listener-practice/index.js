@@ -1,3 +1,7 @@
+document.addEventListener('keyup', (event) => {
+    console.log('Key released:', event.key);
+  });
+
 // To grab the square div
 var square = document.getElementById("square");
 

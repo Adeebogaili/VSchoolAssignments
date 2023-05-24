@@ -9,7 +9,6 @@ for (var i = 0; i < officeItems.length; i++) {
     }
 }
 console.log("There are " + count + " computers in this array!");
-
 /* #2
 Loop through the following array and log to the console "old enough" if they are 18 or older, and "not old enough" if thy aren't 18. */
 
