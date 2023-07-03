@@ -13,7 +13,6 @@ function total(event){
     
     event.preventDefault();
 
-
     let goombasTotal = parseInt(goombasNumber.value) * 5;
     goombasPrice.value = goombasTotal + " Coins";
 
